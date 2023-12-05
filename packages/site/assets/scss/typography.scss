@@ -1,0 +1,183 @@
+// ////////////////////////////////////////////////////////////////// Typography
+// -----------------------------------------------------------------------------
+// =================================================================== Variables
+/**
+ * Variables specifying the font family declaration ($font_Primary) and the
+ * location of the source font files ($fontAssetPath)
+ */
+
+$font_Primary: '';
+$font_Mono: monospace;
+
+// ==================================================================== Families
+/**
+ * Include @font-face declarations and font file imports using $fontAssetPath
+ */
+
+// @font-face {
+//   font-family: '';
+//   font-style: normal;
+//   font-weight: 400;
+//   font-display: swap;
+//   src: url('#{$fontAssetPath}/') format('opentype');
+// }
+
+// ///////////////////////////////////////////////////////// Basic Styles Mixins
+// -----------------------------------------------------------------------------
+/**
+ * Mixins corresponding to most commonly used html text elements
+ */
+
+@mixin h1 {
+  font-size: toRem(36);
+  line-height: leading(50, 36);
+  font-weight: 700;
+  letter-spacing: 0em;
+}
+
+@mixin h2 {
+  font-size: toRem(30);
+  line-height: leading(42, 30);
+  font-weight: 700;
+  letter-spacing: 0em;
+}
+
+@mixin h3 {
+  font-size: toRem(24);
+  line-height: leading(34, 24);
+  font-weight: 500;
+  letter-spacing: 0em;
+  margin-bottom: 1.25rem;
+}
+
+@mixin h4 {
+  font-size: toRem(18);
+  line-height: leading(25, 18);
+  font-weight: 500;
+}
+
+@mixin h5 {
+font-size: toRem(16);
+line-height: leading(24, 16);
+font-weight: 500;
+}
+
+@mixin h6 {
+  font-size: toRem(16);
+  line-height: leading(24, 16);
+  font-weight: 500;
+}
+
+@mixin p1 {
+  font-size: toRem(16);
+  line-height: leading(27, 16);
+  font-weight: 400;
+}
+
+@mixin p2 {
+  font-size: toRem(14);
+  line-height: leading(21, 14);
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+@mixin inlineLink {
+  color: blue;
+}
+
+/**
+ * Mixin for text in <code> elements, see utitlies.scss to edit these vars
+ */
+
+@mixin inlineCode {
+  color: var(--code__inline__color);
+  background-color: var(--code__inline__background-color);
+  padding: toRem(4) toRem(8);
+  border-radius: toRem(4);
+  font-family: monospace;
+  font-size: toRem(14);
+  white-space: break-spaces;
+  transition: background-color 500ms, color 500ms;
+}
+
+@mixin blockCode {
+  background-color: var(--code__block__background-color);
+  padding: toRem(10) toRem(16);
+  margin-bottom: 1.25rem;
+  border-radius: 0.625rem;
+  font-size: toRem(13);
+  line-height: leading(21, 14);
+  font-family: monospace;
+  white-space: break-spaces;
+  transition: background-color 500ms, color 500ms;
+}
+
+// ////////////////////////////////////////////////////////////////////// Sizing
+// -----------------------------------------------------------------------------
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  display: block;
+  line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: none;
+}
+
+h1, .h1 {
+  @include h1;
+}
+
+h2, .h2 {
+  @include h2;
+}
+
+h3, .h3 {
+  @include h3;
+}
+
+h4, .h4 {
+  @include h4;
+}
+
+h5, .h5 {
+  @include h5;
+}
+
+h6, .h6 {
+  @include h6;
+}
+
+p,
+.p1,
+div,
+a,
+button {
+  @include p1;
+}
+
+pre {
+  @include blockCode;
+  code {
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+  }
+}
+
+code {
+  @include inlineCode;
+}

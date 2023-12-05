@@ -1,0 +1,12 @@
+{
+  "_": {
+    "title": "Zero UI",
+    "description": "Zero kitchen sink",
+    "siteName": "Zero UI",
+    "ogImage": "/open-graph.jpg"
+  },
+  "*": {
+    "title": "Zero UI - |title|",
+    "description": "|description|"
+  }
+}

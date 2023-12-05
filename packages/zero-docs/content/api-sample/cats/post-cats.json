@@ -1,0 +1,51 @@
+{
+  "sliders": [
+    {
+      "metadata": {
+        "tag": "POST",
+        "title": "/api/post-cats"
+      },
+      "slides": [
+        {
+          "language": "curl",
+          "tab": "cURL",
+          "content": "curl https://example.com/api/post-cats"
+        },
+        {
+          "language": "javascript",
+          "tab": "Javascript",
+          "content": "const options = {\n  headers: { Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', Authorization: `Bearer ${token}` }, \n  params: { \n    creator: username, \n    per_page: 100 \n  } \n} \nconst response = await Axios.get(`https://filplus.storage/api/post-dataset`, options)"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "tag": "Response",
+        "title": "200"
+      },
+      "slides": [
+        {
+          "language": "json",
+          "tab": "Example Response",
+          "content": {
+            "id": 1,
+            "node_id": "MDU6SXNzdWUx",
+            "url": "https://api.github.com/repos/octocat/Hello-World/issues/1347",
+            "repository_url": "https://api.github.com/repos/octocat/Hello-World",
+            "labels_url": "https://api.github.com/repos/octocat/Hello-World/issues/1347/labels{/name}",
+            "comments_url": "https://api.github.com/repos/octocat/Hello-World/issues/1347/comments"
+          }
+        },
+        {
+          "language": "json",
+          "tab": "Response Schema",
+          "content": {
+            "path": "",
+            "users": [],
+            "events": []
+          }
+        }
+      ]
+    }
+  ]
+}

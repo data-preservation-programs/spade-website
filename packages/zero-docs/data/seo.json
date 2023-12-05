@@ -1,0 +1,12 @@
+{
+  "_": {
+    "title": "Docs Starter",
+    "description": "Get a docs site up and running fast 🚀",
+    "siteName": "Docs Starter",
+    "ogImage": "/public/open-graph.jpg"
+  },
+  "*": {
+    "title": "Docs Starter - |title|",
+    "description": "|description|"
+  }
+}

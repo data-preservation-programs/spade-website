@@ -1,0 +1,82 @@
+{
+  "query_parameters": {
+    "_section_heading": "Parameters",
+    "title": {
+      "type": "string",
+      "description": "Section title"
+    },
+    "slug": {
+      "type": "string",
+      "description": "Slug corresponding to the subdirectory name in `docs/content`"
+    },
+    "icon": {
+      "type": "string",
+      "description": "Slug corresponding to the name of the icon component included in `docs/components`. More information [here](/the-docs-directory/components)."
+    },
+    "children": {
+      "type": "string",
+      "description": "List of links to be included under the section"
+    },
+    "children.type": {
+      "type": "string",
+      "description": "Can be `a` for anchor tags or `nuxt-link` for internal links"
+    },
+    "children.href": {
+      "type": "string"
+    },
+    "children.title": {
+      "type": "string",
+      "description": "Link text"
+    },
+    "children.target": {
+      "type": "string",
+      "description": "If set to `_blank`, link will open in a new tab"
+    }
+  },
+  "sliders": [
+    {
+      "slides": [
+        {
+          "language": "json",
+          "tab": "Example Sidebar File",
+          "content": [
+            {
+              "title": "Welcome",
+              "slug": "welcome",
+              "icon": "",
+              "children": [
+                {
+                  "type": "nuxt-link",
+                  "href": "/introduction",
+                  "title": "Introduction"
+                },
+                {
+                  "type": "nuxt-link",
+                  "href": "/getting-started",
+                  "title": "Getting Started"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "language": "json",
+          "tab": "Schema",
+          "content": {
+            "title": "string",
+            "slug": "string",
+            "icon": "string",
+            "children": [
+              {
+                "type": "string | a or nuxt-link",
+                "href": "string",
+                "title": "string",
+                "target": "string"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

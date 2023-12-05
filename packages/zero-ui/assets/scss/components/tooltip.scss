@@ -1,0 +1,37 @@
+[data-tooltip] {
+  position: relative;
+  &:hover {
+    &:before,
+    &:after {
+      transition: 150ms ease-in;
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+  }
+  &:before,
+  &:after {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0.5rem);
+    pointer-events: none;
+    opacity: 0;
+    transition: 150ms ease-out;
+  }
+  &:before {
+    content: '';
+    top: calc(100% + 2px);
+    border-left: 0.5rem solid transparent;
+    border-right: 0.5rem solid transparent;
+    border-bottom: 0.375rem solid salmon;
+  }
+  &:after {
+    content: attr(data-tooltip);
+    top: calc(100% + 0.5rem);
+    background-color: salmon;
+    font-family: inherit;
+    font-size: 0.625rem;
+    white-space: nowrap;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1.5rem;
+  }
+}

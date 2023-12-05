@@ -1,0 +1,20 @@
+.chevron {
+  position: relative;
+  width: toRem(9);
+  height: 0.375rem;
+  transition: 150ms ease-out;
+  path {
+    transition: inherit;
+    stroke: var(--theme-color);
+  }
+  &.up,
+  &.down {
+    transition: 150ms ease-in;
+  }
+  &.up {
+    transform: rotate(-180deg);
+  }
+  &.down {
+    transform: translateY(-2px) rotate(135deg);
+  }
+}

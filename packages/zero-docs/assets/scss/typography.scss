@@ -1,0 +1,297 @@
+// ////////////////////////////////////////////////////////////////// Typography
+// -----------------------------------------------------------------------------
+// ==================================================================== Families
+$font_Primary: 'DIN', sans-serif, monospace;
+$font_Mono: 'PFD in Mono', sans-serif, monospace;
+
+//////////////////////////////////////////////////////////////////////////// DIN
+// -----------------------------------------------------------------------------
+@font-face {
+  font-family: 'DIN';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('#{$fontAssetPath}/DIN/DIN-Regular.otf') format('opentype'),
+       url('#{$fontAssetPath}/DIN/DIN-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DIN';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('#{$fontAssetPath}/DIN/DIN-RegularItalic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'DIN';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('#{$fontAssetPath}/DIN/DIN-Medium.otf') format('opentype'),
+       url('#{$fontAssetPath}/DIN/DIN-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DIN';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('#{$fontAssetPath}/DIN/DIN-MediumItalic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'DIN Alternate';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('#{$fontAssetPath}/DIN/DIN-MediumAlternate.otf') format('opentype'),
+       url('#{$fontAssetPath}/DIN/DIN-MediumAlternate.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DIN';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('#{$fontAssetPath}/DIN/DIN-Bold.otf') format('opentype'),
+       url('#{$fontAssetPath}/DIN/DIN-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DIN';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('#{$fontAssetPath}/DIN/DIN-BoldItalic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'PFD in Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('#{$fontAssetPath}/PFDinMono/PFDinMono-Regular.ttf') format('truetype');
+       // url('#{$fontAssetPath}/PFDinMono/PFDinMono-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'PFD in Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('#{$fontAssetPath}/PFDinMono/PFDinMono-Medium.ttf') format('truetype');
+       // url('#{$fontAssetPath}/PFDinMono/PFDinMono-Medium.otf') format('opentype');
+}
+
+// ///////////////////////////////////////////////////////// Basic Styles Mixins
+// -----------------------------------------------------------------------------
+@mixin h1 {
+  font-size: toRem(36);
+  line-height: leading(50, 36);
+  font-weight: 700;
+  letter-spacing: 0em;
+}
+
+@mixin h2 {
+  font-size: toRem(30);
+  line-height: leading(42, 30);
+  font-weight: 700;
+  letter-spacing: 0em;
+}
+
+@mixin h3 {
+  font-size: toRem(24);
+  line-height: leading(34, 24);
+  font-weight: 500;
+  letter-spacing: 0em;
+}
+
+@mixin h4 {
+  font-size: toRem(18);
+  line-height: leading(25, 18);
+  font-weight: 500;
+}
+
+@mixin h5 {
+  font-size: toRem(16);
+  line-height: leading(24, 16);
+  font-weight: 500;
+}
+
+@mixin h6 {
+  font-size: toRem(16);
+  line-height: leading(24, 16);
+  font-weight: 500;
+}
+
+@mixin p1 {
+  font-size: toRem(16);
+  line-height: leading(27, 16);
+  font-weight: 400;
+}
+
+@mixin p2 {
+  font-size: toRem(14);
+  line-height: leading(21, 14);
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+@mixin inlineCode {
+  color: var(--code__inline__color);
+  background-color: var(--code__inline__background-color);
+  padding: toRem(4) toRem(8);
+  border-radius: toRem(4);
+  font-family: $font_Mono;
+  font-size: toRem(14);
+  white-space: break-spaces;
+  transition: background-color 500ms, color 500ms;
+}
+
+@mixin blockCode {
+  background-color: var(--code__block__background-color);
+  padding: toRem(10) toRem(16);
+  margin-bottom: 1.25rem;
+  border-radius: 0.625rem;
+  font-size: toRem(13);
+  line-height: leading(21, 14);
+  font-family: $font_Mono;
+  white-space: break-spaces;
+  transition: background-color 500ms, color 500ms;
+}
+
+@mixin p1Link {
+  @include p1;
+  font-weight: 500;
+  color: var(--link-color);
+  transition: color 500ms;
+  &:hover {
+    color: var(--link-hover-color);
+  }
+}
+
+// ////////////////////////////////////////////////////////////////////// Sizing
+// -----------------------------------------------------------------------------
+h1, h2, h3, h4, h5, h6, li, p {
+  transition: color 500ms;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  display: block;
+  line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: none;
+}
+
+h1, .h1 {
+  @include h1;
+}
+
+h2, .h2 {
+  @include h2;
+}
+
+h3, .h3 {
+  @include h3;
+}
+
+h4, .h4 {
+  @include h4;
+}
+
+h5, .h5 {
+  @include h5;
+}
+
+h6, .h6 {
+  @include h6;
+}
+
+p,
+.p1,
+div,
+a,
+button {
+  @include p1;
+}
+
+:not(pre) > code {
+  @include inlineCode;
+}
+
+// /////////////////////////////////////////////////////////// Navigation Mixins
+// -----------------------------------------------------------------------------
+@mixin navigation {
+  font-size: toRem(16);
+  line-height: leading(25, 16);
+  font-weight: 700;
+}
+
+// ============================================================== Sidebar Mixins
+@mixin sidebarSectionTitle {
+  @include h5;
+}
+
+@mixin sidebar {
+  @include p2;
+  color: var(--sidebar-text-color);
+  text-align: left;
+}
+
+// ======================================================== Magellan Menu Mixins
+
+@mixin magellanTitle {
+  font-size: toRem(11);
+  line-height: leading(28, 11);
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+@mixin magellanLink {
+  font-size: toRem(14);
+  line-height: 1.2;
+  letter-spacing: 0.2px;
+  white-space: break-spaces;
+  color: var(--theme-color);
+  transition: color 500ms;
+  &:hover {
+    cursor: pointer;
+    color: var(--link-color);
+  }
+}
+
+// ///////////////////////////////////////////////////////////////// Misc Mixins
+// -----------------------------------------------------------------------------
+@mixin customBlockTitle {
+  font-size: toRem(15);
+  line-height: leading(24, 15);
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  margin-bottom: toRem(8);
+}
+
+@mixin customBlockText {
+  color: $softBlack;
+  font-size: toRem(14);
+  line-height: (22, 14);
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  margin-bottom: toRem(17);
+}

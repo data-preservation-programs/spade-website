@@ -1,0 +1,37 @@
+/**
+ * This file should NOT contain any styling (classes or IDs). It should only contain
+ * variables, functions, mixins, etc. Any new, abstract, project-to-project portable
+ * functions can be added here.
+ */
+
+@mixin FireFox {
+  @-moz-document url-prefix() { @content; }
+}
+
+@mixin Edge {
+  @supports (-ms-ime-align:auto) { @content; }
+}
+
+@mixin Safari9 {
+  @supports (overflow:-webkit-marquee) and (justify-content:inherit) { @content; }
+}
+
+@mixin Safari7Plus($item) {
+  _::-webkit-full-page-media, _:future, :root #{$item} { @content; }
+}
+
+@mixin Safari9Plus($item) {
+  _:default:not(:root:root), #{$item} { @content; }
+}
+
+@mixin IE10and11 {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { @content; }
+}
+
+@mixin iOSonly {
+  @supports (-webkit-overflow-scrolling: touch) { @content; }
+}
+
+@mixin everythingExceptIOS {
+  @supports not (-webkit-overflow-scrolling: touch) { @content; }
+}

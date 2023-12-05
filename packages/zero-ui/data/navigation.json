@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Modules & Components",
+    "links": [
+      { "path": "/markdown-parser", "text": "Markdown Parser" },
+      { "path": "/dropdown", "text": "Dropdown" },
+      { "path": "/algolia", "text": "Algolia Search" },
+      { "path": "/api-preview", "text": "API Preview" },
+      { "path": "/form", "text": "Form" }
+    ]
+  },
+  {
+    "title": "Authentication",
+    "links": [
+      { "path": "/authentication", "text": "Authentication" },
+      { "path": "/authentication/protected", "text": "Protected 🛡️ " },
+      { "path": "/authentication/redirect-unauthenticated", "text": "redirectUnauthenticated" },
+      { "path": "/authentication/redirect-after-login", "text": "redirectAfterLogin 🛡️" },
+      { "path": "/authentication/redirect-after-logout", "text": "redirectAfterLogout" }
+    ]
+  }
+]

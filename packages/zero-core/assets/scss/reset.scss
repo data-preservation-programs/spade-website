@@ -1,0 +1,119 @@
+/**
+ * This file should be very rarely updated. It is an augmentation of normalize.scss.
+ * The SCSS here attempts to set and reset a variety of browser defaults in order
+ * to make theming easier site-wide.
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  height: auto;
+  font-size: $baseFontSize + px;
+  line-height: $baseLeading;
+  letter-spacing: $baseLetterSpacing;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+a,
+ol,
+ul,
+li,
+div,
+nav,
+span,
+input,
+label,
+video,
+button,
+section,
+textarea,
+figcaption,
+select option,
+h1, h2, h3, h4, h5, h6,
+input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+  font-family: inherit;
+  font-size: inherit;
+  background-color: transparent;
+  box-sizing: border-box;
+  transition: color 50ms;
+}
+
+::-webkit-file-upload-button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+select::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+  outline: none !important;
+}
+
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
+
+textarea {
+  background-color: transparent;
+  resize: none;
+  @include placeholder {
+    opacity: 0.5;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+  }
+  &:hover, &:active, &:focus {
+    background-color: transparent;
+  }
+}
+
+strong {
+  font-weight: 500;
+}
+
+a,
+input[type="button"],
+button, .button {
+  font-family: inherit;
+  color: inherit;
+  outline: none;
+  text-decoration: none;
+  position: relative;
+  &:hover, &:active, &:focus {
+    outline: none;
+    color: inherit;
+    background-color: transparent;
+  }
+}
+
+ol, ul {
+  margin: 0;
+}
+
+img {
+  display: block;
+}
+
+p,
+div,
+button {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: inherit;
+}

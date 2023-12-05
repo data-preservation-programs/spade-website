@@ -1,0 +1,39 @@
+/**
+ * This should be very rarely edited. It behaves as a reset and an upgrade to some
+ * default Nuxt styles as well as to the grid. Updates to this file should be
+ * portable across projects.
+ */
+
+#__nuxt {
+  position: relative;
+  z-index: 2;
+}
+
+.layout {
+  position: relative;
+  z-index: 100;
+}
+
+[class~="grid"], [class*="grid-"], [class*="grid_"] {
+  width: $gridWidth;
+  margin: 0 auto;
+  @include gridMaxMQ {
+    padding: 0 4.1665%;
+  }
+  &[class*="-noGutter"] {
+    margin: 0 auto;
+  }
+  &.full {
+    width: 100%;
+    padding: 0 0.5rem;
+    &.maxed {
+      max-width: 90rem;
+    }
+  }
+  &.max-height {
+    height: 100%;
+  }
+  &.no-padding {
+    padding: 0;
+  }
+}

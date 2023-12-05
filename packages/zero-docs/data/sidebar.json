@@ -1,0 +1,107 @@
+[
+  {
+    "title": "Welcome",
+    "slug": "welcome",
+    "icon": "",
+    "children": [
+      {
+        "type": "nuxt-link",
+        "href": "/introduction",
+        "title": "Introduction"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/getting-started",
+        "title": "Getting Started"
+      }
+    ]
+  },
+  {
+    "title": "The Docs Directory",
+    "slug": "the-docs-directory",
+    "icon": "",
+    "children": [
+      {
+        "type": "nuxt-link",
+        "href": "/introduction",
+        "title": "Introduction"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/writing-content",
+        "title": "Writing Content"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/theming",
+        "title": "Theming"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/components",
+        "title": "Components"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/data",
+        "title": "Data"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/public",
+        "title": "Public"
+      }
+    ]
+  },
+  {
+    "title": "Functionality",
+    "slug": "functionality",
+    "icon": "",
+    "children": [
+      {
+        "type": "nuxt-link",
+        "href": "/search",
+        "title": "Search"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/sitemap",
+        "title": "Sitemap"
+      }
+    ]
+  },
+  {
+    "title": "Content Sample",
+    "slug": "content-sample",
+    "icon": "",
+    "children": [
+      {
+        "type": "nuxt-link",
+        "href": "/simple-markdown",
+        "title": "Simple Markdown"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/preview-a-component",
+        "title": "Preview a component"
+      }
+    ]
+  },
+  {
+    "title": "API Sample",
+    "slug": "api-sample",
+    "icon": "",
+    "children": [
+      {
+        "type": "nuxt-link",
+        "href": "/introduction",
+        "title": "Introduction"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/cats",
+        "title": "Cats"
+      }
+    ]
+  }
+]

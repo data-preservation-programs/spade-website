@@ -1,0 +1,24 @@
+{
+  "name": "docs",
+  "description": "Get a docs site up and running fast 🚀",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "nuxi build",
+    "dev": "nuxi dev --no-clear",
+    "preview": "nuxi preview",
+    "upgrade-nuxt": "nuxi upgrade"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.5.1",
+    "pinia": "^2.0.35"
+  },
+  "devDependencies": {
+    "@nuxt/content": "^2.8.5",
+    "@nuxt/eslint-config": "^0.2.0",
+    "@nuxtjs/eslint-module": "^4.1.0",
+    "eslint": "^8.50.0",
+    "nuxt": "^3.7.4",
+    "sass": "^1.68.0",
+    "typescript": "^5.2.2"
+  }
+}

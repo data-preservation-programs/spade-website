@@ -1,0 +1,43 @@
+{
+  "name": "@undone-labs/nuxt3-starter",
+  "version": "1.0.0",
+  "description": "Get a Nuxt 3 site up and running fast 🚀",
+  "author": {
+    "name": "Agency Undone",
+    "email": "hello@agencyundone.com"
+  },
+  "license": "Apache-2.0",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:undone-labs/nuxt3-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/undone-labs/nuxt3-starter/issues"
+  },
+  "homepage": "https://github.com/undone-labs/nuxt3-starter#readme",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "dev-ui": "npm run dev -w zero-ui",
+    "build-ui": "npm run build -w packages/zero-ui",
+    "start-ui": "node packages/zero-ui/.output/server/index.mjs",
+    "upgrade-nuxt-ui": "npm run upgrade-nuxt -w zero-ui",
+    "dev-site": "npm run dev -w site",
+    "build-site": "npm run build -w packages/site",
+    "start-site": "node packages/site/.output/server/index.mjs",
+    "upgrade-nuxt-site": "npm run upgrade-nuxt -w site",
+    "dev-docs": "npm run dev -w docs",
+    "build-docs": "npm run build -w packages/docs",
+    "start-docs": "node packages/docs/.output/server/index.mjs",
+    "upgrade-nuxt-docs": "npm run upgrade-nuxt -w docs"
+  },
+  "workspaces": [
+    "packages/zero-core",
+    "packages/zero-docs",
+    "packages/zero-ui",
+    "packages/site",
+    "packages/docs"
+  ]
+}

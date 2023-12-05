@@ -1,0 +1,16 @@
+.toast {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--divider);
+  background-color: var(--background-color);
+  padding: 1rem;
+  border-radius: 3rem;
+  .icon {
+    display: none;
+  }
+  .message {
+    font-weight: 500;
+  }
+}

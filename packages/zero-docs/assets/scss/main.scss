@@ -1,0 +1,50 @@
+//////////////////////////////////////////////////////////////////////// General
+// -----------------------------------------------------------------------------
+/**
+ * Fonts, text and background colours are applied here.
+ *
+ * See utilities.scss to edit these vars.
+ */
+
+html {
+  scroll-behavior: smooth;
+  &.dark {
+    body {
+      @include selection-dark;
+    }
+  }
+  &.no-scroll {
+    overflow-y: hidden;
+  }
+}
+
+body {
+  @include selection-light;
+  color: var(--theme-color);
+  font-family: $font_Primary;
+  background-color: var(--background-color);
+  transition: background-color 500ms;
+}
+
+.page {
+  padding-top: $bodyOffsetTop;
+  background-color: var(--background-color);
+  transition: background-color 500ms;
+}
+
+///////////////////////////////////////////////////////////////////// Components
+// -----------------------------------------------------------------------------
+.magnify-onhover {
+  transition: 150ms ease-out;
+  &:hover {
+    transition: 150ms ease-in;
+    transform: scale(1.05);
+  }
+}
+
+@import 'components/chevron';
+@import 'components/markdown';
+@import 'components/toast';
+@import 'components/tooltip';
+@import 'components/video-wrapper';
+@import 'components/code';

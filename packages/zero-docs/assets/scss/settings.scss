@@ -1,0 +1,29 @@
+/**
+ * This file should NOT contain any styling (classes or IDs). It is responsible
+ * for importing global variables, functions, mixins, etc. It should only contain
+ * imports and overriding variables (settings).
+ *
+ * This file is imported in:
+ *    nuxt.config → vite.css.preprocessorOptions.scss.additionalData
+ */
+
+/////////////////////////////////////////////////////////////////////// Settings
+// -----------------------------------------------------------------------------
+/**
+ * Never remove any of the below settings, only ever update their values
+ * project-to-project.
+ *
+ * $fontAssetPath can be removed if not overriding default nuxt3starter font files
+ */
+
+$gridWidth: 90rem;
+$standardGutter: 0.75rem;
+$baseFontSize: 16;
+$baseLeading: 1.2;
+$baseLetterSpacing: 0px;
+$fontAssetPath: '@/../zero-docs/assets/fonts';
+
+//////////////////////////////////////////////////////////////////////// Imports
+// -----------------------------------------------------------------------------
+@import 'utilities';
+@import 'typography';
