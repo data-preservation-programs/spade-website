@@ -6,21 +6,76 @@
  * location of the source font files ($fontAssetPath)
  */
 
-$font_Primary: '';
-$font_Mono: monospace;
+ $fontSora: 'Sora';
+ $fontSuisseIntl: 'SuisseIntl', sans-serif, monospace;
+ $fontSuisseIntlMono: 'SuisseIntlMono', sans-serif, monospace;
+ $fontAssetPath: 'assets/fonts';
+ 
+ // -------------------------------------------------------- Suisse International
+@font-face {
+  font-family: 'Sora';
+  src: url('#{$fontAssetPath}/sora/Sora-VariableFont_wght.ttf') format("truetype");
+  font-weight: 100 1000;
+  font-style: normal;
+}
+ 
+@font-face {
+  font-family: 'SuisseIntl';
+  src: url('#{$fontAssetPath}/suisse-intl/SuisseIntl-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+ 
+@font-face {
+  font-family: 'SuisseIntl';
+  src: url('#{$fontAssetPath}/suisse-intl/SuisseIntl-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+ 
+@font-face {
+  font-family: 'SuisseIntl';
+  src: url('#{$fontAssetPath}/suisse-intl/SuisseIntl-RegularItalic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
 
-// ==================================================================== Families
-/**
- * Include @font-face declarations and font file imports using $fontAssetPath
- */
+@font-face {
+  font-family: 'SuisseIntl';
+  src: url('#{$fontAssetPath}/suisse-intl/SuisseIntl-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: bold;
+}
+ 
+@font-face {
+  font-family: 'SuisseIntl';
+  src: url('#{$fontAssetPath}/suisse-intl/SuisseIntl-MediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+}
 
-// @font-face {
-//   font-family: '';
-//   font-style: normal;
-//   font-weight: 400;
-//   font-display: swap;
-//   src: url('#{$fontAssetPath}/') format('opentype');
-// }
+@font-face {
+  font-family: 'SuisseIntl';
+  src: url('#{$fontAssetPath}/suisse-intl/SuisseIntl-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: bold;
+}
+
+@font-face {
+  font-family: 'SuisseIntl';
+  src: url('#{$fontAssetPath}/suisse-intl/SuisseIntl-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: bold;
+}
+
+// --------------------------------------------------- Suisse International Mono
+@font-face {
+  font-family: 'SuisseIntlMono';
+  src: url('#{$fontAssetPath}/suisse-intl-mono/SuisseIntlMono-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+ 
 
 // ///////////////////////////////////////////////////////// Basic Styles Mixins
 // -----------------------------------------------------------------------------
@@ -29,60 +84,101 @@ $font_Mono: monospace;
  */
 
 @mixin h1 {
-  font-size: toRem(36);
-  line-height: leading(50, 36);
-  font-weight: 700;
-  letter-spacing: 0em;
+  font-family: $fontSora;
+  font-size: toRem(50);
+  line-height: leading(70, 50);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  @include small {
+    font-size: toRem(30);
+    line-height: leading(44, 30);
+  }
 }
 
 @mixin h2 {
-  font-size: toRem(30);
-  line-height: leading(42, 30);
-  font-weight: 700;
-  letter-spacing: 0em;
+  font-family: $fontSora;
+  font-size: toRem(40);
+  line-height: leading(80, 40);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  @include small {
+    font-size: toRem(24);
+    line-height: leading(67, 24);
+  }
 }
 
 @mixin h3 {
+  font-family: $fontSuisseIntl;
   font-size: toRem(24);
-  line-height: leading(34, 24);
+  line-height: leading(36, 24);
   font-weight: 500;
   letter-spacing: 0em;
-  margin-bottom: 1.25rem;
+  @include small {
+    font-size: toRem(18);
+    line-height: leading(25, 18);
+  }
 }
 
 @mixin h4 {
-  font-size: toRem(18);
-  line-height: leading(25, 18);
-  font-weight: 500;
+  font-family: $fontSora;
+  font-size: toRem(24);
+  line-height: leading(36, 24);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  @include small {
+    font-size: toRem(18);
+    line-height: leading(27, 18);
+  }
 }
 
 @mixin h5 {
-font-size: toRem(16);
-line-height: leading(24, 16);
-font-weight: 500;
+  font-family: $fontSora;
+  font-size: toRem(18);
+  line-height: leading(25, 18);
+  font-weight: 600;
+  @include small {
+    font-size: toRem(16);
+    line-height: leading(22, 16);
+  }
 }
 
 @mixin h6 {
+  font-family: $fontSora;
   font-size: toRem(16);
-  line-height: leading(24, 16);
-  font-weight: 500;
+  line-height: leading(23, 16);
+  font-weight: 700;
+  @include small {
+    font-size: toRem(14);
+    line-height: leading(19, 14);
+  }
 }
 
 @mixin p1 {
-  font-size: toRem(16);
-  line-height: leading(27, 16);
+  font-family: $fontSuisseIntl;
+  font-size: toRem(18);
+  line-height: leading(27, 18);
   font-weight: 400;
+  letter-spacing: 0.02em;
+  @include small {
+    font-size: toRem(14);
+    line-height: leading(21, 14);
+  }
 }
 
 @mixin p2 {
-  font-size: toRem(14);
-  line-height: leading(21, 14);
+  font-family: $fontSuisseIntl;
+  font-size: toRem(16);
+  line-height: leading(24, 16);
   font-weight: 400;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.02em;
+  @include small {
+    font-size: toRem(13);
+    line-height: leading(20, 13);
+  }
 }
 
 @mixin inlineLink {
-  color: blue;
+  color: $royalBlue;
 }
 
 /**
@@ -94,7 +190,7 @@ font-weight: 500;
   background-color: var(--code__inline__background-color);
   padding: toRem(4) toRem(8);
   border-radius: toRem(4);
-  font-family: monospace;
+  font-family: $fontSuisseIntlMono;
   font-size: toRem(14);
   white-space: break-spaces;
   transition: background-color 500ms, color 500ms;
@@ -107,7 +203,7 @@ font-weight: 500;
   border-radius: 0.625rem;
   font-size: toRem(13);
   line-height: leading(21, 14);
-  font-family: monospace;
+  font-family: $fontSuisseIntlMono;
   white-space: break-spaces;
   transition: background-color 500ms, color 500ms;
 }

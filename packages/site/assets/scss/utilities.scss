@@ -27,19 +27,18 @@ $gray700: #616161;
 $gray800: #424242;
 $gray900: #212121;
 
-$blueRibbon: #0046F9; // rgb(0, 70, 249)
-$dodgerBlue: #5196FF; // rgb(81, 150, 255)
-$blueViolet: #615FB1; // rgb(97, 95, 177)
-$portage: #908EF6; // rgb(144, 142, 246)
-$wildSand: #F5F5F5; // rgb(245, 245, 245)
-$alto: #D3D3D3; // rgb(211, 211, 211)
-$codGray: #181818; // rgb(24, 24, 24)
-$mineShaft: #303030; // rgb(48, 48, 48)
-$melrose: #B2CDFF; // rgb(178, 205, 255)
-$bayOfMany: #1E3F82; // rgb(30, 63, 130)
-$alabaster: #F9F9F9; // rgb(249, 249, 249)
-$pickledBluewood: #353F60; // rgb(53, 63, 96)
-$mercury: #E9E9E9; // rgb(233, 233, 233)
+$woodsmoke: #18181A; // black // text, button fill
+$athensGray: #EAEAED; // light grey // nav text
+$zircon: #F3F7FF; // very light blue // card background
+$whiteLilac: #E8EDF6; // very light grey blue // section background
+$periwinkle: #C4D5FF; // light purplish blue // text highlight
+$perano: #ABBBED; // pale purple grey // hero text highlight
+$cornflowerBlue: #648BF5; // mauve-blue // numbers
+$royalBlue: #3F3CF6; // purplish blue // text-link
+$scienceBlue: #0036DE; // blueblue // footer links
+$canary: #E8FF5A; // neon yellow // button + update
+$electricLime: #CDEE00; // darker neon yellow // button
+$manz: #DCE76E; // dusty green yellow // graphs 
 
 $replace1: #D9D9D9;
 $replace2: #C6C6C6;
@@ -48,58 +47,59 @@ $replace4: #000000;
 
 // ====================================================================== Themes
 :root {
-  --background-color: #{$wildSand};
-  --background-color__secondary: white;
-  --theme-toggle__background-color: #{$wildSand};
-  --theme-toggle__border-color: #{$alto};
-  --theme-toggle__onHover: #{$codGray};
-  --theme-toggle__icon__onHover: #{$wildSand};
-  --theme-color: #{$codGray};
-  --theme-color__inverted: #{$wildSand};
-  --divider: #{$alto};
-  --link-color: #{$blueRibbon};
-  --link-hover-color: #{$melrose};
-  --code__block__background-color: #{$mineShaft};
-  --code__inline__color: #{$codGray};
-  --code__inline__background-color: #E4E4E4;
-  --sidebar__title-color: #{$codGray};
-  --sidebar__title-color__active: #{$codGray};
-  --algolia-backdrop: #{$pickledBluewood};
-  --algolia-background: #{$alabaster};
-  --algolia__searchbox__background-color: white;
-  --algolia__result__background-color: white;
-  --algolia__result__hover__color: white;
-  --algolia__highlight: #{$blueRibbon}; // not used because contrast too intense
-  --api-explorer__http-status-code__background-color: #{$mercury};
-  --api-explorer__http-status-code__color: #{$blueViolet};
+  --background-color: white;
+  --background-color__secondary: #{$whiteLilac};
+  --primary-text-color: #{$woodsmoke};
+  // --theme-toggle__background-color: #{};
+  // --theme-toggle__border-color: #{};
+  // --theme-toggle__onHover: #{};
+  // --theme-toggle__icon__onHover: #{};
+  // --theme-color: #{};
+  // --theme-color__inverted: #{};
+  // --divider: #{};
+  --link-color: #{$royalBlue};
+  // --link-hover-color: #{};
+  // --code__block__background-color: #{};
+  // --code__inline__color: #{};
+  // --code__inline__background-color: #{};
+  // --sidebar__title-color: #{};
+  // --sidebar__title-color__active: #{};
+  // --algolia-backdrop: #{};
+  // --algolia-background: #{};
+  // --algolia__searchbox__background-color: white;
+  // --algolia__result__background-color: white;
+  // --algolia__result__hover__color: white;
+  // --algolia__highlight: #{}; // not used because contrast too intense
+  // --api-explorer__http-status-code__background-color: #{};
+  // --api-explorer__http-status-code__color: #{};
 }
 
-.dark {
-  --background-color: #{$codGray};
-  --background-color__secondary: black;
-  --theme-toggle__background-color: #383838;
-  --theme-toggle__border-color: #5A5A5A;
-  --theme-toggle__onHover: #{$wildSand};
-  --theme-toggle__icon__onHover: #{$codGray};
-  --theme-color: #{$wildSand};
-  --theme-color__inverted: #{$codGray};
-  --divider: #{$mineShaft};
-  --link-color: #{$dodgerBlue};
-  --link-hover-color: #{$bayOfMany};
-  --code__block__background-color: #{$mineShaft};
-  --code__inline__color: #{$wildSand};
-  --code__inline__background-color: #383838;
-  --sidebar__title-color: #{$wildSand};
-  --sidebar__title-color__active: #{$wildSand};
-  --algolia-backdrop: #{$pickledBluewood};
-  --algolia-background: #{$codGray};
-  --algolia__searchbox__background-color: #{$mineShaft};
-  --algolia__result__background-color: #{$mineShaft};
-  --algolia__result__hover__color: #{$mineShaft};
-  --algolia__highlight: #{$blueRibbon}; // not used because contrast too intense
-  --api-explorer__http-status-code__background-color: #{$mineShaft};
-  --api-explorer__http-status-code__color: #{$portage};
-}
+// .dark {
+//   --background-color: #{};
+//   --background-color__secondary: #{};
+//   --theme-toggle__background-color: #{};
+//   --theme-toggle__border-color: #{};
+//   --theme-toggle__onHover: #{};
+//   --theme-toggle__icon__onHover: #{};
+//   --theme-color: #{};
+//   --theme-color__inverted: #{};
+//   --divider: #{};
+//   --link-color: #{};
+//   --link-hover-color: #{};
+//   --code__block__background-color: #{};
+//   --code__inline__color: #{};
+//   --code__inline__background-color: #{};
+//   --sidebar__title-color: #{};
+//   --sidebar__title-color__active: #{};
+//   --algolia-backdrop: #{};
+//   --algolia-background: #{};
+//   --algolia__searchbox__background-color: #{};
+//   --algolia__result__background-color: #{};
+//   --algolia__result__hover__color: #{};
+//   --algolia__highlight: #{};
+//   --api-explorer__http-status-code__background-color: #{};
+//   --api-explorer__http-status-code__color: #{};
+// }
 
 // ===================================================================== Styling
 @mixin shadow1 {
@@ -124,11 +124,58 @@ $replace4: #000000;
 }
 
 @mixin selection-dark {
-  ::-moz-selection { background: $bayOfMany; }
-  ::selection { background: $bayOfMany; }
+  ::-moz-selection { background: unset; }
+  ::selection { background: unset; }
 }
 
 @mixin selection-light {
-  ::-moz-selection { background: $melrose; }
-  ::selection { background: $melrose; }
+  ::-moz-selection { background: unset; }
+  ::selection { background: unset; }
+}
+
+@mixin radialGradientDarkBlue {
+  background: radial-gradient(289.65% 121.07% at 20.33% 100%, #000F40 0%, #010613 72.8%);
+}
+
+@mixin gradientBlueBlue($angle) {
+  background: linear-gradient($angle, $cornflowerBlue 1.52%, $scienceBlue 97.89%);
+}
+
+@mixin gradientYellowBlue($angle) {
+  background: linear-gradient(95deg, $electricLime 1.52%, $royalBlue 97.89%);
+}
+
+@mixin gradientBlueBlueLight($angle) {
+  background: linear-gradient($angle, $whiteLilac -47.32%, $royalBlue 92.44%);
+}
+
+@mixin gradientWhiteBlue($angle) {
+  background: linear-gradient($angle, $whiteLilac 4.38%, $periwinkle 44.46%, $royalBlue 96.24%);
+}
+
+@mixin gradientTextBase {
+  background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  text-fill-color: transparent;
+  // IE11 fix
+  @include IE10and11 {
+    background: none;
+  }
+  &::-moz-selection {
+    -webkit-text-fill-color: white;
+    -moz-text-fill-color: white;
+    text-fill-color: white;
+  }
+  &::selection {
+    -webkit-text-fill-color: white;
+    -moz-text-fill-color: white;
+    text-fill-color: white;
+  }
+}
+
+@mixin gradientText($angle) {
+  background: linear-gradient($angle, $zircon 6.23%, $whiteLilac 48.53%, $royalBlue 85.09%);
+  @include gradientTextBase;
 }

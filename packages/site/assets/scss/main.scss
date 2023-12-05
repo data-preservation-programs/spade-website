@@ -9,7 +9,7 @@
 body {
   @include selection-light;
   color: var(--primary-text-color);
-  font-family: $font_Primary;
+  font-family: $fontSora;
   background-color: var(--background-color);
   transition: background-color 250ms;
   &.no-scroll {
