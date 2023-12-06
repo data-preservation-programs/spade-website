@@ -1,1 +1,59 @@
-{}
+{
+  "nav_items": [
+    {
+      "text": "About",
+      "tag": "a",
+      "to": "https://example.com"
+    },
+    {
+      "text": "Docs",
+      "tag": "a",
+      "to": "https://example.com"
+    },
+    {
+      "text": "Storage Providers",
+      "tag": "a",
+      "to": "https://example.com"
+    },
+    {
+      "text": "Tenants",
+      "tag": "a",
+      "to": "https://example.com"
+    }
+  ],
+  "toolbar": [
+    {
+      "to": "https://example.com",
+      "icon": "github",
+      "target": "_blank",
+      "tag": "a",
+      "theme": "icon"
+    },
+    {
+      "to": "https://example.com",
+      "icon": "slack",
+      "target": "_blank",
+      "tag": "a",
+      "theme": "icon"
+    },
+    {
+      "to": "https://example.com",
+      "icon": "medium",
+      "target": "_blank",
+      "tag": "a",
+      "theme": "icon"
+    },
+    {
+      "text": "Login",
+      "tag": "nuxt-link",
+      "to": "/",
+      "theme": "solid-dark"
+    },
+    {
+      "text": "Sign up",
+      "tag": "nuxt-link",
+      "to": "/",
+      "theme": "gradient-light"
+    }
+  ]
+}

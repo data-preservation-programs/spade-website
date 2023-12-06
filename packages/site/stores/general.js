@@ -1,7 +1,9 @@
 // ///////////////////////////////////////////////////////////////////// Imports
 // -----------------------------------------------------------------------------
 import { ref } from '#imports'
-import GeneralSiteData from '@/content/core/general.json'
+import NavigationData from '@/data/navigation.json'
+import FooterData from '@/data/footer.json'
+import GeneralSiteData from '@/data/general.json'
 
 // /////////////////////////////////////////////////////////////////////// State
 // -----------------------------------------------------------------------------
@@ -22,7 +24,7 @@ const getBaseData = async (payload) => {
   const key = typeof payload === 'string' ? payload : payload.key
   let data = false
   switch (key) {
-    case 'general': data = GeneralSiteData; break
+    case 'general': data = Object.assign(GeneralSiteData, { navigation: NavigationData }, { footer: FooterData }); break
     default : data = payload.data; break
   }
   if (data) {
