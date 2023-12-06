@@ -10,7 +10,8 @@
 // /////////////////////////////////////////////////////////////////// Variables
 // -----------------------------------------------------------------------------
 // ===================================================================== General
-$siteHeaderHeight: toRem(78);
+$siteHeaderHeight: toRem(83);
+$siteHeaderHeightMobile: toRem(60);
 $sidebarWidth: $gridWidth * 0.16667;
 $bodyOffsetTop: calc($siteHeaderHeight + 3rem);
 $sidebarPadding: 2rem;
@@ -27,6 +28,7 @@ $gray700: #616161;
 $gray800: #424242;
 $gray900: #212121;
 
+$blackPearl: #020714; // bluish black // nav background
 $woodsmoke: #18181A; // black // text, button fill
 $athensGray: #EAEAED; // light grey // nav text
 $zircon: #F3F7FF; // very light blue // card background
@@ -133,8 +135,8 @@ $replace4: #000000;
   ::selection { background: unset; }
 }
 
-@mixin radialGradientDarkBlue {
-  background: radial-gradient(289.65% 121.07% at 20.33% 100%, #000F40 0%, #010613 72.8%);
+@mixin radialGradientDarkBlue($position) {
+  background: radial-gradient($position, #000F40 0%, #010613 72.8%);
 }
 
 @mixin gradientBlueBlue($angle) {

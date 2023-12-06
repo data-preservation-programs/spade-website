@@ -1,7 +1,7 @@
 <template>
   <div class="page page-index">
     
-    <BlockBuilder :sections="sections" />
+    <!-- <BlockBuilder :sections="sections" /> -->
 
   </div>
 </template>
