@@ -57,18 +57,18 @@ const scrollToSection = async (el) => {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
   &.desktop {
     margin: 0 1rem 0 -1rem;
   }
   &.mobile {
+    padding: toRem(0) toRem(32);
     .navigation {
       flex-direction: column;
     }
     .nav-item {
-      justify-content: center;
+      justify-content: flex-start;
       &:not(:last-child) {
-        margin-bottom: toRem(40);
+        margin-bottom: toRem(16);
       }
     }
   }
@@ -97,6 +97,11 @@ const scrollToSection = async (el) => {
   @include medium {
     font-size: toRem(13);
     padding: toRem(0) toRem(8);
+  }
+  @include small {
+    padding: toRem(12) toRem(16);
+    font-size: toRem(20);
+    line-height: leading(27, 20);
   }
   &:before,
   &:after {

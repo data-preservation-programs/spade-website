@@ -135,8 +135,8 @@ $replace4: #000000;
   ::selection { background: unset; }
 }
 
-@mixin radialGradientDarkBlue {
-  background: radial-gradient(289.65% 121.07% at 20.33% 100%, #000F40 0%, #010613 72.8%);
+@mixin radialGradientDarkBlue($position) {
+  background: radial-gradient($position, #000F40 0%, #010613 72.8%);
 }
 
 @mixin gradientBlueBlue($angle) {

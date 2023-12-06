@@ -5,29 +5,39 @@
 
     <!-- ============================================================ Mobile -->
     <div :class="['mobile-background-panel', {'open': navigationOpen }]">
+      <div class="mobile-nav">
 
-      <div class="grid">
-        <div class="col-12">
-          <div class="mobile-nav">
-            <Navbar
-              :links="navigation"
-              class="mobile"
-              @nav-link-click="handleNavClick">
-              <div class="nav-item">
-                <ButtonCta
-                  tag="nuxt-link"
-                  to="/"
-                  theme="primary"
-                  variant="large"
-                  class="modal-sign-up-cta">
-                  Sign up
-                </ButtonCta>
-              </div>
-            </Navbar>
+        <Navbar
+          :links="navigation"
+          class="mobile"
+          @nav-link-click="handleNavClick">
+          <div class="nav-item">
+            <ButtonCta
+              tag="nuxt-link"
+              to="/"
+              theme="gradient-light"
+              class="modal-sign-up-cta">
+              Sign up
+            </ButtonCta>
           </div>
+        </Navbar>
+        
+        <div class="icon-links">
+          <template v-for="cta in ctas">
+            <ButtonCta
+              v-if="cta.icon"
+              :key="`${cta.icon}-mobile`"
+              :tag="cta.tag"
+              :target="cta.target"
+              :theme="cta.theme"
+              :to="cta.to"
+              :class="zeroSlugify(cta.icon)">
+              <component :is="getCtaComponent(cta.icon)" class="icon" />
+            </ButtonCta>
+          </template>
         </div>
-      </div>
 
+      </div>
     </div>
 
     <!-- =========================================================== Desktop -->
@@ -200,9 +210,22 @@ const handleNavClick = () => {
 }
 
 .navigation-wrapper {
+  position: relative;
   background-color: $blackPearl;
   height: 100%;
   border-radius: toRem(8);
+  @include small {
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      @include radialGradientDarkBlue(100% 200% at 0 50%);
+    }
+  }
 }
 
 .main-content {
@@ -338,10 +361,6 @@ const handleNavClick = () => {
 }
 
 // ////////////////////////////////////////////////////////////////////// Mobile
-.mobile-nav {
-  padding-top: toRem(96);
-}
-
 .mobile-background-panel {
   display: none;
   position: fixed;
@@ -355,6 +374,7 @@ const handleNavClick = () => {
   visibility: hidden;
   transform: scale(1.1);
   opacity: 0;
+  overflow: hidden;
   @include small {
     display: block;
   }
@@ -365,9 +385,19 @@ const handleNavClick = () => {
     left: 0;
     width: 100%;
     height: 100%;
-    background-size: toRem(735);
-    background-position: center toRem(300);
+    @include radialGradientDarkBlue(100% 150% at 0px 0px);
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: toRem(423);
+    background-size: cover;
+    background-position: center 110px;
     background-repeat: no-repeat;
+    background-image: url('/images/blue-gradient-rectangles.svg');
   }
   &.open {
     opacity: 1;
@@ -377,18 +407,42 @@ const handleNavClick = () => {
   }
   .nav-item {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
 
+.mobile-nav {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: toRem(72);
+  padding-bottom: toRem(50);
+  height: 100%;
+  z-index: 10;
+}
+
 .modal-sign-up-cta {
-  height: toRem(55);
-  :deep(.inner-content) {
-    height: 100%;
-    padding: toRem(9) toRem(46) toRem(9) toRem(23);
-  }
-  :deep(.button-content) {
-    // @include hamburgerCTA;
+  margin-top: toRem(29);
+  margin-left: toRem(16);
+}
+
+.icon-links {
+  display: flex;
+  padding: 0 toRem(32);
+  :deep(.theme__icon) {
+    @include small {
+      padding: toRem(16);
+      width: toRem(64);
+      height: toRem(64);
+      &:not(:last-child) {
+        margin-right: toRem(12);
+      }
+      .icon {
+        width: toRem(32);
+        height: toRem(32);
+      }
+    }
   }
 }
 </style>
