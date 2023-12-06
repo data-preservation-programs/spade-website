@@ -11,6 +11,7 @@
 // -----------------------------------------------------------------------------
 // ===================================================================== General
 $siteHeaderHeight: toRem(83);
+$siteHeaderHeightMobile: toRem(60);
 $sidebarWidth: $gridWidth * 0.16667;
 $bodyOffsetTop: calc($siteHeaderHeight + 3rem);
 $sidebarPadding: 2rem;

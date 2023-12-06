@@ -92,7 +92,12 @@ const scrollToSection = async (el) => {
   font-weight: 500;
   letter-spacing: 0.02em;
   line-height: leading(27, 14);
+  white-space: nowrap;
   color: $athensGray;
+  @include medium {
+    font-size: toRem(13);
+    padding: toRem(0) toRem(8);
+  }
   &:before,
   &:after {
     content: '';
