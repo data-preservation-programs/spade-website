@@ -1,1 +1,25 @@
-{}
+{
+  "card": {
+    "image": "/images/two-women-in-discussion-in-front-of-a-computer.jpg",
+    "links": [
+      {
+        "text": "Getting started as a tenant",
+        "to": "https://example.com",
+        "tag": "a"
+      },
+      {
+        "text": "Getting started as a storage provider",
+        "to": "https://example.com",
+        "tag": "a"
+      },
+      {
+        "text": "Glossary of terms",
+        "to": "https://example.com",
+        "tag": "a"
+      }
+    ]
+  },
+  "banner": {
+    "text": "Spade is a project developed by the <a href='https://dataprograms.org/' target='_blank'>Data Programs Working Group</a> with Protocol Labs"
+  }
+}

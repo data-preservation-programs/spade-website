@@ -46,5 +46,6 @@ zeroStore.setSeo(Seo)
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+  overflow-x: auto;
 }
 </style>
