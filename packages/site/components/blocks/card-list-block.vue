@@ -6,7 +6,7 @@
         :key="`card-col-${i}`"
         :class="[columns, 'card-wrapper']">
 
-        <!-- <Card :card="card" /> -->
+        <Card :card="card" />
 
       </div>
     </div>
@@ -15,15 +15,15 @@
 
 <script>
 // ====================================================================== Import
-// import Card from '@/components/card'
+import Card from '@/components/card'
 
 // ====================================================================== Export
 export default {
   name: 'CardListBlock',
 
-  // components: {
-  //   Card
-  // },
+  components: {
+    Card
+  },
 
   props: {
     block: {

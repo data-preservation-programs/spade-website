@@ -1,10 +1,8 @@
 <template>
   <div
-    :class="['block text-block', `align__${block.align ? block.align : 'left'}`]">
+    :class="['block text-block', `align__${block.align ? block.align : 'left'}`, `theme__${block.theme}`]">
 
-    <h5 v-if="block.label" class="label h5">
-      <span>{{ block.label }}</span>
-    </h5>
+    <h5 v-if="block.label" class="label h5" v-html="block.label"></h5>
 
     <template v-if="block.heading">
       <component
@@ -110,6 +108,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// ///////////////////////////////////////////////////////////////////// General
 .text-block {
   position: relative;
   &.align__center {
@@ -195,6 +194,66 @@ export default {
           width: calc(100% + toRem(19) - toRem(2));
         }
       }
+    }
+  }
+}
+
+.h1 {
+  @include h1;
+  @include gradientText(110deg);
+  @include medium {
+    font-size: toRem(40);
+  }
+}
+
+// ///////////////////////////////////////////////////////////////////// Theming
+.theme__hero-header {
+  .label {
+    display: flex;
+    align-items: center;
+    padding: toRem(4) toRem(5);
+    background-color: #181D2A;
+    width: fit-content;
+    height: toRem(40);
+    border-radius: toRem(30);
+    margin-bottom: toRem(35);
+    :deep(span) {
+      display: inline-block;
+      white-space: nowrap;
+      text-align: center;
+      font-family: $fontSuisseIntl;
+      font-size: toRem(14);
+      line-height: leading(27, 14);
+      letter-spacing: 0.28px;
+      color: white;
+      &:first-child {
+        padding: toRem(4) toRem(22);
+        font-weight: 500;
+        border-radius: toRem(26);
+        @include gradientBlueBlue(100deg);
+      }
+      &:last-child {
+        font-weight: 400;
+        margin: 0 toRem(22);
+      }
+    }
+  }
+  .heading {
+    margin-bottom: toRem(25);
+  }
+  .text-wrapper {
+    margin-bottom: 0;
+  }
+  .description {
+    font-family: Suisse Intl;
+    font-size: toRem(18);
+    font-weight: 600;
+    line-height: leading(30, 18);
+    letter-spacing: 0.54px;
+    color: $perano;
+    :deep(.highlight) {
+      font-weight: 700;
+      color: white;
     }
   }
 }

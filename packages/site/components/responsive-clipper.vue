@@ -135,6 +135,7 @@ onMounted(() => {
   resizeDimensions()
   resizeEventListener.value = zeroThrottle(() => { resizeDimensions() }, 50)
   window.addEventListener('resize', resizeEventListener.value)
+  setTimeout(() => { resizeDimensions() }, 500)
 })
 
 onBeforeUnmount(() => {
@@ -211,7 +212,7 @@ const drawClipRegions = () => {
       ctx.beginPath()
       ctx.moveTo(0, y)
       ctx.lineTo(w, y)
-      ctx.strokeStyle = 'black'
+      ctx.strokeStyle = 'red'
       ctx.stroke()
     }
   }

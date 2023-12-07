@@ -149,6 +149,12 @@ onMounted(() => {
   window.addEventListener('resize', resizeEventListener.value)
 })
 
+onBeforeUnmount(() => {
+  if (resizeEventListener.value) {
+    window.removeEventListener('resize', resizeEventListener.value)
+  }
+})
+
 // ===================================================================== Methods
 /**
  * @method getCtaComponent

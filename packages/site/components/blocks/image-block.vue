@@ -2,9 +2,16 @@
   <div class="block image-block">
 
     <img
+      v-if="!block.background"
       :src="block.src"
       :alt="block.alt ? block.alt : $GetPrettyNameFromUrl(block.src)" />
 
+    <div
+      v-else
+      class="background-image"
+      :style="{ 'background-image': `url(${block.src})` }">
+    </div>
+    
     <caption v-if="block.caption">
       {{ block.caption }}
     </caption>
@@ -41,5 +48,10 @@ export default {
     width: 100%;
     user-select: none;
   }
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
 }
 </style>
