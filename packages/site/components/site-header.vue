@@ -212,9 +212,10 @@ const handleNavClick = () => {
 .navigation-wrapper {
   position: relative;
   background-color: $blackPearl;
-  height: 100%;
+  height: calc($siteHeaderHeight - 1rem);
   border-radius: toRem(8);
   @include small {
+    height: calc($siteHeaderHeightMobile - toRem(10));
     &:before {
       content: '';
       position: absolute;

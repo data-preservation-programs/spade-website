@@ -1,33 +1,36 @@
 <template>
   <div class="page page-index">
     
-    <!-- <BlockBuilder :sections="sections" /> -->
+    <BlockBuilder :sections="sections" />
 
   </div>
 </template>
 
 <script setup>
+import { storeToRefs } from 'pinia'
 import { useGeneralStore } from '../stores/general.js'
 import BlockBuilder from '@/components/blocks/block-builder'
 
 // ======================================================================== Data
-const generalStore = useGeneralStore()
 const route = useRoute()
 // const { $GetSeo, $CompileSeo } = useNuxtApp()
-const { data } = await useAsyncData('core', async () => {
-  return queryContent('core').find()
+const { data } = await useAsyncData('data', async () => {
+  return queryContent().find()
 })
+const generalStore = useGeneralStore()
+const { siteContent } = storeToRefs(generalStore)
 
 // ==================================================================== Watchers
 watch(data, async (val) => {
+  const indexData = val.find(item => item._file === 'data/pages/index.json')
   await generalStore.getBaseData('general')
-  await generalStore.getBaseData({ key: 'index', data: val.find((item) => item._file === 'core/index.json') })
+  await generalStore.getBaseData({ key: 'index', data: indexData })
   // useHead($CompileSeo($GetSeo('general', 'index')))
 }, { immediate: true })
 
 // ==================================================================== Computed
 const sections = computed(() => {
-  return generalStore.siteContent?.index?.page_content
+  return siteContent.value?.index?.page_content
 })
 
 // ==================================================================== On Mount
@@ -53,5 +56,10 @@ onBeforeUnmount(() => {
   @include small {
     padding-top: $siteHeaderHeightMobile;
   }
+}
+
+:deep(#hero-header) {
+  padding-top: 0;
+  padding-bottom: toRem(79);
 }
 </style>

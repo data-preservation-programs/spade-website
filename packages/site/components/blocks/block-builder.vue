@@ -22,7 +22,7 @@
         </div>
 
         <!-- ================================================ [Section] Grid -->
-        <div :class="[getGridClasses(section.grid), section.classNames]">
+        <div :class="[getGridClasses(section.grid), section.classNames, 'full']">
           <template v-for="(block, blockId) in section">
             <div
               v-if="blockAllowed(blockId)"
@@ -69,6 +69,7 @@ import ImageBlock from '@/components/blocks/image-block'
 import CodeBlock from '@/components/blocks/code-block'
 import CardListBlock from '@/components/blocks/card-list-block'
 import AccordionBlock from '@/components/blocks/accordion-block'
+import HeroHeader from '@/components/hero-header'
 // import BlockBuilder from '@/components/blocks/block-builder'
 
 export default {
@@ -79,7 +80,8 @@ export default {
     ImageBlock,
     CodeBlock,
     CardListBlock,
-    AccordionBlock
+    AccordionBlock,
+    HeroHeader
     // BlockBuilder,
   },
 
@@ -115,6 +117,7 @@ export default {
         case 'image_block' : name = 'ImageBlock'; break
         case 'card_list_block': name = 'CardListBlock'; break
         case 'accordion_block': name = 'AccordionBlock'; break
+        case 'hero_header': name = 'HeroHeader'; break
         case 'custom' : name = block.component; break
       }
       return name

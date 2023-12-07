@@ -1,5 +1,5 @@
 <template>
-  <div ref="container" class="responsive-clip-path container ">
+  <div ref="container" class="responsive-clip-path container">
 
     <svg class="svg-clip-path">
       <defs>
@@ -135,6 +135,7 @@ onMounted(() => {
   resizeDimensions()
   resizeEventListener.value = zeroThrottle(() => { resizeDimensions() }, 50)
   window.addEventListener('resize', resizeEventListener.value)
+  setTimeout(() => { resizeDimensions() }, 500)
 })
 
 onBeforeUnmount(() => {
@@ -211,7 +212,7 @@ const drawClipRegions = () => {
       ctx.beginPath()
       ctx.moveTo(0, y)
       ctx.lineTo(w, y)
-      ctx.strokeStyle = 'black'
+      ctx.strokeStyle = 'red'
       ctx.stroke()
     }
   }
@@ -219,9 +220,11 @@ const drawClipRegions = () => {
 
 const resizeDimensions = () => {
   const ctn = container.value
-  const rect = ctn.getBoundingClientRect()
-  width.value = rect.width
-  height.value = rect.height
+  if (ctn) {
+    const rect = ctn.getBoundingClientRect()
+    width.value = rect.width
+    height.value = rect.height
+  }
 }
 
 const getSvgPathData = (path) => {
