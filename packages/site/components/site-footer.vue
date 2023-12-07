@@ -4,12 +4,14 @@
       <div class="col-12">
 
         <ResponsiveClipper
+          :key="`outer-tiny-${tiny}`"
           :display-guides="false"
-          :breakpoints-x="[320, 1270]"
+          :breakpoints-x="tiny ? [40, 130, 240, 320] : [330, 1280]"
           :breakpoints-y="[150, 600]">
 
           <template #svg-path>
-            <FooterClipPath />
+            <FooterClipPath v-if="!tiny" />
+            <FooterClipPathMobile v-else />
           </template>
 
           <template #clipped-content>
@@ -22,11 +24,13 @@
 
               <div class="card-wrapper">
                 <ResponsiveClipper
+                  :key="`inner-tiny-${tiny}`"
                   :display-guides="false"
-                  :breakpoints-x="[300, 400]"
+                  :breakpoints-x="tiny ? [20, 110, 220, 300] : [300, 400]"
                   :breakpoints-y="[100, 400]">
                   <template #svg-path>
-                    <FooterCardClipPath />
+                    <FooterCardClipPath v-if="!tiny" />
+                    <FooterCardClipPathMobile v-else />
                   </template>
                   <template #clipped-content>
                     <div class="footer-card-background"></div>
@@ -108,7 +112,9 @@
 import { storeToRefs } from 'pinia'
 import { useGeneralStore } from '../stores/general'
 import FooterClipPath from './svgs/footer-clip-path'
+import FooterClipPathMobile from './svgs/footer-clip-path-mobile'
 import FooterCardClipPath from './svgs/footer-card-clip-path'
+import FooterCardClipPathMobile from './svgs/footer-card-clip-path-mobile'
 import DataProgramsLogo from './svgs/data-programs-logo'
 
 const GithubIcon = resolveComponent('./icon/github')
@@ -116,6 +122,8 @@ const SlackIcon = resolveComponent('./icon/slack')
 const MediumIcon = resolveComponent('./icon/medium')
 
 // ======================================================================== Data
+const resizeEventListener = ref(false)
+const tiny = ref(false)
 const generalStore = useGeneralStore()
 const {
   siteContent
@@ -134,6 +142,13 @@ const iconLinks = computed(() => {
   return siteContent.value?.general?.navigation.toolbar.filter(item => item.icon)
 })
 
+// ======================================================================= Hooks
+onMounted(() => {
+  resizeHandler()
+  resizeEventListener.value = zeroThrottle(() => { resizeHandler() }, 50)
+  window.addEventListener('resize', resizeEventListener.value)
+})
+
 // ===================================================================== Methods
 /**
  * @method getCtaComponent
@@ -144,6 +159,21 @@ const iconLinks = computed(() => {
     case 'slack' : return SlackIcon;
     case 'medium' : return MediumIcon;
     default : return 'span'
+  }
+}
+
+/**
+ * @method resizeHandler
+ */
+const resizeHandler = () => {
+  if (window.matchMedia('(max-width: 25.9375rem)').matches) {
+    if (!tiny.value) {
+      tiny.value = true
+    }
+  } else {
+    if (tiny.value) {
+      tiny.value = false
+    }
   }
 }
 </script>
@@ -173,6 +203,12 @@ const iconLinks = computed(() => {
     background-size: 100%;
     background-position: center;
     transform: translate(-50%, -50%) rotate(74.28deg);
+    @include tiny {
+      width: toRem(668);
+      height: toRem(772);
+      left: calc(50% + 1rem);
+      transform: translate(-50%, -50%) rotate(43deg);
+    }
   }
 }
 
@@ -190,6 +226,9 @@ const iconLinks = computed(() => {
   @include mini {
     width: toRem(354);
   }
+  @include tiny {
+    width: 100%;
+  }
 }
 
 .footer-card-background {
@@ -202,12 +241,18 @@ const iconLinks = computed(() => {
 .footer-card {
   padding: toRem(25) toRem(14);
   width: 100%;
+  @include tiny {
+    padding: toRem(12) toRem(14);
+  }
 }
 
 .site-logo {
   display: flex;
   width: fit-content;
   margin-bottom: toRem(29);
+  @include tiny {
+    margin-bottom: toRem(19);
+  }
   :deep(svg) {
     path {
       fill: $woodsmoke;
@@ -227,6 +272,9 @@ const iconLinks = computed(() => {
 
 .links {
   padding: toRem(0) toRem(30);
+  @include tiny {
+    padding: toRem(0) toRem(18);
+  }
 }
 
 .footer-link {
@@ -236,8 +284,12 @@ const iconLinks = computed(() => {
   font-weight: 500;
   line-height: leading(21, 16);
   padding: toRem(16) 0;
+  padding-right: toRem(32);
   width: 100%;
   text-align: left;
+  @include mini {
+    font-size: toRem(14);
+  }
   &:not(:last-child) {
     border-bottom: solid 1px #DFDFDF;
   }
@@ -267,8 +319,9 @@ const iconLinks = computed(() => {
   margin-top: toRem(19);
   background-color: white;
   border-radius: toRem(10);
-  @include mini {
+  @include tiny {
     padding: toRem(12) toRem(17);
+    margin-top: toRem(313);
   }
   .text,
   :deep(a) {
