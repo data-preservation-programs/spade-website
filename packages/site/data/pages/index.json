@@ -22,7 +22,7 @@
         },
         "cardsblock": {
           "card_grid": "",
-          "card_columns": "col-3",
+          "card_columns": "col-3_mi-4",
           "cards": [
             {
               "title": "7.5+ PiB",

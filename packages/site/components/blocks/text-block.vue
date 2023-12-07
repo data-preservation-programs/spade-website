@@ -204,6 +204,12 @@ export default {
   @include medium {
     font-size: toRem(40);
   }
+  @include small {
+    font-size: toRem(30);
+    line-height: leading(44, 30);
+    background: linear-gradient(130deg, $zircon 6.23%, $whiteLilac 28.53%, $royalBlue 85.09%);
+    @include gradientTextBase;
+  }
 }
 
 // ///////////////////////////////////////////////////////////////////// Theming
@@ -217,6 +223,9 @@ export default {
     height: toRem(40);
     border-radius: toRem(30);
     margin-bottom: toRem(35);
+    @include small {
+      margin-bottom: toRem(22);
+    }
     :deep(span) {
       display: inline-block;
       white-space: nowrap;
@@ -226,11 +235,18 @@ export default {
       line-height: leading(27, 14);
       letter-spacing: 0.28px;
       color: white;
+      @include small {
+        font-size: toRem(13);
+        line-height: leading(27, 13);
+      }
       &:first-child {
         padding: toRem(4) toRem(22);
         font-weight: 500;
         border-radius: toRem(26);
         @include gradientBlueBlue(100deg);
+        @include small {
+          padding: toRem(2) toRem(22);
+        }
       }
       &:last-child {
         font-weight: 400;
@@ -240,9 +256,15 @@ export default {
   }
   .heading {
     margin-bottom: toRem(25);
+    @include small {
+      margin-bottom: toRem(19);
+    }
   }
   .text-wrapper {
     margin-bottom: 0;
+    @include small {
+      margin-bottom: toRem(50);
+    }
   }
   .description {
     font-family: Suisse Intl;

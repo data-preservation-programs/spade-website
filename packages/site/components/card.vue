@@ -61,6 +61,10 @@ const cta = computed(() => props.card.cta)
       font-size: toRem(26);
       margin-top: toRem(18);
     }
+    @include mini {
+      font-size: toRem(24);
+      line-height: leading(47, 24);
+    }
   }
   .description {
     text-align: center;
@@ -71,6 +75,10 @@ const cta = computed(() => props.card.cta)
     color: white;
     @include medium {
       font-size: toRem(14);
+    }
+    @include mini {
+      font-size: toRem(11);
+      letter-spacing: 0.03em;
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div ref="container" class="responsive-clip-path container ">
+  <div ref="container" class="responsive-clip-path container">
 
     <svg class="svg-clip-path">
       <defs>
@@ -220,9 +220,11 @@ const drawClipRegions = () => {
 
 const resizeDimensions = () => {
   const ctn = container.value
-  const rect = ctn.getBoundingClientRect()
-  width.value = rect.width
-  height.value = rect.height
+  if (ctn) {
+    const rect = ctn.getBoundingClientRect()
+    width.value = rect.width
+    height.value = rect.height
+  }
 }
 
 const getSvgPathData = (path) => {
