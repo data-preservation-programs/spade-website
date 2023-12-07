@@ -47,3 +47,11 @@ onBeforeUnmount(() => {
   generalStore.clearStore()
 })
 </script>
+
+<style lang="scss" scoped>
+.page-index {
+  @include small {
+    padding-top: $siteHeaderHeightMobile;
+  }
+}
+</style>
