@@ -51,6 +51,35 @@
           ]
         }
       }
+    },
+    {
+      "id": "section-infographic",
+      "grid": ["noGutter", "noBottom"],
+      "col_1": {
+        "type": "section_infographic",
+        "cols": {
+          "num": "col-12"
+        },
+        "heading": "Spade gives tenants highly tunable options for how their data is onboarded to Filecoin.",
+        "stages": [
+          {
+            "name": "Tenant",
+            "width": 30
+          },
+          {
+            "name": "Policy",
+            "width": 16.5
+          },
+          {
+            "name": "Broker Service",
+            "width": 26
+          },
+          {
+            "name": "Storage Providers",
+            "width": 27.5
+          }
+        ]
+      }
     }
   ]
 }

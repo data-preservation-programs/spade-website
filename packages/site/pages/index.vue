@@ -62,4 +62,18 @@ onBeforeUnmount(() => {
   padding-top: 0;
   padding-bottom: toRem(79);
 }
+
+:deep(#section-infographic) {
+  position: relative;
+  background-color: $blackPearl;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include radialGradientDarkBlue(100% 100% at 33% 33%);
+  }
+}
 </style>
