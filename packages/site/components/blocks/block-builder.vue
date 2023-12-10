@@ -13,11 +13,24 @@
           :id="`${section.id}-background`"
           class="section-background">
 
-          <component
-            :is="component.name"
-            v-for="(component, i) in section.off_grid"
-            :key="`${section.id}-background-${i}`"
-            v-bind="component.props" />
+          <template v-for="(component, i) in section.off_grid">
+            
+            <component
+              :is="component.name"
+              v-if="component.name !== 'ResponsiveSvgSectionTrimming'"
+              :key="`${section.id}-background-${i}`"
+              v-bind="component.props" />
+
+            <ResponsiveSvgSectionTrimming
+              v-else
+              :key="`${section.id}-trimming-${component.trimType}`"
+              :display-guides="false"
+              :breakpoints-x="component.breakpointsX"
+              :breakpoints-mobile-x="component.breakpointsMobileX"
+              :trim-type="component.trimType"
+              :fill="component.fill" />
+
+          </template>
 
         </div>
 
@@ -70,6 +83,8 @@ import CodeBlock from '@/components/blocks/code-block'
 import CardListBlock from '@/components/blocks/card-list-block'
 import AccordionBlock from '@/components/blocks/accordion-block'
 import HeroHeader from '@/components/hero-header'
+import SectionInfographic from '@/components/section-infographic'
+import ResponsiveSvgSectionTrimming from '@/components/responsive-svg-section-trimming'
 // import BlockBuilder from '@/components/blocks/block-builder'
 
 export default {
@@ -81,7 +96,9 @@ export default {
     CodeBlock,
     CardListBlock,
     AccordionBlock,
-    HeroHeader
+    HeroHeader,
+    SectionInfographic,
+    ResponsiveSvgSectionTrimming
     // BlockBuilder,
   },
 
@@ -118,6 +135,7 @@ export default {
         case 'card_list_block': name = 'CardListBlock'; break
         case 'accordion_block': name = 'AccordionBlock'; break
         case 'hero_header': name = 'HeroHeader'; break
+        case 'section_infographic': name = 'SectionInfographic'; break
         case 'custom' : name = block.component; break
       }
       return name

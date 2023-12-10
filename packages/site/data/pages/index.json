@@ -51,6 +51,78 @@
           ]
         }
       }
+    },
+    {
+      "id": "section-onboarding",
+      "off_grid": [
+        {
+          "name": "ResponsiveSvgSectionTrimming",
+          "breakpointsX": [70, 620, 950, 1290],
+          "breakpointsMobileX": [25, 70, 125, 190],
+          "trimType": "after",
+          "fill": "#E8EDF6"
+        }
+      ],
+      "grid": []
+    },
+    {
+      "id": "section-infographic",
+      "grid": ["noGutter", "noBottom"],
+      "col_1": {
+        "type": "section_infographic",
+        "cols": {
+          "num": "col-12_md-8_mi-10_ti-12",
+          "push_left": "off-0_md-2_mi-1_ti-0"
+        },
+        "heading": "Spade gives tenants highly tunable options for how their data is onboarded to Filecoin.",
+        "stages": [
+          {
+            "name": "Tenant",
+            "width": 30,
+            "card": {
+              "heading": "Tenant organizes their data into collections",
+              "description": "The tenant places data  into discrete groups called collections, which will later be used for deal-making"
+            }
+          },
+          {
+            "name": "Policy",
+            "width": 16.5,
+            "card": {
+              "heading": "Tenant sets a policy for what kind of storage providers they would like",
+              "description": "This may include factors such as replication requirements and geographic distribution of data (geofencing)"
+            }
+          },
+          {
+            "name": "Broker Service",
+            "width": 26,
+            "card": {
+              "heading": "Spade broker matches SPs to this tenant",
+              "description": "Spade finds storage provider partners deemed eligible based on the client’s needs, including location, size, reputation and historic quality of service"
+            }
+          },
+          {
+            "name": "Storage Providers",
+            "width": 27.5,
+            "card": {
+              "heading": "Spade broker creates suitable deals based on policy and matching SPs",
+              "description": "The rest is automated Spade makes the deals, decreasing overhead for both the client and for storage providers — everyone wins!"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "section-policy",
+      "off_grid": [
+        {
+          "name": "ResponsiveSvgSectionTrimming",
+          "breakpointsX": [400, 970],
+          "breakpointsMobileX": [120, 140],
+          "trimType": "before",
+          "fill": "#FFFFFF"
+        }
+      ],
+      "grid": []
     }
   ]
 }
