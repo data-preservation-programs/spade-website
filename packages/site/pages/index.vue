@@ -61,6 +61,40 @@ onBeforeUnmount(() => {
 :deep(#hero-header) {
   padding-top: 0;
   padding-bottom: toRem(79);
+  @include small {
+    padding-bottom: toRem(70);
+  }
+}
+
+:deep(#section-intro-1) {
+  padding-top: toRem(13);
+  padding-bottom: toRem(44);
+  @include small {
+    padding-top: 0;
+    padding-bottom: toRem(18);
+  }
+  .text-block,
+  .image-block {
+    padding: 0 8%;
+  }
+  .text-block {
+    @include small {
+      padding: 0;
+    }
+  }
+  .image-block {
+    @include small {
+      margin-bottom: toRem(21);
+    }
+    @include tiny {
+      padding: 0;
+    }
+  }
+}
+
+:deep(#section-banner-1) {
+  position: relative;
+  padding-top: 0;
 }
 
 :deep(#section-onboarding) {
@@ -114,6 +148,13 @@ onBeforeUnmount(() => {
       left: -4px;
       width: calc(100% + 0.5rem);
     }
+  }
+}
+
+:deep(#section-banner-2) {
+  position: relative;
+  .image-block {
+    transform: scaleX(-1);
   }
 }
 </style>

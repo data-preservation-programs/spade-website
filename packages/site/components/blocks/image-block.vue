@@ -47,6 +47,7 @@ export default {
     position: relative;
     width: 100%;
     user-select: none;
+    border-radius: toRem(10);
   }
 }
 

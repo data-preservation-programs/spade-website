@@ -83,6 +83,7 @@ import CodeBlock from '@/components/blocks/code-block'
 import CardListBlock from '@/components/blocks/card-list-block'
 import AccordionBlock from '@/components/blocks/accordion-block'
 import HeroHeader from '@/components/hero-header'
+import SectionBanner from '@/components/section-banner'
 import SectionInfographic from '@/components/section-infographic'
 import ResponsiveSvgSectionTrimming from '@/components/responsive-svg-section-trimming'
 // import BlockBuilder from '@/components/blocks/block-builder'
@@ -97,6 +98,7 @@ export default {
     CardListBlock,
     AccordionBlock,
     HeroHeader,
+    SectionBanner,
     SectionInfographic,
     ResponsiveSvgSectionTrimming
     // BlockBuilder,
@@ -135,6 +137,7 @@ export default {
         case 'card_list_block': name = 'CardListBlock'; break
         case 'accordion_block': name = 'AccordionBlock'; break
         case 'hero_header': name = 'HeroHeader'; break
+        case 'section_banner': name = 'SectionBanner'; break
         case 'section_infographic': name = 'SectionInfographic'; break
         case 'custom' : name = block.component; break
       }

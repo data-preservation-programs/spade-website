@@ -241,9 +241,6 @@ const moveCardTo = (index) => {
       const currentStage = stagesRef.value[index - 1]
       const width = currentStage.getBoundingClientRect().width
       const cardWidth = cardRef.value.getBoundingClientRect().width
-      console.log(currentStage.offsetLeft)
-      console.log(width)
-      console.log(cardWidth)
       cardX.value = currentStage.offsetLeft + (width - cardWidth) * 0.5 + 45
       const arr = numberOffsets.value.map((_, i) => {
         const current = index - 1
