@@ -58,7 +58,8 @@
       "col_1": {
         "type": "section_infographic",
         "cols": {
-          "num": "col-12"
+          "num": "col-12_md-8_mi-10_ti-12",
+          "push_left": "off-0_md-2_mi-1_ti-0"
         },
         "heading": "Spade gives tenants highly tunable options for how their data is onboarded to Filecoin.",
         "stages": [

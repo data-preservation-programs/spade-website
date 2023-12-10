@@ -87,7 +87,7 @@
 
             <div class="number-wrapper" :style="{ height: cardHeight && !mobile ? `${cardHeight + 40}px` : 'unset' }">
               <button
-                :class="['number', { hidden: !mobile && activeIndex === n + 1 }]"
+                :class="['number', { hidden: !mobile && activeIndex === n + 1 }, { 'highlight-solid': mobile && activeIndex === n + 1 }]"
                 :style="{ transform: `translateX(${numberOffsets[n]}px)` }"
                 @click="activeIndex = n + 1">
                 <div class="number-text">
@@ -141,6 +141,7 @@
               class="broker-service">
               <div class="logo blue-border border-lg">
                 <SiteLogo />
+                <span v-if="mobile">Broker Service</span>
               </div>
               <div class="arrow-wrapper">
                 <InfographicArrow class="arrow" />
@@ -158,11 +159,11 @@
               </div>
               <div class="sps">
                 <div
-                  v-for="i in 7"
+                  v-for="i in (mobile ? 8 : 7)"
                   :key="`sp-col-${i}`"
                   :class="['sp-col', `sp-col-${i}`, { offset: i % 2 === 0 }]">
                   <div
-                    v-for="j in 3"
+                    v-for="j in (mobile ? 2 : 3)"
                     :key="`sp-${i}-${j}`"
                     :class="['sp', 'blue-border', 'border-sm', { mute: !['1-3', '2-1', '4-1', '6-2'].includes(`${i}-${j}`) }]">
                     <IconServer />
@@ -251,6 +252,7 @@ const moveCardTo = (index) => {
       console.log(arr)
     } else {
       cardX.value = 0
+      numberOffsets.value = [0, 0, 0, 0]
     }
   }
 }
@@ -269,8 +271,10 @@ const resizeInfographic = () => {
       mobile.value = false
     }
   }
-  moveCardTo(activeIndex.value)
-  setCardHeight()
+  nextTick(() => {
+    moveCardTo(activeIndex.value)
+    setCardHeight()
+  })
 }
 
 </script>
@@ -303,10 +307,12 @@ const resizeInfographic = () => {
     font-weight: 600;
     line-height: leading(36, 24);
     letter-spacing: 0.48px;
+    @include large {
+      padding: 0 toRem(32);
+    }
     @include medium {
       font-size: toRem(16);
       line-height: leading(22, 16);
-      padding: 0 toRem(32);
     }
   }
 }
@@ -324,6 +330,7 @@ const resizeInfographic = () => {
     display: flex;
     justify-content: space-between;
     height: unset;
+    margin-bottom: toRem(24);
   }
 }
 
@@ -361,7 +368,7 @@ const resizeInfographic = () => {
     background-color: $canary;
     border-color: $canary;
     .number-text {
-      color: $woodsmoke;
+      color: $woodsmoke !important;
     }
   }
 }
@@ -471,9 +478,11 @@ const resizeInfographic = () => {
 .stage {
   @include medium {
     position: relative;
+    padding: toRem(13) toRem(48);
+    animation: 500ms ease 0s 1 normal forwards running fadein;
     .number-wrapper {
       position: absolute;
-      left: 0;
+      left: 0.625rem;
       top: 0;
     }
   }
@@ -507,6 +516,28 @@ const resizeInfographic = () => {
   }
 }
 
+.stage-2 {
+  @include medium {
+    height: toRem(61);
+    padding-bottom: 0;
+  }
+}
+
+.stage-3 {
+  @include medium {
+    padding-top: 0;
+  }
+}
+
+.stage-3,
+.stage-4 {
+  @include medium {
+    .name {
+      display: none;
+    }
+  }
+}
+
 .name {
   position: relative;
   z-index: 2;
@@ -515,6 +546,9 @@ const resizeInfographic = () => {
   margin-top: toRem(52);
   margin-bottom: toRem(22);
   @include medium {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
     margin-top: 0;
   }
   .text {
@@ -527,6 +561,11 @@ const resizeInfographic = () => {
     padding: toRem(6) toRem(20);
     border-radius: toRem(5);
     background-color: $blackPearl;
+    @include medium {
+      font-size: toRem(13);
+      line-height: leading(18, 13);
+      padding: toRem(4) toRem(14);
+    }
     &:before {
       border-radius: toRem(5);
       box-shadow: none !important;
@@ -554,8 +593,14 @@ const resizeInfographic = () => {
   }
   &.border-sm {
     border-width: 1.5px;
+    @include medium {
+      border-radius: toRem(5);
+    }
     &:before {
       transform: translate(-1.5px, -1.5px);
+      @include medium {
+        border-radius: toRem(5);
+      }
     }
   }
   &:before {
@@ -578,6 +623,13 @@ const resizeInfographic = () => {
 
 .tenant {
   padding: toRem(13) toRem(34);
+  @include medium {
+    width: 75%;
+    margin: 0 auto;
+  }
+  @include small {
+    width: unset;
+  }
   .collections {
     color: $cornflowerBlue;
     text-align: center;
@@ -604,12 +656,27 @@ const resizeInfographic = () => {
 
 .policy {
   position: relative;
+  @include medium {
+    .arrow-wrapper {
+      top: 0;
+      left: calc(50% - 4px);
+      transform: translate(-50%, -4px) rotate(90deg);
+      width: toRem(70);
+      .arrow {
+        right: 0;
+      }
+    }
+  }
   .dashed-line {
     position: absolute;
     left: calc(50% - 5px);
     top: toRem(-144);
     path {
       stroke: $toreaBay;
+    }
+    @include medium {
+      transform: rotate(90deg);
+      top: toRem(-191);
     }
   }
 }
@@ -635,18 +702,49 @@ const resizeInfographic = () => {
   display: flex;
   justify-content: center;
   padding-right: 0.5rem;
+  @include medium {
+    flex-direction: column;
+  }
   .logo {
     padding: toRem(38);
     max-width: toRem(155);
     transform: translateY(toRem(20));
     :deep(svg) {
+      display: block;
       margin-top: toRem(4);
+      @include medium {
+        width: toRem(52);
+        margin: 0 auto;
+      }
+    }
+    @include medium {
+      padding: toRem(13) toRem(39);
+      min-width: toRem(166);
+      max-width: unset;
+      align-self: center;
+      transform: none;
+      span {
+        display: block;
+        white-space: nowrap;
+        color: $cornflowerBlue;
+        text-align: center;
+        font-family: $fontSuisseIntl;
+        font-size: toRem(13.5);
+        font-weight: 500;
+        line-height: leading(19, 13.5);
+      }
     }
   }
   .arrow-wrapper {
     position: relative;
     flex-grow: 1;
     overflow: hidden;
+    @include medium {
+      top: 0;
+      width: toRem(32);
+      align-self: center;
+      transform: rotate(90deg);
+    }
     .arrow {
       position: absolute;
       right: 0;
@@ -668,11 +766,22 @@ const resizeInfographic = () => {
       position: absolute;
       width: 25%;
       left: -0.5rem;
+      @include medium {
+        left: calc(50% - 4px);
+        top: toRem(-40);
+        width: toRem(32);
+      }
       &.top {
         transform: translate(-100%, toRem(-51)) scaleX(-1);
+        @include medium {
+          transform: rotate(-90deg) translate(0, calc(-50% - toRem(54)));
+        }
       }
       &.bottom {
         transform: translate(-100%, toRem(51)) scaleX(-1);
+        @include medium {
+          transform: rotate(-90deg) translate(0, calc(-50% + toRem(54)));
+        }
       }
     }
   }
@@ -687,12 +796,18 @@ const resizeInfographic = () => {
   display: flex;
   flex-direction: column;
   padding: 0 toRem(4);
+  @include medium {
+    padding: 0 toRem(2.5);
+  }
   &.offset {
     transform: translateY(toRem(18));
   }
   &.sp-col-7 {
     @include large {
       display: none;
+    }
+    @include medium {
+      display: block;
     }
   }
 }
@@ -703,6 +818,15 @@ const resizeInfographic = () => {
   justify-content: center;
   margin-bottom: toRem(7);
   padding: toRem(6) toRem(5);
+  @include medium {
+    padding: toRem(3) toRem(4.5);
+    border-color: $cornflowerBlue;
+  }
+  :deep(svg) {
+    @include medium {
+      width: toRem(17);
+    }
+  }
   span {
     color: #545F7B;
     text-align: center;
@@ -711,6 +835,10 @@ const resizeInfographic = () => {
     font-weight: 500;
     line-height: 140%;
     letter-spacing: 0.211px;
+    @include medium {
+      font-size: toRem(8);
+      color: $perano;
+    }
   }
 }
 
@@ -741,6 +869,15 @@ const resizeInfographic = () => {
       font-size: toRem(14);
       font-weight: 400;
     }
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 </style>
