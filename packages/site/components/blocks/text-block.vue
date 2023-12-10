@@ -279,4 +279,31 @@ export default {
     }
   }
 }
+
+.theme__info {
+  .label {
+    @include h6;
+    opacity: 0.6;
+    margin-bottom: toRem(23);
+  }
+  .heading {
+    margin-bottom: toRem(24);
+    @include small {
+      margin-bottom: toRem(14);
+    }
+  }
+  .description {
+    margin-bottom: toRem(32);
+    @include small {
+      margin-bottom: toRem(26);
+    }
+  }
+  .button-row {
+    :deep(.button) {
+      display: block;
+      width: fit-content;
+    }
+  }
+}
 </style>
+

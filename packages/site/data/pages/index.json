@@ -53,6 +53,55 @@
       }
     },
     {
+      "id": "section-intro-1",
+      "grid": ["middle"],
+      "col_1": {
+        "type": "image_block",
+        "cols": {
+          "num": "col-6_sm-10_mi-12",
+          "push_left": "off-0_sm-1_mi-0"
+        },
+        "src": "/images/woman-on-couch-using-laptop.jpg",
+        "alt": "Woman sitting on a couch using a laptop"
+      },
+      "col_2": {
+        "type": "text_block",
+        "cols": {
+          "num": "col-6_sm-10_mi-12",
+          "push_left": "off-0_sm-1_mi-0"
+        },
+        "h": 3,
+        "theme": "info",
+        "label": "WHAT IS SPADE?",
+        "heading": "Spade is a two-sided marketplace that matches storage clients to storage providers",
+        "description": "Storage clients, also known as tenants, can specify how they’d like their data to be onboarded. Compliant storage providers drive deal making processes to ensure the data is onboarded efficiently.",
+        "ctas": [
+          {
+            "text": "Read docs",
+            "tag": "a",
+            "to": "https://example.com",
+            "theme": "gradient-dark",
+            "target": "_blank"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section-banner-1",
+      "grid": [],
+      "col_1": {
+        "type": "section_banner",
+        "cols": {
+          "num": "col-12"
+        },
+        "text": "The Spade platform allows you to specify a unique storage policy, ensuring that storage providers you work with meet your requirements",
+        "breakpointsX": [70, 530, 700, 1200],
+        "breakpointsY": [70, 290],
+        "breakpointsMobileX": [30, 100, 240, 320],
+        "breakpointsMobileY": [50, 200]
+      }
+    },
+    {
       "id": "section-onboarding",
       "off_grid": [
         {
@@ -123,6 +172,21 @@
         }
       ],
       "grid": []
+    },
+    {
+      "id": "section-banner-2",
+      "grid": [],
+      "col_1": {
+        "type": "section_banner",
+        "cols": {
+          "num": "col-12"
+        },
+        "text": "Spade consists of a collection of loosely-coupled services working together in harmony to create a holistic Filecoin storage marketplace",
+        "breakpointsX": [70, 530, 700, 1200],
+        "breakpointsY": [70, 290],
+        "breakpointsMobileX": [30, 100, 240, 320],
+        "breakpointsMobileY": [50, 200]
+      }
     }
   ]
 }
