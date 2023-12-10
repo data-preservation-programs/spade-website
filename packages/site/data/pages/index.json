@@ -53,6 +53,19 @@
       }
     },
     {
+      "id": "section-onboarding",
+      "off_grid": [
+        {
+          "name": "ResponsiveSvgSectionTrimming",
+          "breakpointsX": [70, 620, 950, 1290],
+          "breakpointsMobileX": [25, 70, 125, 190],
+          "trimType": "after",
+          "fill": "#E8EDF6"
+        }
+      ],
+      "grid": []
+    },
+    {
       "id": "section-infographic",
       "grid": ["noGutter", "noBottom"],
       "col_1": {
@@ -97,6 +110,19 @@
           }
         ]
       }
+    },
+    {
+      "id": "section-policy",
+      "off_grid": [
+        {
+          "name": "ResponsiveSvgSectionTrimming",
+          "breakpointsX": [400, 970],
+          "breakpointsMobileX": [120, 140],
+          "trimType": "before",
+          "fill": "#FFFFFF"
+        }
+      ],
+      "grid": []
     }
   ]
 }

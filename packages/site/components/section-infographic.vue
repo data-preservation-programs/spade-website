@@ -3,7 +3,7 @@
     
     <div class="section-heading">
       <div class="grid-noGutter-noBottom">
-        <div class="col-6_md-12">
+        <div class="col-6_md-8_sm-12">
           <div class="heading">
             {{ block.heading }}
           </div>
@@ -241,7 +241,10 @@ const moveCardTo = (index) => {
       const currentStage = stagesRef.value[index - 1]
       const width = currentStage.getBoundingClientRect().width
       const cardWidth = cardRef.value.getBoundingClientRect().width
-      cardX.value = currentStage.offsetLeft + (width - cardWidth) * 0.5
+      console.log(currentStage.offsetLeft)
+      console.log(width)
+      console.log(cardWidth)
+      cardX.value = currentStage.offsetLeft + (width - cardWidth) * 0.5 + 45
       const arr = numberOffsets.value.map((_, i) => {
         const current = index - 1
         if (i === current) { return 0 }
@@ -249,7 +252,6 @@ const moveCardTo = (index) => {
         return (2 / dif) * (100 / stageWidths[i]) * 100
       })
       numberOffsets.value = arr
-      console.log(arr)
     } else {
       cardX.value = 0
       numberOffsets.value = [0, 0, 0, 0]
@@ -292,7 +294,7 @@ const resizeInfographic = () => {
 
 .section-heading {
   position: relative;
-  margin-bottom: toRem(75);
+  margin-bottom: toRem(95);
   @include medium {
     margin-bottom: toRem(18);
   }
@@ -311,6 +313,7 @@ const resizeInfographic = () => {
       padding: 0 toRem(32);
     }
     @include medium {
+      padding: 0;
       font-size: toRem(16);
       line-height: leading(22, 16);
     }

@@ -63,9 +63,32 @@ onBeforeUnmount(() => {
   padding-bottom: toRem(79);
 }
 
+:deep(#section-onboarding) {
+  position: relative;
+  background-color: $whiteLilac;
+  z-index: 10;
+  .section-background {
+    position: absolute;
+    top: 100%;
+    left: -2px;
+    width: calc(100% + 0.25rem);
+  }
+}
+
 :deep(#section-infographic) {
   position: relative;
+  padding-top: toRem(108);
+  padding-bottom: toRem(256);
   background-color: $blackPearl;
+  z-index: 9;
+  @include medium {
+    padding-top: toRem(148);
+    padding-bottom: toRem(200);
+  }
+  @include small {
+    padding-top: toRem(100);
+    padding-bottom: toRem(168);
+  }
   &:before {
     content: '';
     position: absolute;
@@ -74,6 +97,23 @@ onBeforeUnmount(() => {
     width: 100%;
     height: 100%;
     @include radialGradientDarkBlue(100% 100% at 33% 33%);
+  }
+}
+
+:deep(#section-policy) {
+  position: relative;
+  background-color: white;
+  z-index: 10;
+  .section-background {
+    position: absolute;
+    bottom: calc(100% - toRem(24));
+    left: -2px;
+    width: calc(100% + 0.25rem);
+    @include small {
+      bottom: calc(100% - toRem(72));
+      left: -4px;
+      width: calc(100% + 0.5rem);
+    }
   }
 }
 </style>
