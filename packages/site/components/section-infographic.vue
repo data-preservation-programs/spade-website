@@ -3,7 +3,7 @@
     
     <div class="section-heading">
       <div class="grid-noGutter-noBottom">
-        <div class="col-6">
+        <div class="col-6_md-12">
           <div class="heading">
             {{ block.heading }}
           </div>
@@ -14,12 +14,28 @@
     <div class="infographic">
 
       <div class="section-info-card">
+
+        <div v-if="mobile" class="mobile-numbers">
+          <div
+            v-for="(stage, n) in stages"
+            :key="`mobile-${stage.name}-tab`"
+            :class="['number-wrapper', { 'mobile-active': activeIndex >= n + 1 }]">
+            <button
+              :class="['number', { 'highlight-solid': activeIndex === n + 1 }]"
+              @click="activeIndex = n + 1">
+              <div class="number-text">
+                {{ n + 1 }}
+              </div>
+            </button>
+          </div>
+        </div>
+
         <div class="card-track">
           <div
             v-if="card"
             ref="cardRef"
             class="info-card"
-            :style="{ transform: `translate(${cardX}px, -21px)`, height: cardHeight ? `${cardHeight + 40}px` : 'unset' }">
+            :style="{ transform: `translate(${cardX}px, ${mobile ? 0 : -21}px)`, height: cardHeight ? `${cardHeight + (mobile ? 22 : 40)}px` : 'unset' }">
             <div ref="cardContent" class="card-content">
 
               <div class="card-number">
@@ -38,8 +54,18 @@
                 {{ card.description }}
               </div>
 
-              <div class="nav-button">
-
+              <div class="nav-buttons">
+                <button
+                  v-if="activeIndex !== 1"
+                  class="button button-before"
+                  @click="activeIndex = Math.max(1, activeIndex - 1)">
+                  Back
+                </button>
+                <button
+                  class="button button-after"
+                  @click="activeIndex = activeIndex === stages.length ? 1 : Math.min(stages.length, activeIndex + 1)">
+                  {{ buttonAfterText }}
+                </button>
               </div>
 
             </div>
@@ -49,102 +75,110 @@
 
       <div class="section-graphics">
 
-        <div class="numbers-track" :style="{ '--track-highlight-width': `${cardX}px` }"></div>
+        <div v-if="!mobile" class="numbers-track" :style="{ '--track-highlight-width': `${cardX}px` }"></div>
 
-        <div
-          v-for="(stage, n) in stages"
-          ref="stagesRef"
-          :key="stage.name"
-          :class="['stage', `stage-${n + 1}`, { active: activeIndex >= n + 1 }]"
-          :style="{ 'flex-basis': `${stage.width}%`, 'max-width': `${stage.width}%` }">
-
-          <div class="number-wrapper" :style="{ height: cardHeight ? `${cardHeight + 40}px` : 'unset' }">
-            <button
-              :class="['number', { hidden: activeIndex === n + 1 }]"
-              @click="activeIndex = n + 1"
-              :style="{ transform: `translateX(${numberOffsets[n]}px)` }">
-              <div class="number-text">
-                {{ n + 1 }}
-              </div>
-            </button>
-          </div>
-
-          <div class="name">
-            <div class="text blue-border border-md">
-              {{ stage.name }}
-            </div>
-          </div>
-
+        <template v-for="(stage, n) in stages">
           <div
-            v-if="n + 1 === 1"
-            class="tenant blue-border border-lg">
-            <div class="tenants">
-              <div v-for="i in 8" :key="`folder-${i}`" class="folder">
-                <IconFolder class="icon" />
+            v-if="!mobile || activeIndex >= n + 1"
+            ref="stagesRef"
+            :key="stage.name"
+            :class="['stage', `stage-${n + 1}`, { active: activeIndex >= n + 1 }]"
+            :style="mobile ? null : { 'flex-basis': `${stage.width}%`, 'max-width': `${stage.width}%` }">
+
+            <div class="number-wrapper" :style="{ height: cardHeight && !mobile ? `${cardHeight + 40}px` : 'unset' }">
+              <button
+                :class="['number', { hidden: !mobile && activeIndex === n + 1 }]"
+                :style="{ transform: `translateX(${numberOffsets[n]}px)` }"
+                @click="activeIndex = n + 1">
+                <div class="number-text">
+                  {{ n + 1 }}
+                </div>
+              </button>
+            </div>
+
+            <div class="name">
+              <div class="text blue-border border-md">
+                {{ stage.name }}
               </div>
             </div>
-            <div class="collections">
-              Collections
-            </div>
-          </div>
 
-          <div
-            v-if="n + 1 === 2"
-            class="policy">
-            <svg
-              class="dashed-line"
-              xmlns="http://www.w3.org/2000/svg"
-              width="11"
-              height="381"
-              viewBox="0 0 11 381"
-              fill="none">
-              <path
-                d="M5.91406 0.109375L5.91408 380.828"
-                stroke="#E8FF5A"
-                stroke-width="10"
-                stroke-dasharray="4 7" />
-            </svg>
-            <div class="arrow-wrapper">
-              <InfographicArrow class="arrow" />
+            <div
+              v-if="n + 1 === 1"
+              class="tenant blue-border border-lg">
+              <div class="tenants">
+                <div v-for="i in 8" :key="`folder-${i}`" class="folder">
+                  <IconFolder class="icon" />
+                </div>
+              </div>
+              <div class="collections">
+                Collections
+              </div>
             </div>
-          </div>
 
-          <div
-            v-if="n + 1 === 3"
-            class="broker-service">
-            <div class="logo blue-border border-lg">
-              <SiteLogo />
+            <div
+              v-if="n + 1 === 2"
+              class="policy">
+              <svg
+                class="dashed-line"
+                xmlns="http://www.w3.org/2000/svg"
+                width="11"
+                height="381"
+                viewBox="0 0 11 381"
+                fill="none">
+                <path
+                  d="M5.91406 0.109375L5.91408 380.828"
+                  stroke="#E8FF5A"
+                  stroke-width="10"
+                  stroke-dasharray="4 7" />
+              </svg>
+              <div class="arrow-wrapper">
+                <InfographicArrow class="arrow" />
+              </div>
             </div>
-            <div class="arrow-wrapper">
-              <InfographicArrow class="arrow" />
-            </div>
-          </div>
 
-          <div
-            v-if="n + 1 === 4"
-            class="storage-provider">
-            <div class="sps">
-              <div
-                v-for="i in 7"
-                :key="`sp-col-${i}`"
-                :class="['sp-col', { offset: i % 2 === 0 }]">
+            <div
+              v-if="n + 1 === 3"
+              class="broker-service">
+              <div class="logo blue-border border-lg">
+                <SiteLogo />
+              </div>
+              <div class="arrow-wrapper">
+                <InfographicArrow class="arrow" />
+              </div>
+            </div>
+
+            <div
+              v-if="n + 1 === 4"
+              class="storage-provider">
+              <div class="arrow-wrapper secondary top">
+                <InfographicArrow class="arrow" />
+              </div>
+              <div class="arrow-wrapper secondary bottom">
+                <InfographicArrow class="arrow" />
+              </div>
+              <div class="sps">
                 <div
-                  v-for="j in 3"
-                  :key="`sp-${i}-${j}`"
-                  class="sp blue-border border-sm">
-                  <IconServer />
-                  <span>
-                    SP
-                  </span>
+                  v-for="i in 7"
+                  :key="`sp-col-${i}`"
+                  :class="['sp-col', `sp-col-${i}`, { offset: i % 2 === 0 }]">
+                  <div
+                    v-for="j in 3"
+                    :key="`sp-${i}-${j}`"
+                    :class="['sp', 'blue-border', 'border-sm', { mute: !['1-3', '2-1', '4-1', '6-2'].includes(`${i}-${j}`) }]">
+                    <IconServer />
+                    <span>
+                      SP
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
+          
           </div>
-
-        </div>
-
+        </template>
+     
       </div>
-
+    
     </div>
 
   </section>
@@ -160,6 +194,7 @@ const props = defineProps({
   }
 })
 
+// ======================================================================== Data
 const cardRef = ref(null)
 const cardContent = ref(null)
 const stagesRef = ref(null)
@@ -167,49 +202,77 @@ const activeIndex = ref(1)
 const cardX = ref(0)
 const cardHeight = ref(0)
 const numberOffsets = ref([0, 0, 0, 0])
+const resizeEventListener = ref(false)
+const mobile = ref(false)
 
 // ==================================================================== Computed
 const stages = computed(() => props.block.stages)
 const card = computed(() => stages.value[activeIndex.value - 1]?.card)
-
+const buttonAfterText = computed(() => activeIndex.value === stages.value.length ? 'Restart' : 'Next step' )
 // ==================================================================== Watchers
 watch(activeIndex, (val) => {
   moveCardTo(val)
 })
 
 watch(card, () => {
-  nextTick(() => {
-    cardHeight.value = cardContent.value.getBoundingClientRect().height
-  })
+  nextTick(() => { setCardHeight() })
 }, { deep: true })
 
 // ======================================================================= Hooks
-// onMounted(() => {
-//   setTimeout(() => {
-//     nextTick(() => {
-//       moveCardTo(1)
-//     })
-//   }, 1000)
-// })
+onMounted(() => {
+  resizeInfographic()
+  resizeEventListener.value = zeroThrottle(() => { resizeInfographic() }, 50)
+  window.addEventListener('resize', resizeEventListener.value)
+  setTimeout(() => { resizeInfographic() }, 500)
+})
+
+onBeforeUnmount(() => {
+  if (resizeEventListener.value) {
+    window.removeEventListener('resize', resizeEventListener.value)
+  }
+})
 
 // ===================================================================== Methods
 const moveCardTo = (index) => {
   if (stagesRef.value && cardRef.value && cardContent.value) {
-    const stageWidths = stagesRef.value.map(stg => stg.getBoundingClientRect().width)
-    const currentStage = stagesRef.value[index - 1]
-    const width = currentStage.getBoundingClientRect().width
-    const cardWidth = cardRef.value.getBoundingClientRect().width
-    cardX.value = currentStage.offsetLeft + (width - cardWidth) * 0.5
-    const arr = numberOffsets.value.map((_, i) => {
-      const current = index - 1
-      if (i === current) { return 0 }
-      const dif = -1 * (current - i)
-      return (2 / dif) * (100 / stageWidths[i]) * 100
-    })
-    numberOffsets.value = arr
-    console.log(arr)
+    if (!mobile.value) {
+      const stageWidths = stagesRef.value.map(stg => stg.getBoundingClientRect().width)
+      const currentStage = stagesRef.value[index - 1]
+      const width = currentStage.getBoundingClientRect().width
+      const cardWidth = cardRef.value.getBoundingClientRect().width
+      cardX.value = currentStage.offsetLeft + (width - cardWidth) * 0.5
+      const arr = numberOffsets.value.map((_, i) => {
+        const current = index - 1
+        if (i === current) { return 0 }
+        const dif = -1 * (current - i)
+        return (2 / dif) * (100 / stageWidths[i]) * 100
+      })
+      numberOffsets.value = arr
+      console.log(arr)
+    } else {
+      cardX.value = 0
+    }
   }
 }
+
+const setCardHeight = () => {
+  cardHeight.value = cardContent.value.getBoundingClientRect().height
+}
+
+const resizeInfographic = () => {
+  if (window.matchMedia('(max-width: 64rem)').matches) {
+    if (!mobile.value) {
+      mobile.value = true
+    }
+  } else {
+    if (mobile.value) {
+      mobile.value = false
+    }
+  }
+  moveCardTo(activeIndex.value)
+  setCardHeight()
+}
+
 </script>
 
 <style lang="scss" scoped>
@@ -218,11 +281,17 @@ const moveCardTo = (index) => {
   position: relative;
   padding: 0 toRem(48);
   color: white;
+  @include medium {
+    padding: 0;
+  }
 }
 
 .section-heading {
   position: relative;
   margin-bottom: toRem(75);
+  @include medium {
+    margin-bottom: toRem(18);
+  }
   [class~=grid], [class*=grid-], [class*=grid_] {
     width: 100%;
     padding: 0 !important;
@@ -234,6 +303,11 @@ const moveCardTo = (index) => {
     font-weight: 600;
     line-height: leading(36, 24);
     letter-spacing: 0.48px;
+    @include medium {
+      font-size: toRem(16);
+      line-height: leading(22, 16);
+      padding: 0 toRem(32);
+    }
   }
 }
 
@@ -244,12 +318,21 @@ const moveCardTo = (index) => {
   left: 0;
   width: 100%;
   height: 0;
-  // transform: translateY(100%);
   z-index: 10;
+  @include medium {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    height: unset;
+  }
 }
 
 .card-track {
   height: 0;
+  @include medium {
+    height: unset;
+    width: 80%;
+  }
 }
 
 .number-wrapper {
@@ -270,6 +353,7 @@ const moveCardTo = (index) => {
   background-color: $blackPearl;
   transition: 300ms ease;
   opacity: 1;
+  z-index: 100;
   &.hidden {
     opacity: 0;
   }
@@ -300,14 +384,28 @@ const moveCardTo = (index) => {
   background-color: $blackPearl;
   transition: 300ms ease;
   overflow: hidden;
+  z-index: 101;
+  @include medium {
+    width: 100%;
+    padding: toRem(10) toRem(15);
+  }
   .heading,
-  .description {
+  .description,
+  .button {
     color: $athensGray;
     font-family: $fontSuisseIntl;
     font-size: toRem(16);
     line-height: leading(22, 16);
+    @include medium {
+      font-size: toRem(14);
+      line-height: leading(19, 14);
+    }
   }
   .heading {
+    margin-bottom: toRem(12);
+  }
+  .heading,
+  .button {
     font-weight: 500;
   }
 }
@@ -320,6 +418,18 @@ const moveCardTo = (index) => {
   position: absolute;
   top: 0;
   left: toRem(-55);
+  @include medium {
+    display: none;
+  }
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: toRem(12);
+  .button-after {
+    color: $canary;
+  }
 }
 
 // //////////////////////////////////////////////////////////////////// Graphics
@@ -327,6 +437,9 @@ const moveCardTo = (index) => {
   position: relative;
   display: flex;
   justify-content: space-around;
+  @include medium {
+    flex-direction: column;
+  }
 }
 
 .numbers-track {
@@ -356,6 +469,14 @@ const moveCardTo = (index) => {
 }
 
 .stage {
+  @include medium {
+    position: relative;
+    .number-wrapper {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
   &.active {
     .number {
       border-color: $canary;
@@ -364,8 +485,10 @@ const moveCardTo = (index) => {
       }
     }
     .blue-border {
-      &:before {
-        opacity: 1;
+      &:not(.mute) {
+        &:before {
+          opacity: 1;
+        }
       }
     }
     path {
@@ -376,14 +499,24 @@ const moveCardTo = (index) => {
         fill: $canary;
       }
     }
+    .dashed-line {
+      path {
+        stroke: $canary;
+      }
+    }
   }
 }
 
 .name {
+  position: relative;
+  z-index: 2;
   display: flex;
   justify-content: center;
   margin-top: toRem(52);
   margin-bottom: toRem(22);
+  @include medium {
+    margin-top: 0;
+  }
   .text {
     text-align: center;
     font-family: $fontSuisseIntl;
@@ -393,6 +526,7 @@ const moveCardTo = (index) => {
     letter-spacing: 0.32px;
     padding: toRem(6) toRem(20);
     border-radius: toRem(5);
+    background-color: $blackPearl;
     &:before {
       border-radius: toRem(5);
       box-shadow: none !important;
@@ -473,7 +607,7 @@ const moveCardTo = (index) => {
   .dashed-line {
     position: absolute;
     left: calc(50% - 5px);
-    top: toRem(-18);
+    top: toRem(-144);
     path {
       stroke: $toreaBay;
     }
@@ -497,8 +631,10 @@ const moveCardTo = (index) => {
 }
 
 .broker-service {
+  position: relative;
   display: flex;
   justify-content: center;
+  padding-right: 0.5rem;
   .logo {
     padding: toRem(38);
     max-width: toRem(155);
@@ -519,7 +655,27 @@ const moveCardTo = (index) => {
 }
 
 .storage-provider {
-
+  position: relative;
+  .arrow-wrapper {
+    position: relative;
+    flex-grow: 1;
+    overflow: hidden;
+    .arrow {
+      position: absolute;
+      right: 0;
+    }
+    &.secondary {
+      position: absolute;
+      width: 25%;
+      left: -0.5rem;
+      &.top {
+        transform: translate(-100%, toRem(-51)) scaleX(-1);
+      }
+      &.bottom {
+        transform: translate(-100%, toRem(51)) scaleX(-1);
+      }
+    }
+  }
 }
 
 .sps {
@@ -533,6 +689,11 @@ const moveCardTo = (index) => {
   padding: 0 toRem(4);
   &.offset {
     transform: translateY(toRem(18));
+  }
+  &.sp-col-7 {
+    @include large {
+      display: none;
+    }
   }
 }
 
@@ -550,6 +711,36 @@ const moveCardTo = (index) => {
     font-weight: 500;
     line-height: 140%;
     letter-spacing: 0.211px;
+  }
+}
+
+// ////////////////////////////////////////////////////////////////////// mobile
+.mobile-numbers {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: toRem(10);
+  .number-wrapper {
+    margin-bottom: toRem(15);
+    &.mobile-active {
+      .number {
+        border-color: $canary;
+        &:not(.highlight-solid) {
+          .number-text {
+            color: $canary;
+          }
+        }
+      }
+    }
+  }
+  .number {
+    width: toRem(24);
+    height: toRem(24);
+    .number-text {
+      font-size: toRem(14);
+      font-weight: 400;
+    }
   }
 }
 </style>
