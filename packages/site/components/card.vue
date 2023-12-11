@@ -1,5 +1,9 @@
 <template>
   <div :class="['card', `theme__${card.theme}`]">
+
+    <div v-if="card.icon" class="icon">
+      <component :is="getIconComponent(card.icon)" />
+    </div>
     
     <div class="title">
       {{ card.title }}
@@ -22,6 +26,10 @@
 </template>
 
 <script setup>
+const additionIcon = resolveComponent('./icon/additions')
+const keyLockIcon = resolveComponent('./icon/key-lock')
+const onrampIcon = resolveComponent('./icon/onramp')
+
 const props = defineProps({
   card: {
     type: Object,
@@ -30,6 +38,15 @@ const props = defineProps({
 })
 
 const cta = computed(() => props.card.cta)
+
+const getIconComponent = (icon) => {
+  switch (icon) {
+    case 'addition': return additionIcon
+    case 'keylock': return keyLockIcon
+    case 'onramp': return onrampIcon
+    default: return false
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -80,6 +97,29 @@ const cta = computed(() => props.card.cta)
       font-size: toRem(11);
       letter-spacing: 0.03em;
     }
+  }
+}
+
+.card.theme__basic {
+  padding: toRem(25) toRem(33);
+  border-radius: toRem(8);
+  background: white;
+  box-shadow: 0px 30px 25px -25px rgba(72, 76, 86, 0.25);
+  color: $woodsmoke;
+  .icon {
+    display: flex;
+    margin-bottom: toRem(29);
+    @include mini {
+      margin-bottom: toRem(20);
+    }
+  }
+  .title {
+    @include h5;
+    margin-bottom: toRem(17);
+    
+  }
+  .description {
+    @include p2;
   }
 }
 </style>
