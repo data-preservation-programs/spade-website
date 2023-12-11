@@ -254,6 +254,36 @@ onBeforeUnmount(() => {
     @include tiny {
       padding: 0;
     }
+    .card-wrapper {
+      @include mini {
+        padding-bottom: toRem(8) !important;
+      }
+    }
+    .graph-card {
+      border-radius: toRem(20);
+      .caption.before {
+        margin-bottom: toRem(30);
+      }
+      .graph {
+        padding: 0 toRem(2);
+        height: unset !important;
+        // width: 100%;
+        svg {
+          width: 100%;
+        }
+      }
+      .curve {
+        @include mini {
+          max-height: unset !important;
+          max-width: unset !important;
+        }
+      }
+      @include mini {
+        margin: 0 -0.25rem;
+        min-height: toRem(212);
+        border-radius: toRem(10);
+      }
+    }
   }
 }
 

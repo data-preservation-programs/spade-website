@@ -4,7 +4,7 @@
     <div
       v-if="card.backgroundImage"
       class="background-image"
-      :style="{ 'background-image': `url(${card.backgroundImage})`, 'background-size': card.backgroundSize }">
+      :style="{ 'background-image': `url(${card.backgroundImage})` }">
     </div>
 
     <div v-if="card.icon" class="icon">
@@ -89,6 +89,7 @@ const getIconComponent = (icon) => {
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 // ///////////////////////////////////////////////////////// Theme [Big Numbers]
@@ -156,6 +157,12 @@ const getIconComponent = (icon) => {
   height: 100%;
   border-radius: toRem(20);
   overflow: hidden;
+  min-height: toRem(321);
+  @include mini {
+    margin: 0 -0.25rem;
+    min-height: toRem(212);
+    border-radius: toRem(10);
+  }
 }
 
 // /////////////////////////////////////////////////////////////// Theme [Block]
@@ -168,9 +175,10 @@ const getIconComponent = (icon) => {
   color: $woodsmoke;
   min-height: toRem(321);
   @include mini {
-    margin: -0.25rem;
+    margin: 0 -0.25rem;
     padding: toRem(15) toRem(10);
     min-height: toRem(212);
+    border-radius: toRem(10);
   }
   .icon {
     display: flex;

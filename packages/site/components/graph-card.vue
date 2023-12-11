@@ -102,7 +102,7 @@ const graphs = {
       {
         name: '',
         color: '#DCE76E',
-        svg: 1
+        svg: 3
       }
     ]
   },
@@ -115,12 +115,12 @@ const graphs = {
       {
         name: 'Daily active SPs',
         color: '#3F3CF6',
-        svg: 1
+        svg: 5
       },
       {
         name: 'Weekly active SPs',
         color: '#DCE76E',
-        svg: 1
+        svg: 4
       }
     ]
   }

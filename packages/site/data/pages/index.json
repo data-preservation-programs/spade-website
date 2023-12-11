@@ -304,8 +304,7 @@
           {
             "col": "col-3_md-6",
             "theme": "image",
-            "backgroundImage": "/images/developers-fixated-on-screen.jpg",
-            "backgroundSize": "320px 339px"
+            "backgroundImage": "/images/developers-fixated-on-screen.jpg"
           },
           {
             "col": "col-3_md-6",
