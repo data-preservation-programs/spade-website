@@ -86,6 +86,7 @@ import HeroHeader from '@/components/hero-header'
 import SectionBanner from '@/components/section-banner'
 import SectionInfographic from '@/components/section-infographic'
 import ResponsiveSvgSectionTrimming from '@/components/responsive-svg-section-trimming'
+import GraphCard from '@/components/graph-card'
 // import BlockBuilder from '@/components/blocks/block-builder'
 
 export default {
@@ -100,7 +101,8 @@ export default {
     HeroHeader,
     SectionBanner,
     SectionInfographic,
-    ResponsiveSvgSectionTrimming
+    ResponsiveSvgSectionTrimming,
+    GraphCard
     // BlockBuilder,
   },
 

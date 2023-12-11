@@ -112,7 +112,81 @@
           "fill": "#E8EDF6"
         }
       ],
-      "grid": []
+      "grid": ["middle"],
+      "col_1": {
+        "type": "text_block",
+        "cols": {
+          "num": "col-5_md-6"
+        },
+        "theme": "info",
+        "h": 3,
+        "label": "HOW DOES SPADE ONBOARD DATA FAST?",
+        "heading": "Spade automates key parts of data storage supply and demand processes",
+        "description": "Any storage provider on Filecoin can be part of Spade, as long as they adhere to a certain baseline of network-wide norms, and can disclose certain basic information, like organizational affiliation and datacenter locations",
+        "ctas": [
+          {
+            "text": "Store data",
+            "tag": "a",
+            "to": "https://example.com",
+            "target": "_blank",
+            "theme": "gradient-dark"
+          }
+        ]
+      },
+      "col_2": {
+        "type": "custom",
+        "cols": {
+          "num": "col-6",
+          "push_left": "off-1_md-0"
+        },
+        "customizations": [
+          {
+            "name": "ImageBlock",
+            "props": {
+              "block": {
+                "src": "/images/man-standing-in-server-room.jpg",
+                "alt": "A man working in a room full of servers"
+              }
+            }
+          },
+          {
+            "name": "GraphCard",
+            "props": {
+              "block": {
+                "graph": "tib_onboarded"
+              }
+            }
+          }
+        ]
+      },
+      "col_3": {
+        "type": "card_list_block",
+        "cols": {
+          "num": "col-12"
+        },
+        "card_grid": ["equalHeight"],
+        "card_columns": "col-4",
+        "cards": [
+          {
+            "theme": "basic",
+            "icon": "onramp",
+            "title": "Web3 native data onramps",
+            "description": "Services that are already IPFS or Filecoin-aware, and are looking at an efficient mechanism to store data on Filecoin"
+          },
+          {
+            "theme": "basic",
+            "icon": "keylock",
+            "title": "Data owners",
+            "description": "Teams or organizations interested in cheap archival solutions, and efficient cold data management"
+          },
+          {
+            "theme": "basic",
+            "icon": "addition",
+            "title": "Many more!",
+            "description": "Large data-owning entities looking for an easy way to onboard data to the decentralized web"
+          }
+        ]
+      }
     },
     {
       "id": "section-infographic",
