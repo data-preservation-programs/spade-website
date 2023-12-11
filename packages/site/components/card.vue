@@ -1,15 +1,21 @@
 <template>
   <div :class="['card', `theme__${card.theme}`]">
 
+    <div
+      v-if="card.backgroundImage"
+      class="background-image"
+      :style="{ 'background-image': `url(${card.backgroundImage})`, 'background-size': card.backgroundSize }">
+    </div>
+
     <div v-if="card.icon" class="icon">
       <component :is="getIconComponent(card.icon)" />
     </div>
-    
-    <div class="title">
+
+    <div v-if="card.title" class="title">
       {{ card.title }}
     </div>
 
-    <div class="description">
+    <div v-if="card.description" class="description">
       {{ card.description }}
     </div>
 
@@ -29,6 +35,12 @@
 const additionIcon = resolveComponent('./icon/additions')
 const keyLockIcon = resolveComponent('./icon/key-lock')
 const onrampIcon = resolveComponent('./icon/onramp')
+const brokerIcon = resolveComponent('./icon/broker')
+const documentIcon = resolveComponent('./icon/document')
+const heartIcon = resolveComponent('./icon/heart')
+const idIcon = resolveComponent('./icon/id')
+const oracleIcon = resolveComponent('./icon/oracle')
+const tenantIcon = resolveComponent('./icon/tenant')
 
 const props = defineProps({
   card: {
@@ -44,12 +56,19 @@ const getIconComponent = (icon) => {
     case 'addition': return additionIcon
     case 'keylock': return keyLockIcon
     case 'onramp': return onrampIcon
+    case 'broker': return brokerIcon
+    case 'document': return documentIcon
+    case 'heart': return heartIcon
+    case 'id': return idIcon
+    case 'oracle': return oracleIcon
+    case 'tenant': return tenantIcon
     default: return false
   }
 }
 </script>
 
 <style lang="scss" scoped>
+// ///////////////////////////////////////////////////////////////////// General
 .card {
   color: $perano;
 }
@@ -65,6 +84,14 @@ const getIconComponent = (icon) => {
   }
 }
 
+.background-image {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+// ///////////////////////////////////////////////////////// Theme [Big Numbers]
 .card.theme__big-number {
   .title {
     @include h2;
@@ -100,6 +127,7 @@ const getIconComponent = (icon) => {
   }
 }
 
+// /////////////////////////////////////////////////////////////// Theme [Basic]
 .card.theme__basic {
   padding: toRem(25) toRem(33);
   border-radius: toRem(8);
@@ -120,6 +148,64 @@ const getIconComponent = (icon) => {
   }
   .description {
     @include p2;
+  }
+}
+
+// /////////////////////////////////////////////////////////////// Theme [Image]
+.card.theme__image {
+  height: 100%;
+  border-radius: toRem(20);
+  overflow: hidden;
+}
+
+// /////////////////////////////////////////////////////////////// Theme [Block]
+.card.theme__block {
+  padding: toRem(30) toRem(24);
+  display: flex;
+  flex-direction: column;
+  border-radius: toRem(20);
+  background: white;
+  color: $woodsmoke;
+  min-height: toRem(321);
+  @include mini {
+    margin: -0.25rem;
+    padding: toRem(15) toRem(10);
+    min-height: toRem(212);
+  }
+  .icon {
+    display: flex;
+    margin-bottom: auto;
+    @include mini {
+      width: toRem(30);
+      height: toRem(30);
+      margin-bottom: toRem(30);
+      :deep(svg) {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .title {
+    font-family: $fontSora;
+    font-size: toRem(22);
+    font-weight: 600;
+    line-height: leading(31, 22);
+    margin-bottom: toRem(12);
+    @include mini {
+      font-size: toRem(16);
+      line-height: leading(22, 16);
+    }
+  }
+  .description {
+    font-family: $fontSuisseIntl;
+    font-size: toRem(16);
+    line-height: leading(24, 16);
+    letter-spacing: 0.32px;
+    @include mini {
+      font-size: toRem(13);
+      line-height: leading(19.5, 13);
+      margin-bottom: 0.5rem;
+    }
   }
 }
 </style>

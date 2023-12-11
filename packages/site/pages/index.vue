@@ -241,8 +241,34 @@ onBeforeUnmount(() => {
   }
 }
 
+:deep(#section-card-list) {
+  padding-top: toRem(104);
+  background-color: $whiteLilac;
+  .card-list-block {
+    @include small {
+      padding: 0 toRem(24);
+    }
+    @include mini {
+      padding: 0 toRem(24);
+    }
+    @include tiny {
+      padding: 0;
+    }
+  }
+}
+
 :deep(#section-banner-2) {
   position: relative;
+  padding-top: toRem(14);
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(50% - 1.5rem);
+    background-color: $whiteLilac;
+  }
   .image-block {
     transform: scaleX(-1);
   }

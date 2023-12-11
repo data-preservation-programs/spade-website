@@ -271,6 +271,79 @@
       "grid": []
     },
     {
+      "id": "section-card-list",
+      "grid": [],
+      "col_1": {
+        "type": "card_list_block",
+        "cols": {
+          "num": "col-12_md-10_sm-12",
+          "push_left": "off-0_md-1_sm-0"
+        },
+        "card_grid": ["equalHeight"],
+        "cards": [
+          {
+            "col": "col-6_md-12",
+            "theme": "block",
+            "icon": "broker",
+            "title": "Broker API",
+            "description": "The core deal engine API the SPs interact with. They ping it to see the list of piece CIDs they are eligible to store, from clients that they have signed up to service. They can then elect to be sent deal proposals from the list. Each CID is paired with a URL from the client to get to the CAR file or an SP is expected to retrieve it from the network."
+          },
+          {
+            "col": "col-3_md-6",
+            "theme": "block",
+            "icon": "id",
+            "title": "SP KYB service",
+            "description": "A set of processes to perform due diligence on the location and other metadata supplied by an SP."
+          },
+          {
+            "col": "col-3_md-6",
+            "theme": "block",
+            "type": "graph",
+            "graph": "cumulative_data"
+          },
+          {
+            "col": "col-3_md-6",
+            "theme": "image",
+            "backgroundImage": "/images/developers-fixated-on-screen.jpg",
+            "backgroundSize": "320px 339px"
+          },
+          {
+            "col": "col-3_md-6",
+            "theme": "block",
+            "icon": "document",
+            "title": "Remote deal-proposal signing agent and relay network",
+            "description": "Allows tenants to complete deal proposal signing without ever exposing their keys to the spade operators."
+          },
+          {
+            "col": "col-6_md-12",
+            "theme": "block",
+            "icon": "tenant",
+            "title": "Tenant service",
+            "description": "APIs allowing storage clients (data owners or onboarding entities) to publish datasets (CIDs), define replication requirements, set (and update) eligibility criteria on what SPs they want to work with."
+          },
+          {
+            "col": "col-6_md-12",
+            "theme": "block",
+            "icon": "heart",
+            "title": "Validation service (health check)",
+            "description": "A set of processes to validate that various retrievability requirements set in contracts closed on the spade platform are being honored. This currently includes an instance of the ValidationBot service."
+          },
+          {
+            "col": "col-3_md-6",
+            "type": "graph",
+            "graph": "active_sps"
+          },
+          {
+            "col": "col-3_md-6",
+            "theme": "block",
+            "icon": "oracle",
+            "title": "Spade oracle service",
+            "description": "“Naive” oracle that tracks all active deals today on the network."
+          }
+        ]
+      }
+    },
+    {
       "id": "section-banner-2",
       "grid": [],
       "col_1": {
