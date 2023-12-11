@@ -107,11 +107,16 @@ const getIconComponent = (icon) => {
   box-shadow: 0px 30px 25px -25px rgba(72, 76, 86, 0.25);
   color: $woodsmoke;
   .icon {
+    display: flex;
     margin-bottom: toRem(29);
+    @include mini {
+      margin-bottom: toRem(20);
+    }
   }
   .title {
     @include h5;
     margin-bottom: toRem(17);
+    
   }
   .description {
     @include p2;

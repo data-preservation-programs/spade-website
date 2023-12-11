@@ -116,7 +116,8 @@
       "col_1": {
         "type": "text_block",
         "cols": {
-          "num": "col-5_md-6"
+          "num": "col-5_md-6_sm-hidden",
+          "push_left": "off-0_sm-1_mi-0"
         },
         "theme": "info",
         "h": 3,
@@ -136,8 +137,8 @@
       "col_2": {
         "type": "custom",
         "cols": {
-          "num": "col-6",
-          "push_left": "off-1_md-0"
+          "num": "col-6_sm-10_ti-12",
+          "push_left": "off-1_md-0_sm-1_ti-0"
         },
         "customizations": [
           {
@@ -159,13 +160,35 @@
           }
         ]
       },
+      "col_1-small": {
+        "type": "text_block",
+        "cols": {
+          "num": "col-5_md-6_sm-10_ti-12",
+          "push_left": "off-0_sm-1_ti-0"
+        },
+        "theme": "info",
+        "h": 3,
+        "label": "HOW DOES SPADE ONBOARD DATA FAST?",
+        "heading": "Spade automates key parts of data storage supply and demand processes",
+        "description": "Any storage provider on Filecoin can be part of Spade, as long as they adhere to a certain baseline of network-wide norms, and can disclose certain basic information, like organizational affiliation and datacenter locations",
+        "ctas": [
+          {
+            "text": "Store data",
+            "tag": "a",
+            "to": "https://example.com",
+            "target": "_blank",
+            "theme": "gradient-dark"
+          }
+        ]
+      },
       "col_3": {
         "type": "card_list_block",
         "cols": {
-          "num": "col-12"
+          "num": "col-12_sm-10_mi-12",
+          "push_left": "off-0_sm-1_mi-0"
         },
         "card_grid": ["equalHeight"],
-        "card_columns": "col-4",
+        "card_columns": "col-4_sm-12",
         "cards": [
           {
             "theme": "basic",

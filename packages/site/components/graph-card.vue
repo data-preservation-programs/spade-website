@@ -148,11 +148,26 @@ const getSvgCurve = (svg) => {
   border-radius: toRem(10);
   padding: toRem(23) toRem(20);
   color: white;
+  @include mini {
+    padding: toRem(17) toRem(12);
+  }
   &.tib_onboarded {
     .curve-1 {
       :deep(svg) {
         transform: translateY(1.5rem);
+        @include mini {
+          transform: translateY(1rem);
+        }
       }
+    }
+  }
+  span {
+    display: block;
+    font-family: $fontSuisseIntl;
+    font-size: toRem(14);
+    line-height: leading(20, 14);
+    @include mini {
+      font-size: toRem(8.5);
     }
   }
 }
@@ -161,11 +176,8 @@ const getSvgCurve = (svg) => {
   display: flex;
   justify-content: space-between;
   margin-bottom: toRem(18);
-  span {
-    display: block;
-    font-family: $fontSuisseIntl;
-    font-size: toRem(14);
-    line-height: leading(20, 14)
+  @include mini {
+    height: unset !important;
   }
 }
 
@@ -176,6 +188,14 @@ const getSvgCurve = (svg) => {
   line-height: leading(22, 16);
   margin: toRem(5) 0;
   padding: 0 toRem(7);
+  @include mini {
+    font-size: toRem(10);
+  }
+  &.before {
+    @include mini {
+      margin-top: 0;
+    }
+  }
 }
 
 .y-axis {
@@ -185,6 +205,10 @@ const getSvgCurve = (svg) => {
   width: fit-content;
   height: 100%;
   padding-right: toRem(6);
+  @include mini {
+    height: unset;
+    align-self: stretch;
+  }
 }
 
 .curves {
@@ -200,9 +224,15 @@ const getSvgCurve = (svg) => {
   left: 0;
   width: 100%;
   height: 100%;
+  @include mini {
+    max-height: toRem(100);
+  }
   &.curve-1 {
     position: relative;
     margin-top: auto;
+    @include mini {
+      max-width: toRem(134);
+    }
   }
   &:not(.curve-1) {
     :deep(svg) {
@@ -211,6 +241,10 @@ const getSvgCurve = (svg) => {
   }
   :deep(svg) {
     height: 100%;
+    @include mini {
+      width: 100%;
+      height: unset;
+    }
     path {
       stroke: var(--curve-stroke-color);
     }

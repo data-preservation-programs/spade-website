@@ -96,6 +96,9 @@ onBeforeUnmount(() => {
   position: relative;
   padding-top: 0;
   padding-bottom: toRem(50);
+  @include mini {
+    padding-bottom: toRem(24);
+  }
   &:before {
     content: '';
     position: absolute;
@@ -113,14 +116,37 @@ onBeforeUnmount(() => {
   padding-bottom: 4.4375rem;
   background-color: $whiteLilac;
   z-index: 10;
+  @include mini {
+    padding-bottom: toRem(4);
+  }
   .section-background {
     position: absolute;
     top: calc(100% - 1px);
     left: -2px;
     width: calc(100% + 0.25rem);
+    @include mini {
+
+    }
+  }
+  div[data-block-id="col_1-small"] {
+    display: none;
+    @include small {
+      display: block;
+    }
+  }
+  div[data-block-id="col_2"] {
+    .column-content {
+      position: relative;
+    }
   }
   .text-block {
     padding: 0 6.4%;
+    @include small {
+      margin-top: toRem(41);
+    }
+    @include tiny {
+      padding: 0;
+    }
   }
   .image-block {
     padding-left: 6.4%;
@@ -128,17 +154,48 @@ onBeforeUnmount(() => {
     @include large {
       padding-left: 4rem;
     }
+    @include small {
+      padding: 0 6.4%;
+    }
+    @include mini {
+      position: relative;
+      padding-right: 0;
+      padding-left: toRem(24);
+      height: toRem(281);
+      img {
+        display: none;
+      }
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: toRem(24);
+        width: calc(100% - toRem(24));
+        height: 100%;
+        border-radius: toRem(10);
+        background-image: url('/images/man-standing-in-server-room.jpg');
+        background-repeat: no-repeat;
+        background-size: 440px 376.5px;
+        background-position: -7px -68px;
+      }
+    }
   }
   .graph-card {
     position: absolute;
-    top: 0;
-    left: calc(50% + 0.5rem);
+    top: toRem(-43);
+    left: 0;
     @include medium {
-      transform: scale(0.8) translate(-1rem);
+      transform: scale(0.8) translate(-1rem, -2rem);
+    }
+    @include mini {
+      transform: none;
     }
   }
   .card-list-block {
     margin: toRem(70) -0.5rem 0 -0.5rem;
+    @include mini {
+      margin: toRem(44) -0.5rem 0 -0.5rem;
+    }
   }
 }
 
