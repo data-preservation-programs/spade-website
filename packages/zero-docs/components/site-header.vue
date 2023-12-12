@@ -94,7 +94,8 @@ const defaultSelectedLanguage = languageOptions.value.indexOf(route.params.langu
 #site-header {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;;
+  align-items: center;
+  justify-content: space-between;
   position: fixed;
   top: 0;
   left: 0;
@@ -128,8 +129,8 @@ const defaultSelectedLanguage = languageOptions.value.indexOf(route.params.langu
 #site-nav {
   display: flex;
   flex-direction: row;
-  position: relative;
-  padding-left: 2rem;
+  position: absolute;
+  left: calc($sidebarWidth + 2.5rem);
   @include large {
     padding-left: 0.25rem;
   }
@@ -139,6 +140,7 @@ const defaultSelectedLanguage = languageOptions.value.indexOf(route.params.langu
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   position: relative;
   @include large {
     &:not(:last-child) {
@@ -157,10 +159,10 @@ const defaultSelectedLanguage = languageOptions.value.indexOf(route.params.langu
   &:before {
     content: '';
     position: absolute;
-    bottom: 0;
-    width: 100%;
+    bottom: toRem(-7);
+    width: 80%;
     height: 0px;
-    background-color: var(--theme-color);
+    background-color: var(--primary-accent-color);
     transition: 150ms ease-out;
   }
   &.active {
@@ -170,7 +172,7 @@ const defaultSelectedLanguage = languageOptions.value.indexOf(route.params.langu
     }
   }
   :deep(.text) {
-    font-weight: 500;
+    font-weight: 600;
   }
 }
 

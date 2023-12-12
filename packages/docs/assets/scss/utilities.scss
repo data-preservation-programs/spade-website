@@ -10,7 +10,7 @@
 // /////////////////////////////////////////////////////////////////// Variables
 // -----------------------------------------------------------------------------
 // ===================================================================== General
-$siteHeaderHeight: toRem(64);
+$siteHeaderHeight: toRem(78);
 $sidebarWidth: $gridWidth * 0.16667;
 $bodyOffsetTop: calc($siteHeaderHeight + 3rem);
 $sidebarPadding: 2rem;
@@ -63,10 +63,12 @@ $replace4: #000000;
 :root {
  --background-color: #{$aliceBlue};
  --background-color__secondary: white;
- --theme-toggle__background-color: #{$aliceBlue};
- --theme-toggle__border-color: #{$alto};
- --theme-toggle__onHover: #{$codGray};
+ --theme-toggle__background-color: #{$wildSand};
+ --theme-toggle__border-color: #{$mercury};
+ --theme-toggle__icon-container: white;
+ --theme-toggle__icon-container__onHover: #{$codGray};
  --theme-toggle__icon__onHover: #{$aliceBlue};
+ --primary-accent-color: #{$royalBlue};
  --theme-color: #{$woodsmoke};
  --theme-color__inverted: #{$aliceBlue};
  --heading-color: #{$bigStone};
@@ -96,7 +98,8 @@ $replace4: #000000;
  --background-color__secondary: black;
  --theme-toggle__background-color: #383838;
  --theme-toggle__border-color: #5A5A5A;
- --theme-toggle__onHover: #{$aliceBlue};
+ --theme-toggle__icon-container: #{$aliceBlue};
+ --theme-toggle__icon-container__onHover: white;
  --theme-toggle__icon__onHover: #{$codGray};
  --theme-color: #{$aliceBlue};
  --theme-color__inverted: #{$codGray};

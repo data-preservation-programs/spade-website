@@ -111,7 +111,7 @@ const nextSection = currentPage?.pageIndex === currentPage?.dirPageCount - 1 ? c
   flex-direction: row;
   justify-content: space-between;
   margin-top: 3rem;
-  padding-right: 2.5rem;
+  padding: 0 2.5rem;
   &.single {
     justify-content: flex-end;
   }

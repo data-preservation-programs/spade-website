@@ -40,7 +40,7 @@ const { data: Settings } = await useAsyncData('settings', () => {
     where: {
       _file: { $contains: 'data/settings.json' }
     }
-  }).find()
+  }).findOne()
 })
 
 docsStore.setSettings(Settings.value)
