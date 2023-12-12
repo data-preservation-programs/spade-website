@@ -7,7 +7,7 @@
           <div class="grid-noGutter full">
 
             <div class="col-8">
-              <section class="section-support">
+              <section v-if="support" class="section-support">
 
                 <div class="heading">
                   {{ support.heading }}
@@ -30,7 +30,7 @@
             </div>
 
             <div class="col-4">
-              <section class="section-help">
+              <section v-if="help" class="section-help">
 
                 <div class="heading">
                   {{ help.heading }}
@@ -52,7 +52,7 @@
             </div>
 
             <div class="col-12">
-              <section class="section-legal">
+              <section v-if="legal" class="section-legal">
 
                 <div class="heading">
                   {{ legal.heading }}
@@ -96,9 +96,9 @@ const { data: Footer } = await useAsyncData( 'footer', async () => {
 }, { watch: [routeLang] } )
 
 // ==================================================================== Computed
-const support = computed(() => Footer.value.panel_left)
-const help = computed(() => Footer.value.panel_right)
-const legal = computed(() => Footer.value.panel_bottom)
+const support = computed(() => Footer?.value?.panel_left)
+const help = computed(() => Footer?.value?.panel_right)
+const legal = computed(() => Footer?.value?.panel_bottom)
 
 </script>
 
