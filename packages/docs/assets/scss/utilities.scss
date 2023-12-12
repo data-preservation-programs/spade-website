@@ -36,6 +36,7 @@ $melrose: #B2CDFF;
 $mineShaft: #242424;
 $linkWater: #DEE9F6; // highlighted paragraph background
 $mercury: #E7E7E7;
+$periwinkleGray: #CFD7EE;
 
 
 // ------------------------------------------------------------------- from base
@@ -86,6 +87,8 @@ $replace4: #000000;
  --algolia__highlight: #{$royalBlue}; // not used because contrast too intense
  --api-preview__http-status-code__background-color: #{$mercury};
  --api-preview__http-status-code__color: #{$blueViolet};
+ --scrollbar-background-color: var(--background-color);
+ --scrollbar-thumb-color: $periwinkleGray;
 }
 
 .dark {
