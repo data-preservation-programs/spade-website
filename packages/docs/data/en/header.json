@@ -23,6 +23,6 @@
   ],
   "toolbar": {
     "github_url": "https://github.com/undone-labs/docs-starter",
-    "language_options": ["EN", "中文", "ES"]
+    "language_options": [{ "slug": "EN", "name": "English"}, { "slug": "ZH", "name": "中文"}, {"slug": "ES", "name": "Español"}]
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <ZeroDropdown
     :display-selected="true"
-    :default-option="props.options[defaultSelectedIndex]"
+    :default-option="props.options[defaultSelectedIndex].slug"
     @option-selected="handleOptionSelect">
     <!-- :default-option="props.options[0]" -->
 
@@ -15,10 +15,10 @@
     <template #dropdown-panel="{ setSelected, isSelected }">
       <button
         v-for="option in props.options"
-        :key="option"
-        :class="['dropdown-option', { selected: isSelected(option) }]"
-        @click="setSelected(option)">
-        {{ option }}
+        :key="option.slug"
+        :class="['dropdown-option', { selected: isSelected(option.slug) }]"
+        @click="setSelected(option.slug)">
+        {{ option.name }} [{{ option.slug }}]
       </button>
     </template>
 
@@ -50,7 +50,7 @@ const route = useRoute()
  */
 const handleOptionSelect = option => {
   if (process.dev) {
-    const optionLowerCase = option.toLowerCase()
+    const optionLowerCase = option.slug.toLowerCase()
     docsStore.setLanguage(optionLowerCase)
     navigateTo(`/${optionLowerCase}${route.params.slug.reduce((acc, slugStr) => { return acc.concat('/', slugStr) }, '')}`)
   }
@@ -60,14 +60,14 @@ const handleOptionSelect = option => {
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
 :deep(.panel-container) {
+  left: 0;
   padding-top: 1rem;
 }
 
 :deep(.panel) {
-  border: 1px solid var(--divider);
-  background-color: var(--background-color);
-  border-radius: 1rem;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border: 2px solid var(--divider);
+  background-color: var(--background-color__secondary);
+  border-radius: 0;
 }
 
 .selector {
@@ -105,15 +105,19 @@ const handleOptionSelect = option => {
 
 .dropdown-option {
   padding: toRem(5) toRem(10);
+  width: 100%;
   white-space: nowrap;
   transition: 500ms;
+  text-align: right;
+  font-weight: 600;
+  &:not(:last-child){
+    border-bottom: 2px solid var(--divider);
+  }
   &:hover {
-    color: var(--link-color);
+    background-color: $linkWater;
   }
   &.selected {
-    font-weight: 500;
     cursor: default;
-    color: var(--link-color);
   }
 }
 </style>

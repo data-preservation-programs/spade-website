@@ -86,7 +86,7 @@ const links = computed(() => Header.value.navigation)
 const githubUrl = computed(() => Header.value.toolbar.github_url)
 const languageOptions = computed(() => Header.value.toolbar.language_options)
 
-const defaultSelectedLanguage = languageOptions.value.indexOf(route.params.language.toUpperCase()) || 0
+const defaultSelectedLanguage = languageOptions.value.findIndex(option => option.slug === route.params.language.toUpperCase())
 </script>
 
 <style lang="scss" scoped>

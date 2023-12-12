@@ -31,12 +31,12 @@ const toggleTheme = () => {
 </script>
 
 <style lang="scss" scoped>
-$toggleHeight: toRem(30);
+$toggleHeight: toRem(35);
 
 // ///////////////////////////////////////////////////////////////////// General
 #theme-toggle {
   display: flex;
-  width: toRem(50);
+  width: toRem(70);
   height: $toggleHeight;
   border: 2px solid var(--theme-toggle__border-color);
   border-radius: toRem(17.5);

@@ -101,7 +101,7 @@ export default defineNuxtConfig({
     modules: {
       button: { enable: true },
       algolia: {
-        enable: false,
+        enable: true,
         apiKey: process.env.ALGOLIA_API_KEY,
         applicationId: process.env.ALGOLIA_APPLICATION_ID,
         indexName: process.env.ALGOLIA_INDEX_ID,
