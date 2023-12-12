@@ -1,5 +1,449 @@
-/**
- * This is your typography file. It is recommended that you follow the same SCSS
- * structure as in the `zero-docs` package by copying the `typography.scss` file
- * there and then modifying it to suit your needs.
- */
+// ////////////////////////////////////////////////////////////////// Typography
+// -----------------------------------------------------------------------------
+// ==================================================================== Families
+$font_Primary: 'SuisseIntl', sans-serif, monospace;
+$font_Heading: 'Sora', sans-serif, monospace;
+$font_Mono: 'PFD in Mono', sans-serif, monospace;
+
+//////////////////////////////////////////////////////////////////// Suisse Intl
+// -----------------------------------------------------------------------------
+@font-face {
+  font-family: 'SuisseIntl';
+  src: url('SuisseIntl-Light.eot');
+  src: url('SuisseIntl-Light.eot?#iefix') format('embedded-opentype'),
+    url('SuisseIntl-Light.woff2') format('woff2'),
+    url('SuisseIntl-Light.otf') format('opentype'),
+    url('SuisseIntl-Light.svg#SuisseIntl-Light') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SuisseIntl';
+  src: url('SuisseIntl-LightItalic.eot');
+  src: url('SuisseIntl-LightItalic.eot?#iefix') format('embedded-opentype'),
+    url('SuisseIntl-LightItalic.woff2') format('woff2'),
+    url('SuisseIntl-LightItalic.otf') format('opentype'),
+    url('SuisseIntl-LightItalic.svg#SuisseIntl-LightItalic') format('svg');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'SuisseIntl';
+  src: url('SuisseIntl-Regular.eot');
+  src: url('SuisseIntl-Regular.eot?#iefix') format('embedded-opentype'),
+    url('SuisseIntl-Regular.woff2') format('woff2'),
+    url('SuisseIntl-Regular.otf') format('opentype'),
+    url('SuisseIntl-Regular.svg#SuisseIntl-Regular') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SuisseIntl';
+  src: url('SuisseIntl-RegularItalic.eot');
+  src: url('SuisseIntl-RegularItalic.eot?#iefix') format('embedded-opentype'),
+    url('SuisseIntl-RegularItalic.woff2') format('woff2'),
+    url('SuisseIntl-RegularItalic.otf') format('opentype'),
+    url('SuisseIntl-RegularItalic.svg#SuisseIntl-RegularItalic') format('svg');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'SuisseIntl';
+  src: url('SuisseIntl-Book.eot');
+  src: url('SuisseIntl-Book.eot?#iefix') format('embedded-opentype'),
+    url('SuisseIntl-Book.woff2') format('woff2'),
+    url('SuisseIntl-Book.otf') format('opentype'),
+    url('SuisseIntl-Book.svg#SuisseIntl-Book') format('svg');
+  font-weight: 450;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SuisseIntl';
+  src: url('SuisseIntl-BookItalic.eot');
+  src: url('SuisseIntl-BookItalic.eot?#iefix') format('embedded-opentype'),
+    url('SuisseIntl-BookItalic.woff2') format('woff2'),
+    url('SuisseIntl-BookItalic.otf') format('opentype'),
+    url('SuisseIntl-BookItalic.svg#SuisseIntl-BookItalic') format('svg');
+  font-weight: 450;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'SuisseIntl';
+  src: url('SuisseIntl-Medium.eot');
+  src: url('SuisseIntl-Medium.eot?#iefix') format('embedded-opentype'),
+    url('SuisseIntl-Medium.woff2') format('woff2'),
+    url('SuisseIntl-Medium.otf') format('opentype'),
+    url('SuisseIntl-Medium.svg#SuisseIntl-Medium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SuisseIntl';
+  src: url('SuisseIntl-MediumItalic.eot');
+  src: url('SuisseIntl-MediumItalic.eot?#iefix') format('embedded-opentype'),
+    url('SuisseIntl-MediumItalic.woff2') format('woff2'),
+    url('SuisseIntl-MediumItalic.otf') format('opentype'),
+    url('SuisseIntl-MediumItalic.svg#SuisseIntl-MediumItalic') format('svg');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'SuisseIntl';
+  src: url('SuisseIntl-SemiBold.eot');
+  src: url('SuisseIntl-SemiBold.eot?#iefix') format('embedded-opentype'),
+    url('SuisseIntl-SemiBold.woff2') format('woff2'),
+    url('SuisseIntl-SemiBold.otf') format('opentype'),
+    url('SuisseIntl-SemiBold.svg#SuisseIntl-SemiBold') format('svg');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SuisseIntl';
+  src: url('SuisseIntl-SemiBoldItalic.eot');
+  src: url('SuisseIntl-SemiBoldItalic.eot?#iefix') format('embedded-opentype'),
+    url('SuisseIntl-SemiBoldItalic.woff2') format('woff2'),
+    url('SuisseIntl-SemiBoldItalic.otf') format('opentype'),
+    url('SuisseIntl-SemiBoldItalic.svg#SuisseIntl-SemiBoldItalic') format('svg');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'SuisseIntl';
+  src: url('SuisseIntl-Bold.eot');
+  src: url('SuisseIntl-Bold.eot?#iefix') format('embedded-opentype'),
+    url('SuisseIntl-Bold.woff2') format('woff2'),
+    url('SuisseIntl-Bold.otf') format('opentype'),
+    url('SuisseIntl-Bold.svg#SuisseIntl-Bold') format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SuisseIntl';
+  src: url('SuisseIntl-BoldItalic.eot');
+  src: url('SuisseIntl-BoldItalic.eot?#iefix') format('embedded-opentype'),
+    url('SuisseIntl-BoldItalic.woff2') format('woff2'),
+    url('SuisseIntl-BoldItalic.otf') format('opentype'),
+    url('SuisseIntl-BoldItalic.svg#SuisseIntl-BoldItalic') format('svg');
+  font-weight: 700;
+  font-style: italic;
+}
+
+
+// ///////////////////////////////////////////////////////// Basic Styles Mixins
+// -----------------------------------------------------------------------------
+@mixin h1 {
+  font-size: toRem(36);
+  line-height: leading(50, 36);
+  font-weight: 700;
+  letter-spacing: 0em;
+}
+
+@mixin h2 {
+  font-size: toRem(30);
+  line-height: leading(42, 30);
+  font-weight: 700;
+  letter-spacing: 0em;
+}
+
+@mixin h3 {
+  font-size: toRem(24);
+  line-height: leading(34, 24);
+  font-weight: 500;
+  letter-spacing: 0em;
+}
+
+@mixin h4 {
+  font-size: toRem(18);
+  line-height: leading(25, 18);
+  font-weight: 500;
+}
+
+@mixin h5 {
+  font-size: toRem(16);
+  line-height: leading(24, 16);
+  font-weight: 500;
+}
+
+@mixin h6 {
+  font-size: toRem(16);
+  line-height: leading(24, 16);
+  font-weight: 500;
+}
+
+@mixin p1 {
+  font-size: toRem(16);
+  line-height: leading(27, 16);
+  font-weight: 400;
+}
+
+@mixin p2 {
+  font-size: toRem(14);
+  line-height: leading(21, 14);
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+@mixin inlineCode {
+  color: var(--code__inline__color);
+  background-color: var(--code__inline__background-color);
+  padding: toRem(4) toRem(8);
+  border-radius: toRem(4);
+  font-family: $font_Mono;
+  font-size: toRem(14);
+  white-space: break-spaces;
+  transition: background-color 500ms, color 500ms;
+}
+
+@mixin blockCode {
+  background-color: var(--code__block__background-color);
+  padding: toRem(10) toRem(16);
+  margin-bottom: 1.25rem;
+  border-radius: 0.625rem;
+  font-size: toRem(13);
+  line-height: leading(21, 14);
+  font-family: $font_Mono;
+  white-space: break-spaces;
+  transition: background-color 500ms, color 500ms;
+}
+
+@mixin p1Link {
+  @include p1;
+  font-weight: 500;
+  color: var(--link-color);
+  transition: color 500ms;
+  &:hover {
+    color: var(--link-hover-color);
+  }
+}
+
+// ////////////////////////////////////////////////////////////////////// Sora
+// -----------------------------------------------------------------------------
+@font-face {
+  font-family: 'Sora';
+  src: url('Sora-Thin.eot');
+  src: url('Sora-Thin.eot?#iefix') format('embedded-opentype'),
+    url('Sora-Thin.woff2') format('woff2'),
+    url('Sora-Thin.ttf') format('truetype'),
+    url('Sora-Thin.svg#Sora-Thin') format('svg');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sora';
+  src: url('Sora-ExtraLight.eot');
+  src: url('Sora-ExtraLight.eot?#iefix') format('embedded-opentype'),
+    url('Sora-ExtraLight.woff2') format('woff2'),
+    url('Sora-ExtraLight.ttf') format('truetype'),
+    url('Sora-ExtraLight.svg#Sora-ExtraLight') format('svg');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sora';
+  src: url('Sora-Light.eot');
+  src: url('Sora-Light.eot?#iefix') format('embedded-opentype'),
+    url('Sora-Light.woff2') format('woff2'),
+    url('Sora-Light.ttf') format('truetype'),
+    url('Sora-Light.svg#Sora-Light') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sora';
+  src: url('Sora-Regular.eot');
+  src: url('Sora-Regular.eot?#iefix') format('embedded-opentype'),
+    url('Sora-Regular.woff2') format('woff2'),
+    url('Sora-Regular.ttf') format('truetype'),
+    url('Sora-Regular.svg#Sora-Regular') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sora';
+  src: url('Sora-Medium.eot');
+  src: url('Sora-Medium.eot?#iefix') format('embedded-opentype'),
+    url('Sora-Medium.woff2') format('woff2'),
+    url('Sora-Medium.ttf') format('truetype'),
+    url('Sora-Medium.svg#Sora-Medium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sora';
+  src: url('Sora-SemiBold.eot');
+  src: url('Sora-SemiBold.eot?#iefix') format('embedded-opentype'),
+    url('Sora-SemiBold.woff2') format('woff2'),
+    url('Sora-SemiBold.ttf') format('truetype'),
+    url('Sora-SemiBold.svg#Sora-SemiBold') format('svg');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sora';
+  src: url('Sora-Bold.eot');
+  src: url('Sora-Bold.eot?#iefix') format('embedded-opentype'),
+    url('Sora-Bold.woff2') format('woff2'),
+    url('Sora-Bold.ttf') format('truetype'),
+    url('Sora-Bold.svg#Sora-Bold') format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sora';
+  src: url('Sora-ExtraBold.eot');
+  src: url('Sora-ExtraBold.eot?#iefix') format('embedded-opentype'),
+    url('Sora-ExtraBold.woff2') format('woff2'),
+    url('Sora-ExtraBold.ttf') format('truetype'),
+    url('Sora-ExtraBold.svg#Sora-Bold') format('svg');
+  font-weight: 800;
+  font-style: normal;
+}
+
+
+// ////////////////////////////////////////////////////////////////////// Sizing
+// -----------------------------------------------------------------------------
+h1, h2, h3, h4, h5, h6, li, p {
+  transition: color 500ms;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-family: $font_Heading;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  display: block;
+  line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: none;
+}
+
+h1, .h1 {
+  @include h1;
+}
+
+h2, .h2 {
+  @include h2;
+}
+
+h3, .h3 {
+  @include h3;
+}
+
+h4, .h4 {
+  @include h4;
+}
+
+h5, .h5 {
+  @include h5;
+}
+
+h6, .h6 {
+  @include h6;
+}
+
+p,
+.p1,
+div,
+a,
+button {
+  font-family: $font_Primary;
+  @include p1;
+}
+
+:not(pre) > code {
+  @include inlineCode;
+}
+
+// /////////////////////////////////////////////////////////// Navigation Mixins
+// -----------------------------------------------------------------------------
+@mixin navigation {
+  font-family: $font_Primary;
+  font-size: toRem(16);
+  line-height: leading(25, 16);
+  font-weight: 700;
+}
+
+// ============================================================== Sidebar Mixins
+@mixin sidebarSectionTitle {
+  font-family: $font_Primary;
+  @include h5;
+}
+
+@mixin sidebar {
+  font-family: $font_Primary;
+  @include p2;
+  color: var(--sidebar-text-color);
+  text-align: left;
+}
+
+// ======================================================== Magellan Menu Mixins
+
+@mixin magellanTitle {
+  font-size: toRem(11);
+  line-height: leading(28, 11);
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+@mixin magellanLink {
+  font-size: toRem(14);
+  line-height: 1.2;
+  letter-spacing: 0.2px;
+  white-space: break-spaces;
+  color: var(--theme-color);
+  transition: color 500ms;
+  &:hover {
+    cursor: pointer;
+    color: var(--link-color);
+  }
+}
+
+// ///////////////////////////////////////////////////////////////// Misc Mixins
+// -----------------------------------------------------------------------------
+@mixin customBlockTitle {
+  font-size: toRem(15);
+  line-height: leading(24, 15);
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  margin-bottom: toRem(8);
+}
+
+@mixin customBlockText {
+  color: $softBlack;
+  font-size: toRem(14);
+  line-height: (22, 14);
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  margin-bottom: toRem(17);
+}
