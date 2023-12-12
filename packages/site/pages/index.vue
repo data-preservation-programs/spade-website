@@ -228,6 +228,10 @@ onBeforeUnmount(() => {
   position: relative;
   background-color: white;
   z-index: 10;
+  @include small {
+    padding-top: 0;
+    padding-bottom: toRem(18);
+  }
   .section-background {
     position: absolute;
     bottom: calc(100% - toRem(24));
@@ -239,10 +243,91 @@ onBeforeUnmount(() => {
       width: calc(100% + 0.5rem);
     }
   }
+  .image-block,
+  .text-block {
+    padding: 0 6.4%;
+  }
+  @include medium {
+    .image-block {
+      padding-left: 0;
+    }
+    .text-block {
+      padding-right: 0;
+    }
+  }
+  @include small {
+    .image-block,
+    .text-block {
+      padding: 0;
+    }
+    .image-block {
+      margin-bottom: toRem(42);
+    }
+  }
+}
+
+:deep(#section-card-list) {
+  padding-top: toRem(104);
+  background-color: $whiteLilac;
+  @include mini {
+    padding-top: toRem(31);
+    padding-bottom: toRem(28);
+  }
+  .card-list-block {
+    @include small {
+      padding: 0 toRem(24);
+    }
+    @include mini {
+      padding: 0 toRem(24);
+    }
+    @include tiny {
+      padding: 0;
+    }
+    .card-wrapper {
+      @include mini {
+        padding-bottom: toRem(8) !important;
+      }
+    }
+    .graph-card {
+      border-radius: toRem(20);
+      .caption.before {
+        margin-bottom: toRem(30);
+      }
+      .graph {
+        padding: 0 toRem(2);
+        height: unset !important;
+        // width: 100%;
+        svg {
+          width: 100%;
+        }
+      }
+      .curve {
+        @include mini {
+          max-height: unset !important;
+          max-width: unset !important;
+        }
+      }
+      @include mini {
+        margin: 0 -0.25rem;
+        min-height: toRem(212);
+        border-radius: toRem(10);
+      }
+    }
+  }
 }
 
 :deep(#section-banner-2) {
   position: relative;
+  padding-top: toRem(14);
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(50% - 1.5rem);
+    background-color: $whiteLilac;
+  }
   .image-block {
     transform: scaleX(-1);
   }

@@ -4,9 +4,11 @@
       <div
         v-for="(card, i) in cards"
         :key="`card-col-${i}`"
-        :class="[columns, 'card-wrapper']">
+        :class="[card.col || columns, 'card-wrapper']">
 
-        <Card :card="card" />
+        <GraphCard v-if="card.type === 'graph'" :block="card" />
+
+        <Card v-else :card="card" />
 
       </div>
     </div>
@@ -16,13 +18,15 @@
 <script>
 // ====================================================================== Import
 import Card from '@/components/card'
+import GraphCard from '@/components/graph-card'
 
 // ====================================================================== Export
 export default {
   name: 'CardListBlock',
 
   components: {
-    Card
+    Card,
+    GraphCard
   },
 
   props: {
