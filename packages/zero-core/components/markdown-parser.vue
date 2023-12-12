@@ -1,7 +1,7 @@
 <template>
 
   <div
-    ref="markdown"
+    ref="markdownRef"
     class="markdown"
     v-html="parsed" />
 
@@ -37,7 +37,10 @@ const textNotCopiedUrl = 'Click to copy link'
 const textNotCopiedCode = 'Copy'
 const zeroStore = useZeroStore()
 const parsed = ref(null)
+const markdownRef = ref(null)
 let copyButtons = []
+
+const emit = defineEmits(['foundHeadingNodes'])
 
 // ============================================================== [Setup] Kramed
 hljs.registerLanguage('javascript', javascript)
@@ -103,42 +106,34 @@ renderer.code = function (code, language) {
 
 parsed.value = Kramed(props.markdown, { renderer })
 
-// ======================================================================= Watch
-watch(
-  () => props.markdown,
-  incoming => {
-    parsed.value = Kramed(incoming, { renderer })
-  }
-)
-
-// ======================================================================= Hooks
-onMounted(async () => {
-  await nextTick(() => {
-    copyButtons = document.querySelectorAll('.markdown .copy-button')
-    const len = copyButtons.length
-    for (let i = 0; i < len; i++) {
-      const button = copyButtons[i]
-      const hash = button.getAttribute('data-hash')
-      const type = button.getAttribute('data-type')
-      const text = type === 'heading' ? `${baseURL}#${hash}` : button.nextElementSibling.textContent
-      button.addEventListener('click', () => {
-        zeroAddTextToClipboard(text)
-        zeroStore.setClipboard(text)
-        clearCopiedStates()
-        if (type === 'heading') {
-          button.setAttribute('data-tooltip', textCopied)
-        } else if (type === 'code') {
-          button.innerText = textCopied
-        }
-      })
-    }
-  })
-})
-
 // ===================================================================== Methods
+/**
+ * @method initializeCopyButtons
+ */
+
+const initializeCopyButtons = () => {
+  copyButtons = document.querySelectorAll('.markdown .copy-button')
+  const len = copyButtons.length
+  for (let i = 0; i < len; i++) {
+    const button = copyButtons[i]
+    const hash = button.getAttribute('data-hash')
+    const type = button.getAttribute('data-type')
+    const text = type === 'heading' ? `${baseURL}#${hash}` : button.nextElementSibling.textContent
+    button.addEventListener('click', () => {
+      zeroAddTextToClipboard(text)
+      zeroStore.setClipboard(text)
+      clearCopiedStates()
+      type === 'heading' ?
+        button.setAttribute('data-tooltip', textCopied) :
+        button.innerText = textCopied
+    })
+  }
+}
+
 /**
  * @method clearCopiedStates
  */
+
 const clearCopiedStates = () => {
   const len = copyButtons.length
   for (let i = 0; i < len; i++) {
@@ -151,4 +146,29 @@ const clearCopiedStates = () => {
     }
   }
 }
+
+/**
+ * @method collectAndEmitHeadingNodes
+ */
+
+const collectAndEmitHeadingNodes = () => {
+  const nodes = Array.from(markdownRef.value.querySelectorAll('*[id]'))
+  emit('foundHeadingNodes', nodes)
+}
+
+// ======================================================================= Watch
+watch(
+  () => props.markdown,
+  incoming => {
+    parsed.value = Kramed(incoming, { renderer })
+  }
+)
+
+// ======================================================================= Hooks
+onMounted(async () => {
+  await nextTick(() => {
+    initializeCopyButtons()
+    collectAndEmitHeadingNodes()
+  })
+})
 </script>

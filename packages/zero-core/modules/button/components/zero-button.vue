@@ -19,7 +19,7 @@ import useUuid from '../../../composables/uuid'
 
 // ======================================================================= Props
 const props = defineProps({
-  tag: { // 'button', 'a' or 'nuxt-link'
+  tag: {
     type: String,
     required: false,
     default: 'button'
@@ -34,12 +34,12 @@ const props = defineProps({
     required: false,
     default: undefined
   },
-  loader: {
+  id: {
     type: [String, Object],
     required: false,
     default: undefined
   },
-  disabled: {
+  forceDisabled: {
     type: Boolean,
     required: false,
     default: false
@@ -54,19 +54,20 @@ const props = defineProps({
 // ======================================================================= Setup
 const emit = defineEmits(['clicked'])
 const buttonStore = useZeroButtonStore()
-const id = props.loader || useUuid().v4()
-buttonStore.setButton({ id, loading: false })
+if (props.id) {
+  buttonStore.setButton({ id: props.id, loading: false })
+}
 
 // ======================================================================== Data
 const { buttons } = storeToRefs(buttonStore)
 
 // ==================================================================== Computed
-const button = computed(() => buttons.value[id])
-const loading = computed(() => button.value.loading)
+const button = computed(() => buttons.value[props.id])
+const loading = computed(() => button.value?.loading)
+const disabled = computed(() => props.forceDisabled || loading.value)
 const component = computed(() => {
   const tag = props.tag
-  const disabled = props.disabled
-  if (disabled) { return 'button' }
+  if (disabled.value) { return 'button' }
   if (tag !== 'nuxt-link') { return tag }
   return resolveComponent('NuxtLink')
 })
@@ -74,9 +75,9 @@ const component = computed(() => {
 // ===================================================================== Methods
 const clickHandler = (e) => {
   e.stopPropagation()
-  if (!props.disabled) {
-    if (typeof props.loader === 'string') {
-      buttonStore.setButton({ id, loading: true })
+  if (!disabled.value) {
+    if (typeof props.id === 'string') {
+      buttonStore.setButton({ id: props.id, loading: true })
     }
     emit('clicked', e)
   }

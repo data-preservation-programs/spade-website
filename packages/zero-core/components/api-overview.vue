@@ -1,5 +1,5 @@
 <template>
-  <div v-if="headers || queryParameters || responseCodes" class="api-information">
+  <div v-if="headers || queryParameters || responseCodes" class="api-overview">
 
     <!-- =========================================================== headers -->
     <div v-if="headers" class="headers section">
@@ -33,6 +33,58 @@
         {{ getHeading('query_parameters', queryParameters) }}
       </div>
       <template v-for="(parameter, key) in props.queryParameters">
+        <div
+          v-if="key !== '_section_heading'"
+          :key="key"
+          class="entry">
+          <div class="metadata">
+            <div class="key">
+              {{ key }}
+            </div>
+            <div class="type">
+              {{ parameter.type }}
+            </div>
+          </div>
+          <ZeroMarkdownParser
+            v-if="parameter.description"
+            :markdown="parameter.description"
+            class="description" />
+        </div>
+      </template>
+    </div>
+
+    <!-- =================================================== body parameters -->
+    <div v-if="bodyParameters" class="body-parameters section">
+      <div class="heading">
+        {{ getHeading('body_parameters', bodyParameters) }}
+      </div>
+      <template v-for="(parameter, key) in props.bodyParameters">
+        <div
+          v-if="key !== '_section_heading'"
+          :key="key"
+          class="entry">
+          <div class="metadata">
+            <div class="key">
+              {{ key }}
+            </div>
+            <div class="type">
+              {{ parameter.type }}
+            </div>
+          </div>
+          <ZeroMarkdownParser
+            v-if="parameter.description"
+            :markdown="parameter.description"
+            class="description" />
+        </div>
+      </template>
+    </div>
+
+    <!-- =================================================== path parameters -->
+    <div v-if="pathParameters" class="path-parameters section">
+      <div class="heading">
+        {{ getHeading('path_parameters', pathParameters) }}
+      </div>
+      <template v-for="(parameter, key) in props.pathParameters">
         <div
           v-if="key !== '_section_heading'"
           :key="key"
@@ -94,17 +146,27 @@
 // ======================================================================= Props
 const props = defineProps({
   headers: {
-    type: Object,
+    type: [Object, Boolean],
     required: false,
     default: undefined
   },
   queryParameters: {
-    type: Object,
+    type: [Object, Boolean],
+    required: false,
+    default: undefined
+  },
+  bodyParameters: {
+    type: [Object, Boolean],
+    required: false,
+    default: undefined
+  },
+  pathParameters: {
+    type: [Object, Boolean],
     required: false,
     default: undefined
   },
   responseCodes: {
-    type: Object,
+    type: [Object, Boolean],
     required: false,
     default: undefined
   }
@@ -119,6 +181,8 @@ const getHeading = (key, section) => {
   const map = {
     headers: "Headers",
     query_parameters: "Query Parameters",
+    body_parameters: "Body Parameters",
+    path_parameters: "Path Parameters",
     response_codes: "HTTP Response Status Codes"
   }
   return section._section_heading || map[key]
@@ -127,7 +191,7 @@ const getHeading = (key, section) => {
 
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
-.api-information {
+.api-overview {
   margin-top: 3rem;
 }
 

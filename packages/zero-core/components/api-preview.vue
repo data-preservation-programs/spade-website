@@ -1,5 +1,5 @@
 <template>
-  <div class="api-explorer">
+  <div class="api-preview">
     <div
       v-for="(slider, i) in props.sliders"
       :key="`slider-${i}`"
@@ -133,10 +133,10 @@ props.sliders.forEach(slider => {
 .tag {
   font-size: toRem(14);
   font-weight: 500;
-  color: var(--api-explorer__http-status-code__color);
+  color: var(--api-preview__http-status-code__color);
   padding: toRem(3) toRem(7);
   padding-bottom: toRem(1);
-  background-color: var(--api-explorer__http-status-code__background-color);
+  background-color: var(--api-preview__http-status-code__background-color);
   border-radius: toRem(2);
   transition: background-color 500ms, color 500ms;
 }

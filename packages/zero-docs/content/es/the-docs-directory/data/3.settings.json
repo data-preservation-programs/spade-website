@@ -1,0 +1,39 @@
+{
+  "query_parameters": {
+    "_section_heading": "Parameters",
+    "themeToggleVisible": {
+      "type": "boolean",
+      "description": "Toggle the visibility of the theme toggle component in the site header"
+    },
+    "languageSelectorVisible": {
+      "type": "boolean",
+      "description": "Toggle the visibility of the language selector dropdown in the site header"
+    },
+    "theme": {
+      "type": "string",
+      "description": "Set the default theme | `light` or `dark`"
+    }
+  },
+  "sliders": [
+    {
+      "slides": [
+        {
+          "language": "json",
+          "tab": "Example Settings File",
+          "content": {
+            "themeToggleVisible": true,
+            "theme": "light"
+          }
+        },
+        {
+          "language": "json",
+          "tab": "Schema",
+          "content": {
+            "themeToggleVisible": "boolean",
+            "theme": "string"
+          }
+        }
+      ]
+    }
+  ]
+}

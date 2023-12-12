@@ -4,8 +4,8 @@ import { defineNuxtPlugin } from '#imports'
 
 // /////////////////////////////////////////////////////////////////// Functions
 // -----------------------------------------------------------------------------
-// /////////////////////////////////////////////////////////////// listenToGithubLogin
-const listenToGithubLogin = (siteUrl) => {
+// ///////////////////////////////////////////////////////// listenToGithubLogin
+const listenToGithubLogin = siteUrl => {
   if (process.client) {
     window.addEventListener('message', async (e) => {
       const data = e.data

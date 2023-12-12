@@ -83,18 +83,23 @@
 
 <script setup>
 // ======================================================================== Data
-const { data: Footer } = await useAsyncData('footer', async () => {
-  const content = await queryContent({
-    where: {
-      _file: { $contains: 'data/footer.json' }
-    }
-  }).find()
-  return content[0]
-})
+const route = useRoute()
+const routeLang = computed(() => route.params.language)
 
-const support = Footer.value.panel_left
-const help = Footer.value.panel_right
-const legal = Footer.value.panel_bottom
+const { data: Footer } = await useAsyncData( 'footer', async () => {
+    const content = await queryContent({
+      where: {
+        _file: { $contains: `data/${routeLang.value}/footer.json` }
+      }
+    }).find()
+    return content[0]
+}, { watch: [routeLang] } )
+
+// ==================================================================== Computed
+const support = computed(() => Footer.value.panel_left)
+const help = computed(() => Footer.value.panel_right)
+const legal = computed(() => Footer.value.panel_bottom)
+
 </script>
 
 <style lang="scss" scoped>

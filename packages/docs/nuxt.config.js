@@ -1,7 +1,7 @@
-console.log('⚡️ load:docs')
-
 // ///////////////////////////////////////////////////////////////////// Imports
 // -----------------------------------------------------------------------------
+import Path from 'path'
+
 import { defineNuxtConfig } from 'nuxt/config'
 
 // /////////////////////////////////////////////////////////// Variables & Setup
@@ -29,9 +29,6 @@ const backendPort = (function () {
 export default defineNuxtConfig({
   // =================================================================== General
   devtools: { enabled: false },
-  site: {
-    url: env === 'development' ? `${baseUrls[env]}:${frontendPort}` : baseUrls[env]
-  },
   extends: [
     '../zero-docs',
     '../zero-core'
@@ -82,20 +79,15 @@ export default defineNuxtConfig({
   // ========================================================= [Layer] zero-core
   zero: {
     components: {
-      ApiExplorer: { enable: true },
-      ApiInformation: { enable: true },
+      ApiPreview: { enable: true },
+      ApiOverview: { enable: true },
       Dropdown: { enable: true },
-      MarkdownParser: { enable: true },
-      Paginator: { enable: false },
-      TabbedSlider: { enable: false }
+      MarkdownParser: { enable: true }
     },
     composables: {
       addTextToClipboard: { enable: true },
       delay: { enable: true },
-      ls: {
-        enable: true
-        // prefix: 'docsstarter__'
-      },
+      ls: { enable: true },
       scrollTo: { enable: true },
       slugify: { enable: true },
       throttle: { enable: true },
@@ -108,34 +100,14 @@ export default defineNuxtConfig({
     },
     modules: {
       button: { enable: true },
-      form: { enable: false },
       algolia: {
-        enable: false
-        // apiKey: process.env.ALGOLIA_API_KEY,
-        // applicationId: process.env.ALGOLIA_APPLICATION_ID,
-        // indexName: `${process.env.ALGOLIA_INDEX_ID}__${env}`,
-        // sources: [
-        //   { path: Path.resolve(__dirname, 'content'), contentDirectoryName: 'content' }
-        // ]
-      },
-      auth: {
-        enable: false
-        // redirectUnauthenticated: '',
-        // /**
-        //  * string or object
-        //  *
-        //  * if object, replace part of path with key's value from user (user) db
-        //  * object, for example example:
-        //  *
-        //  * {
-        //  *   path: '/zero-kitchen-sink/:user/redirect-after-login',
-        //  *   match: {
-        //  *     ':user': 'username'
-        //  *   }
-        //  * }
-        //  */
-        // redirectAfterLogin: '',
-        // redirectAfterLogout: ''
+        enable: false,
+        apiKey: process.env.ALGOLIA_API_KEY,
+        applicationId: process.env.ALGOLIA_APPLICATION_ID,
+        indexName: process.env.ALGOLIA_INDEX_ID,
+        sources: [
+          Path.resolve(__dirname, 'content')
+        ]
       }
     }
   },

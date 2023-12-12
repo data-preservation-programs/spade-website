@@ -18,18 +18,17 @@
   width: $gridWidth;
   margin: 0 auto;
   @include gridMaxMQ {
+    width: 100%;
     padding: 0 4.1665%;
   }
   &[class*="-noGutter"] {
     margin: 0 auto;
   }
   &.full {
-    @include gridMaxMQ {
-      width: 100%;
-      padding: 0 0.5rem;
-      &.maxed {
-        max-width: 90rem;
-      }
+    width: 100%;
+    padding: 0 0.5rem;
+    &.maxed {
+      max-width: 90rem;
     }
   }
   &.max-height {

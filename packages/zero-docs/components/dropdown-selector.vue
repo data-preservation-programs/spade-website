@@ -1,8 +1,9 @@
 <template>
   <ZeroDropdown
     :display-selected="true"
-    :default-option="props.options[0]"
+    :default-option="props.options[defaultSelectedIndex]"
     @option-selected="handleOptionSelect">
+    <!-- :default-option="props.options[0]" -->
 
     <template #toggle-button="{ togglePanel, panelOpen, selected }">
       <button :class="['selector', { 'panel-open': panelOpen }]" @click="togglePanel">
@@ -31,18 +32,27 @@ const props = defineProps({
     type: Array,
     required: true,
     default: () => []
+  },
+  defaultSelectedIndex: {
+    type: Number,
+    required: false,
+    default: 0
   }
 })
+
+// ======================================================================== Data
+const docsStore = useZeroDocsStore()
+const route = useRoute()
 
 // ===================================================================== Methods
 /**
  * @method handleOptionSelect
  */
-
 const handleOptionSelect = option => {
   if (process.dev) {
-    console.log(option)
-    // fire i18n here
+    const optionLowerCase = option.toLowerCase()
+    docsStore.setLanguage(optionLowerCase)
+    navigateTo(`/${optionLowerCase}${route.params.slug.reduce((acc, slugStr) => { return acc.concat('/', slugStr) }, '')}`)
   }
 }
 </script>
