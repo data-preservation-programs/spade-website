@@ -402,7 +402,8 @@
       "col_1": {
         "type": "text_block",
         "cols": {
-          "num": "col-6"
+          "num": "col-6_md-8_sm-10_mi-12",
+          "push_left": "off-0_md-2_sm-1_mi-0"
         },
         "theme": "info",
         "h": 3,
@@ -422,13 +423,15 @@
       "col_2": {
         "type": "card_list_block",
         "cols": {
-          "num": "col-6"
+          "num": "col-6_md-8_sm-10_mi-12",
+          "push_left": "off-0_md-2_sm-1_mi-0"
         },
         "card_grid": ["equalHeight"],
         "cards": [
           {
             "col": "col-7",
             "type": "clip",
+            "clipPath": 1,
             "theme": "light-blue",
             "icon": "client",
             "title": "Clients",
@@ -449,6 +452,7 @@
           {
             "col": "col-12",
             "type": "clip",
+            "clipPath": 2,
             "theme": "light-blue",
             "icon": "sp",
             "title": "Storage Providers",

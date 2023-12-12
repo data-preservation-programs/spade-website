@@ -23,7 +23,8 @@
       <ButtonCta
         :to="cta.to"
         :tag="cta.tag"
-        :target="cta.target">
+        :target="cta.target"
+        :theme="cta.theme">
         {{ cta.text }}
       </ButtonCta>
     </div>
@@ -185,7 +186,6 @@ const getIconComponent = (icon) => {
   border-radius: toRem(20);
   background: white;
   color: $woodsmoke;
-  min-height: toRem(321);
   @include mini {
     margin: 0 -0.25rem;
     padding: toRem(15) toRem(10);
@@ -229,7 +229,18 @@ const getIconComponent = (icon) => {
   }
 }
 
+.card.theme__block {
+  min-height: toRem(321);
+}
+
 .card.theme__light-blue {
   background-color: $zircon;
+  padding-left: toRem(43);
+  :deep(.theme__arrow) {
+    padding-left: 0;
+  }
+  .description {
+    margin-bottom: toRem(3);
+  }
 }
 </style>

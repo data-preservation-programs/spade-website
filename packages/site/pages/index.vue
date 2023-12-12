@@ -316,6 +316,9 @@ onBeforeUnmount(() => {
 :deep(#section-banner-2) {
   position: relative;
   padding-top: toRem(14);
+  @include small {
+    padding-bottom: toRem(24);
+  }
   &:before {
     content: '';
     position: absolute;
@@ -333,6 +336,12 @@ onBeforeUnmount(() => {
 :deep(#section-how-it-works) {
   position: relative;
   z-index: 10;
+  padding-top: 2.25rem;
+  padding-bottom: toRem(52);
+  @include small {
+    padding-top: 0;
+    padding-bottom: toRem(16);
+  }
   .section-background {
     position: absolute;
     top: calc(100% - 1px);
@@ -341,6 +350,24 @@ onBeforeUnmount(() => {
   }
   .text-block {
     padding: 0 8% 0 6.4%;
+    @include medium {
+      padding: 0;
+      margin-bottom: toRem(30);
+    }
+  }
+  .card-list-block {
+    @include medium {
+      margin: 0 -0.5rem;
+    }
+    .card-wrapper {
+      min-height: toRem(276);
+      &:last-child {
+        transform: translateY(-1.5rem);
+      }
+    }
+    .card.theme__light-blue {
+      height: 100%;
+    }
   }
 }
 

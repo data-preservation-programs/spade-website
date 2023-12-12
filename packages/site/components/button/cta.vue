@@ -195,7 +195,6 @@ const props = defineProps({
 }
 
 .theme__icon {
-  padding: toRem(9);
   border-radius: 50%;
   padding: toRem(6);
   margin-right: toRem(24);
@@ -216,6 +215,46 @@ const props = defineProps({
   }
   &:hover {
     transform: scale(1.1);
+  }
+}
+
+.theme__arrow {
+  display: block;
+  padding: toRem(10);
+  width: fit-content;
+  .inner-content {
+    position: relative;
+    padding-right: toRem(26);
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: calc(100% - toRem(13));
+      width: toRem(13);
+      height: toRem(13);
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: center;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 13 13' fill='none'%3e%3cpath d='M1.24264 11.7348L11.1421 1.83533M11.1421 1.83533V10.3206M11.1421 1.83533H2.65685' stroke='%233F55E0' stroke-width='2.5'/%3e%3c/svg%3e");
+      transform: translate(0, -50%) rotate(0deg);
+      transition: 200ms ease;
+    }
+  }
+  .button-content {
+    display: flex;
+    font-family: $fontSora;
+    font-size: toRem(16);
+    font-weight: 700;
+    line-height: leading(22, 16);
+    text-transform: uppercase;
+    color: $royalBlue;
+  }
+  &:hover {
+    .inner-content {
+      &:after {
+        transform: translate(0.5rem, -50%) rotate(45deg);
+      }
+    }
   }
 }
 
