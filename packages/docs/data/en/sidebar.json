@@ -104,11 +104,6 @@
     "children": [
       {
         "type": "nuxt-link",
-        "href": "/introduction",
-        "title": "Introduction"
-      },
-      {
-        "type": "nuxt-link",
         "href": "/addresses",
         "title": "Addresses"
       },
