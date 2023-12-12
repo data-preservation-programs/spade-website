@@ -1,6 +1,6 @@
 {
   "themeToggleVisible": true,
-  "languageSelectorVisible": false,
+  "languageSelectorVisible": true,
   "theme": "light",
   "language" : "en"
 }
