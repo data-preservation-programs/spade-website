@@ -16,3 +16,8 @@
       clip-rule="evenodd" />
   </svg>
 </template>
+<style lang="scss" scoped>
+.logo {
+  width: toRem(86);
+}
+</style>
