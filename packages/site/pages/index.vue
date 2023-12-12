@@ -124,9 +124,6 @@ onBeforeUnmount(() => {
     top: calc(100% - 1px);
     left: -2px;
     width: calc(100% + 0.25rem);
-    @include mini {
-
-    }
   }
   div[data-block-id="col_1-small"] {
     display: none;
@@ -333,7 +330,30 @@ onBeforeUnmount(() => {
   }
 }
 
+:deep(#section-how-it-works) {
+  position: relative;
+  z-index: 10;
+  .section-background {
+    position: absolute;
+    top: calc(100% - 1px);
+    left: -2px;
+    width: calc(100% + 0.25rem);
+  }
+  .text-block {
+    padding: 0 8% 0 6.4%;
+  }
+}
+
+:deep(#section-roadmap) {
+  position: relative;
+  z-index: 9;
+  background-color: $blackPearl;
+  padding: 10rem 0;
+}
+
 :deep(#section-operating-principles) {
+  position: relative;
+  z-index: 10;
   background-color: $whiteLilac;
   padding: 0;
   @include small {

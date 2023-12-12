@@ -45,6 +45,7 @@ const tenantIcon = resolveComponent('./icon/tenant')
 const openSourceIcon = resolveComponent('./icon/open-source')
 const spIcon = resolveComponent('./icon/sp')
 const stackIcon = resolveComponent('./icon/stack')
+const clientIcon = resolveComponent('./icon/client')
 
 // ======================================================================= Props
 const props = defineProps({
@@ -71,6 +72,7 @@ const getIconComponent = (icon) => {
     case 'open-source': return openSourceIcon
     case 'sp': return spIcon
     case 'stack': return stackIcon
+    case 'client': return clientIcon
     default: return false
   }
 }
@@ -175,7 +177,8 @@ const getIconComponent = (icon) => {
 }
 
 // /////////////////////////////////////////////////////////////// Theme [Block]
-.card.theme__block {
+.card.theme__block,
+.card.theme__light-blue {
   padding: toRem(30) toRem(24);
   display: flex;
   flex-direction: column;
@@ -224,5 +227,9 @@ const getIconComponent = (icon) => {
       margin-bottom: 0.5rem;
     }
   }
+}
+
+.card.theme__light-blue {
+  background-color: $zircon;
 }
 </style>
