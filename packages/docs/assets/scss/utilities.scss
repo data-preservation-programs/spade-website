@@ -78,7 +78,7 @@ $replace4: #000000;
  --code__inline__background-color: #E4E4E4;
  --sidebar__title-color: #{$woodsmoke};
  --sidebar__title-color__active: #{$woodsmoke};
- --sidebar-text-color: var(--theme-color);
+ --sidebar-text-color: #{$woodsmoke};
  --algolia-backdrop: #{$pickledBluewood};
  --algolia-background: #{$alabaster};
  --algolia__searchbox__background-color: white;
@@ -87,8 +87,8 @@ $replace4: #000000;
  --algolia__highlight: #{$royalBlue}; // not used because contrast too intense
  --api-preview__http-status-code__background-color: #{$mercury};
  --api-preview__http-status-code__color: #{$blueViolet};
- --scrollbar-background-color: var(--background-color);
- --scrollbar-thumb-color: $periwinkleGray;
+ --scrollbar-background-color: #{$aliceBlue};
+ --scrollbar-thumb-color: #{$periwinkleGray};
 }
 
 .dark {
@@ -179,4 +179,24 @@ $replace4: #000000;
 @mixin selection-light {
  ::-moz-selection { background: $melrose; }
  ::selection { background: $melrose; }
+}
+
+@mixin scrollbars(
+  $size: 10px,
+  $thumb-color: var(--scrollbar-thumb-color),
+  $background-color: var(--scrollbar-background-color)
+) {
+  // For Chrome & Safari
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+  }
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+  // Standard version (Firefox only for now)
+  scrollbar-color: $thumb-color $background-color;
 }
