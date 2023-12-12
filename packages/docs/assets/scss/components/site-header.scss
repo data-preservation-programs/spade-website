@@ -1,0 +1,55 @@
+#site-header {
+  align-items: center;
+
+  #site-nav {
+    position: absolute;
+    padding-left: 0;
+    left: calc($sidebarWidth + toRem(50));
+  }
+
+  // ================================================================= Nav Links
+  .site-nav-link {
+    justify-content: center;
+    &::before {
+      bottom: toRem(-7);
+      width: 80%;
+      background-color: var(--primary-accent-color)
+    }
+    .text {
+      font-weight: 600;
+    }
+  }
+  // ============================================================== Theme Toggle
+  #theme-toggle {
+    width: toRem(70);
+  }
+  // ========================================================= Language Selector
+  .dropdown-panel {
+    .selector {
+      &::before {
+        background-color: $periwinkleGray;
+      }
+    }
+    .panel-container {
+    left: 0;
+    }
+    .panel {
+      border: 2px solid var(--divider);
+      background-color: var(--background-color__secondary);
+      border-radius: 0;
+      filter: none;
+    }
+  }
+  .dropdown-option {
+    width: 100%;
+    text-align: right;
+    &:not(:last-child){
+      border-bottom: 2px solid var(--divider);
+    }
+    &:hover {
+      color: var(--theme-color);
+      background-color: $linkWater;
+    }
+  }
+}
+

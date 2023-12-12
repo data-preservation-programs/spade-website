@@ -130,17 +130,18 @@ const isCurrentRoute = (path) => {
     cursor: pointer;
     .button-label {
       transition: 500ms ease-in;
-      text-shadow:
-        0.25px 0.25px 0 var(--link-color),
-        -0.25px 0.25px 0 var(--link-color),
-        -0.25px -0.25px 0 var(--link-color),
-        0.25px -0.25px 0 var(--link-color);
+      // text-shadow:
+      //   0.25px 0.25px 0 var(--link-color),
+      //   -0.25px 0.25px 0 var(--link-color),
+      //   -0.25px -0.25px 0 var(--link-color),
+      //   0.25px -0.25px 0 var(--link-color);
       color: var(--link-color);
     }
   }
   &.router-link-active {
     .button-label {
-      font-weight: 600;
+      font-weight: 700;
+      // font-weight: 600;
     }
   }
   &[disabled="true"] {

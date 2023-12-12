@@ -60,14 +60,15 @@ const handleOptionSelect = option => {
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
 :deep(.panel-container) {
-  left: 0;
   padding-top: 1rem;
 }
 
 :deep(.panel) {
-  border: 2px solid var(--divider);
-  background-color: var(--background-color__secondary);
-  border-radius: 0;
+  border: 1px solid var(--divider);
+  background-color: var(--background-color);
+  border-radius: 1rem;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
 }
 
 .selector {
@@ -105,16 +106,11 @@ const handleOptionSelect = option => {
 
 .dropdown-option {
   padding: toRem(5) toRem(10);
-  width: 100%;
   white-space: nowrap;
   transition: 500ms;
-  text-align: right;
   font-weight: 600;
-  &:not(:last-child){
-    border-bottom: 2px solid var(--divider);
-  }
   &:hover {
-    background-color: $linkWater;
+    color: var(--link-color);
   }
   &.selected {
     cursor: default;

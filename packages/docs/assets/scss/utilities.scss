@@ -64,6 +64,7 @@ $replace4: #000000;
  --background-color: #{$aliceBlue};
  --background-color__secondary: white;
  --theme-toggle__background-color: #{$wildSand};
+ --theme-toggle-height: 2.1875rem; // 35px
  --theme-toggle__border-color: #{$mercury};
  --theme-toggle__icon-container: white;
  --theme-toggle__icon-container__onHover: #{$codGray};
@@ -74,7 +75,7 @@ $replace4: #000000;
  --heading-color: #{$bigStone};
  --divider: #{$mercury};
  --link-color: #{$royalBlue};
- --link-hover-color: #{$melrose};
+ --link-hover-color: #{$royalBlue};
  --code__block__background-color: #{$mineShaft};
  --code__inline__color: #{$woodsmoke};
  --code__inline__background-color: #E4E4E4;

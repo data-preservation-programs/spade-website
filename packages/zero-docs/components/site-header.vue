@@ -94,8 +94,7 @@ const defaultSelectedLanguage = languageOptions.value.findIndex(option => option
 #site-header {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: space-between;;
   position: fixed;
   top: 0;
   left: 0;
@@ -129,8 +128,8 @@ const defaultSelectedLanguage = languageOptions.value.findIndex(option => option
 #site-nav {
   display: flex;
   flex-direction: row;
-  position: absolute;
-  left: calc($sidebarWidth + toRem(50));
+  position: relative;
+  padding-left: 2rem;
   @include large {
     padding-left: 0.25rem;
   }
@@ -140,7 +139,6 @@ const defaultSelectedLanguage = languageOptions.value.findIndex(option => option
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
   position: relative;
   @include large {
     &:not(:last-child) {
@@ -159,10 +157,10 @@ const defaultSelectedLanguage = languageOptions.value.findIndex(option => option
   &:before {
     content: '';
     position: absolute;
-    bottom: toRem(-7);
-    width: 80%;
+    bottom: 0;
+    width: 100%;
     height: 0px;
-    background-color: var(--primary-accent-color);
+    background-color: var(--theme-color);
     transition: 150ms ease-out;
   }
   &.active {
@@ -172,7 +170,7 @@ const defaultSelectedLanguage = languageOptions.value.findIndex(option => option
     }
   }
   :deep(.text) {
-    font-weight: 600;
+    font-weight: 500;
   }
 }
 

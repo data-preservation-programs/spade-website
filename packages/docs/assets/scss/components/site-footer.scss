@@ -1,0 +1,40 @@
+@mixin footerLinkHover($x: 0) {
+  .button-content {
+      transition: transform 500ms ease;
+      font-weight: 700;
+    }
+    &:hover {
+      .button-content {
+        transform: scale(1.05) translateX($x);
+      }
+    }
+}
+#site-footer {
+  .grid {
+    overflow: hidden;
+  }
+  .footer-contents {
+    margin-left: 2rem;
+  }
+  .footer-contents,
+  .section-legal {
+    border-top-color: var(--divider);
+  }
+
+  .section-support {
+    a.button {
+      @include footerLinkHover(toRem(15));
+    }
+  }
+
+  .help-link {
+    @include footerLinkHover(toRem(10));
+    &::before {
+      border-radius: 0;
+    }
+  }
+
+  .legal-link {
+    @include footerLinkHover();
+  }
+}

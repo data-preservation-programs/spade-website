@@ -142,11 +142,6 @@ const hashIsActive = (link) => {
   display: block;
   margin-left: toRem(14);
   padding: toRem(3) 0;
-  // &.active {
-  //   :deep(.button-label) {
-  //     font-weight: 700;
-  //   }
-  // }
 }
 
 .button-label {

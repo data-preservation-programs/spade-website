@@ -1,5 +1,54 @@
+//////////////////////////////////////////////////////////////////////// General
+// -----------------------------------------------------------------------------
 /**
- * This is your main entry file. It is recommended that you follow the same SCSS
- * structure as in the `zero-docs` package by copying the `main.scss` file there
- * and then modifying it to suit your needs.
+ * Fonts, text and background colours are applied here.
+ *
+ * See utilities.scss to edit these vars.
  */
+
+ html {
+  scroll-behavior: smooth;
+  &.dark {
+    body {
+      @include selection-dark;
+    }
+  }
+  &.no-scroll {
+    overflow-y: hidden;
+  }
+}
+
+body {
+  @include selection-light;
+  color: var(--theme-color);
+  font-family: $font_Primary;
+  background-color: var(--background-color);
+  transition: background-color 500ms;
+}
+
+.page {
+  padding-top: $bodyOffsetTop;
+  background-color: var(--background-color);
+  transition: background-color 500ms;
+}
+
+///////////////////////////////////////////////////////////////////// Components
+// -----------------------------------------------------------------------------
+.magnify-onhover {
+  transition: 150ms ease-out;
+  &:hover {
+    transition: 150ms ease-in;
+    transform: scale(1.05);
+  }
+}
+
+// @import 'components/chevron';
+@import 'components/markdown';
+// @import 'components/toast';
+// @import 'components/tooltip';
+// @import 'components/video-wrapper';
+// @import 'components/code';
+@import 'components/site-header';
+@import 'components/content-nav';
+@import 'components/pagination';
+@import 'components/site-footer';
