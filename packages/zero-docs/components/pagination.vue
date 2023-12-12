@@ -84,7 +84,7 @@ Sidebar.value.forEach((directory, dirIndex) => {
       dirSlug,
       dirIcon: directory.icon,
       title: page.title,
-      path: `/${routeLang}/${dirSlug}${page.href}`
+      path: `/${routeLang.value}/${dirSlug}${page.href}`
     })
   })
 })
