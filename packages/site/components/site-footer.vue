@@ -191,6 +191,8 @@ const resizeHandler = () => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: $whiteLilac;
+  padding-bottom: toRem(17);
 }
 
 .footer-clipped-background {

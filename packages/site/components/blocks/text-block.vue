@@ -115,6 +115,7 @@ export default {
     text-align: center;
     .label,
     .button-row {
+      display: flex;
       justify-content: center;
     }
   }

@@ -332,4 +332,47 @@ onBeforeUnmount(() => {
     transform: scaleX(-1);
   }
 }
+
+:deep(#section-operating-principles) {
+  background-color: $whiteLilac;
+  padding: 0;
+  @include small {
+    padding-top: toRem(16);
+    padding-bottom: toRem(10);
+  }
+  .section-background {
+    position: absolute;
+    bottom: calc(100% - toRem(48));
+    left: -2px;
+    width: calc(100% + 0.25rem);
+    @include small {
+      bottom: calc(100% - toRem(72));
+      left: -4px;
+      width: calc(100% + 0.5rem);
+    }
+  }
+  .text-block {
+    margin-bottom: toRem(45);
+    @include small {
+      margin-bottom: toRem(13);
+    }
+    .heading {
+      font-family: $fontSuisseIntl;
+      font-size: toRem(42);
+      font-weight: 500;
+      line-height: leading(59, 42);
+      margin-bottom: 0;
+      @include small {
+        font-size: toRem(24);
+        line-height: leading(34, 24);
+      }
+    }
+    .text-wrapper {
+      display: none;
+    }
+    .button-row {
+      margin-top: toRem(2);
+    }
+  }
+}
 </style>
