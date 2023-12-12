@@ -388,6 +388,91 @@
       }
     },
     {
+      "id": "section-how-it-works",
+      "off_grid": [
+        {
+          "name": "ResponsiveSvgSectionTrimming",
+          "breakpointsX": [70, 620, 950, 1290],
+          "breakpointsMobileX": [25, 70, 125, 190],
+          "trimType": "after",
+          "fill": "#FFFFFF"
+        }
+      ],
+      "grid": ["middle"],
+      "col_1": {
+        "type": "text_block",
+        "cols": {
+          "num": "col-6_md-8_sm-10_mi-12",
+          "push_left": "off-0_md-2_sm-1_mi-0"
+        },
+        "theme": "info",
+        "h": 3,
+        "label": "HOW DOES IT WORK?",
+        "heading": "Spade is designed to support multiple tenants safely; with its OSS-first approach and modular design, anyone can run their own or use an alternate implementation.",
+        "description": "Unlike most Filecoin onboarding tools today, the Spade work flow is designed as “pull” based, focused on the Storage Provider. A deal proposal process can only be initiated by the receiving SP and all deal proposals are made for out-of-band data flow (often mislabeled offline deals).",
+        "ctas": [
+          {
+            "text": "Get matched",
+            "tag": "a",
+            "to": "https://example.com",
+            "target": "_blank",
+            "theme": "gradient-dark"
+          }
+        ]
+      },
+      "col_2": {
+        "type": "card_list_block",
+        "cols": {
+          "num": "col-6_md-8_sm-10_mi-12",
+          "push_left": "off-0_md-2_sm-1_mi-0"
+        },
+        "card_grid": ["equalHeight"],
+        "cards": [
+          {
+            "col": "col-7",
+            "type": "clip",
+            "clipPath": 1,
+            "theme": "light-blue",
+            "icon": "client",
+            "title": "Clients",
+            "description": "Get started as an organization or team who has data to store",
+            "cta": {
+              "text": "I AM A CLIENT",
+              "tag": "a",
+              "to": "https://example.com",
+              "target": "_blank",
+              "theme": "arrow"
+            }
+          },
+          {
+            "col": "col-5",
+            "theme": "image",
+            "backgroundImage": "/images/women-collaborating-in-office.jpg"
+          },
+          {
+            "col": "col-12",
+            "type": "clip",
+            "clipPath": 2,
+            "theme": "light-blue",
+            "icon": "sp",
+            "title": "Storage Providers",
+            "description": "If you're already a Storage Provider on the Filecoin network, you can answer a few simple questions to qualify and get started",
+            "cta": {
+              "text": "I AM A STORAGE PROVIDER",
+              "tag": "a",
+              "to": "https://example.com",
+              "target": "_blank",
+              "theme": "arrow"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "section-roadmap",
+      "grid": []
+    },
+    {
       "id": "section-operating-principles",
       "off_grid": [
         {

@@ -8,7 +8,21 @@
 
         <GraphCard v-if="card.type === 'graph'" :block="card" />
 
-        <Card v-else :card="card" />
+        <ResponsiveClipper
+          v-if="card.type === 'clip'"
+          :display-guides="false"
+          :breakpoints-x="card.clipPath === 1 ? [140, 310] : [140, 500]"
+          :breakpoints-y="[70, 230]">
+          <template #svg-path>
+            <ClippedCardPathOne v-if="card.clipPath === 1" />
+            <ClippedCardPathTwo v-if="card.clipPath === 2" />
+          </template>
+          <template #clipped-content>
+            <Card :card="card" :class="[`clip-type-${card.clipPath}`]" />
+          </template>
+        </ResponsiveClipper>
+
+        <Card v-if="card.type !== 'graph' && card.type !== 'clip'" :card="card" />
 
       </div>
     </div>
@@ -19,6 +33,9 @@
 // ====================================================================== Import
 import Card from '@/components/card'
 import GraphCard from '@/components/graph-card'
+import ResponsiveClipper from '@/components/responsive-clipper'
+import ClippedCardPathTwo from '@/components/svgs/clipped-card-path-2'
+import ClippedCardPathOne from '@/components/svgs/clipped-card-path-1'
 
 // ====================================================================== Export
 export default {
@@ -26,7 +43,10 @@ export default {
 
   components: {
     Card,
-    GraphCard
+    GraphCard,
+    ResponsiveClipper,
+    ClippedCardPathOne,
+    ClippedCardPathTwo
   },
 
   props: {
@@ -68,4 +88,7 @@ export default {
   }
 }
 
+.clip-type-1 {
+  padding-bottom: toRem(40) !important;
+}
 </style>

@@ -23,7 +23,8 @@
       <ButtonCta
         :to="cta.to"
         :tag="cta.tag"
-        :target="cta.target">
+        :target="cta.target"
+        :theme="cta.theme">
         {{ cta.text }}
       </ButtonCta>
     </div>
@@ -45,6 +46,7 @@ const tenantIcon = resolveComponent('./icon/tenant')
 const openSourceIcon = resolveComponent('./icon/open-source')
 const spIcon = resolveComponent('./icon/sp')
 const stackIcon = resolveComponent('./icon/stack')
+const clientIcon = resolveComponent('./icon/client')
 
 // ======================================================================= Props
 const props = defineProps({
@@ -71,6 +73,7 @@ const getIconComponent = (icon) => {
     case 'open-source': return openSourceIcon
     case 'sp': return spIcon
     case 'stack': return stackIcon
+    case 'client': return clientIcon
     default: return false
   }
 }
@@ -175,14 +178,14 @@ const getIconComponent = (icon) => {
 }
 
 // /////////////////////////////////////////////////////////////// Theme [Block]
-.card.theme__block {
+.card.theme__block,
+.card.theme__light-blue {
   padding: toRem(30) toRem(24);
   display: flex;
   flex-direction: column;
   border-radius: toRem(20);
   background: white;
   color: $woodsmoke;
-  min-height: toRem(321);
   @include mini {
     margin: 0 -0.25rem;
     padding: toRem(15) toRem(10);
@@ -223,6 +226,21 @@ const getIconComponent = (icon) => {
       line-height: leading(19.5, 13);
       margin-bottom: 0.5rem;
     }
+  }
+}
+
+.card.theme__block {
+  min-height: toRem(321);
+}
+
+.card.theme__light-blue {
+  background-color: $zircon;
+  padding-left: toRem(43);
+  :deep(.theme__arrow) {
+    padding-left: 0;
+  }
+  .description {
+    margin-bottom: toRem(3);
   }
 }
 </style>
