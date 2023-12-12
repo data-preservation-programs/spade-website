@@ -408,15 +408,15 @@ button {
 // ======================================================== Magellan Menu Mixins
 
 @mixin magellanTitle {
-  font-size: toRem(11);
-  line-height: leading(28, 11);
-  font-weight: 600;
+  font-size: toRem(14);
+  line-height: leading(21, 11);
+  font-weight: 700;
   letter-spacing: 0.4px;
 }
 
 @mixin magellanLink {
   font-size: toRem(14);
-  line-height: 1.2;
+  line-height: leading(22, 14);
   letter-spacing: 0.2px;
   white-space: break-spaces;
   color: var(--theme-color);
@@ -424,6 +424,11 @@ button {
   &:hover {
     cursor: pointer;
     color: var(--link-color);
+  }
+  &.active {
+    :deep(.button-label) {
+      font-weight: 600;
+    }
   }
 }
 

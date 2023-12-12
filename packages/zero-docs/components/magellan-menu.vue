@@ -113,7 +113,7 @@ const hashIsActive = (link) => {
 }
 
 .title {
-  @include h6;
+  @include magellanTitle;
   position: absolute;
   top: toRem(21);
   opacity: 0.7;
@@ -138,15 +138,15 @@ const hashIsActive = (link) => {
 }
 
 .link {
-  @include sidebar;
+  @include magellanLink;
   display: block;
   margin-left: toRem(14);
   padding: toRem(3) 0;
-  &.active {
-    :deep(.button-label) {
-      font-weight: 700;
-    }
-  }
+  // &.active {
+  //   :deep(.button-label) {
+  //     font-weight: 700;
+  //   }
+  // }
 }
 
 .button-label {
