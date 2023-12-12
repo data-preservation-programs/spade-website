@@ -285,7 +285,7 @@ onBeforeUnmount(() => {
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// Content
 .page {
-  padding-bottom: 5rem;
+  padding-bottom: 1rem;
 }
 
 .content,

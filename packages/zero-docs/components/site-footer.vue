@@ -103,6 +103,17 @@ const legal = computed(() => Footer?.value?.panel_bottom)
 </script>
 
 <style lang="scss" scoped>
+@mixin footerLink($x: 0) {
+  :deep(.button-content) {
+      transition: transform 500ms ease;
+      font-weight: 700;
+    }
+    &:hover {
+      :deep(.button-content) {
+        transform: scale(1.05) translateX($x);
+      }
+    }
+}
 // ///////////////////////////////////////////////////////////////////// General
 #site-footer {
   background-color: var(--background-color);
@@ -117,15 +128,21 @@ section {
   padding-bottom: toRem(30);
 }
 
+.footer-contents {
+  margin-left: 2rem;
+}
 .footer-contents,
 .section-legal {
   padding-top: toRem(30);
-  border-top: solid 0.125rem var(--background-color__secondary);
+  border-top: solid 0.125rem var(--divider);
   transition: border-color 500ms;
 }
 
 .section-support {
   padding-right: toRem(52);
+  a.button {
+    @include footerLink(toRem(15));
+  }
 }
 
 .heading {
@@ -151,20 +168,17 @@ section {
 .help-link {
   position: relative;
   margin-left: toRem(13);
+  @include footerLink(toRem(10));
   &:before {
     content: '';
     position: absolute;
     top: 50%;
     left: toRem(-13);
     transform: translateY(-50%);
-    border-radius: 50%;
     width: toRem(5);
     height: toRem(5);
     background-color: var(--link-color);
     transition: background-color 500ms;
-    &:hover {
-      background-color: var(--link-hover-color);
-    }
   }
 }
 
@@ -175,6 +189,7 @@ section {
     margin-bottom: toRem(9);
   }
   .legal-link {
+    @include footerLink();
     &:not(:last-child) {
       margin-right: toRem(28);
     }

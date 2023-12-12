@@ -130,7 +130,7 @@ const defaultSelectedLanguage = languageOptions.value.findIndex(option => option
   display: flex;
   flex-direction: row;
   position: absolute;
-  left: calc($sidebarWidth + 2.5rem);
+  left: calc($sidebarWidth + toRem(50));
   @include large {
     padding-left: 0.25rem;
   }
