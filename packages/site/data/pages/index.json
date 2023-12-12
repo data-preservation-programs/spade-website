@@ -268,7 +268,37 @@
           "fill": "#FFFFFF"
         }
       ],
-      "grid": []
+      "grid": ["middle"],
+      "col_1": {
+        "type": "image_block",
+        "cols": {
+          "num": "col-6_sm-8_mi-10_ti-12",
+          "push_left": "off-0_sm-2_mi-1_ti-0"
+        },
+        "src": "/images/graph-with-concentric-circles.png",
+        "alt": "Graph consisting of several concentric circles"
+      },
+      "col_2": {
+        "type": "text_block",
+        "cols": {
+          "num": "col-6_sm-8_mi-10_ti-12",
+          "push_left": "off-0_sm-2_mi-1_ti-0"
+        },
+        "theme": "info",
+        "h": 3,
+        "label": "CONFIGURABLE POLICY",
+        "heading": "As a storage client, or tenant, on Spade, you'll have access to a variety of configuration options that govern how and where your data is stored.",
+        "description": "Spade operates in an automated way thanks to settings that tenants can set, which affect where data is stored, and for how long.<br><br>As a tenant, you'll be able to set a global policy, enabling you to control where your data is stored, what kind of SPs you'll be working with, and how much redundancy, or replication, a particular collection of files should have.",
+        "ctas": [
+          {
+            "text": "Quick start",
+            "tag": "a",
+            "to": "https://example.com",
+            "target": "_blank",
+            "theme": "gradient-dark"
+          }
+        ]
+      }
     },
     {
       "id": "section-card-list",

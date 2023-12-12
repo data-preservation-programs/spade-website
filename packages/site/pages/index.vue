@@ -228,6 +228,10 @@ onBeforeUnmount(() => {
   position: relative;
   background-color: white;
   z-index: 10;
+  @include small {
+    padding-top: 0;
+    padding-bottom: toRem(18);
+  }
   .section-background {
     position: absolute;
     bottom: calc(100% - toRem(24));
@@ -239,11 +243,36 @@ onBeforeUnmount(() => {
       width: calc(100% + 0.5rem);
     }
   }
+  .image-block,
+  .text-block {
+    padding: 0 6.4%;
+  }
+  @include medium {
+    .image-block {
+      padding-left: 0;
+    }
+    .text-block {
+      padding-right: 0;
+    }
+  }
+  @include small {
+    .image-block,
+    .text-block {
+      padding: 0;
+    }
+    .image-block {
+      margin-bottom: toRem(42);
+    }
+  }
 }
 
 :deep(#section-card-list) {
   padding-top: toRem(104);
   background-color: $whiteLilac;
+  @include mini {
+    padding-top: toRem(31);
+    padding-bottom: toRem(28);
+  }
   .card-list-block {
     @include small {
       padding: 0 toRem(24);
