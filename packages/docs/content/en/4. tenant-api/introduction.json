@@ -1,0 +1,170 @@
+{
+  "headers": {
+    "_section_heading": "Keys",
+    "headers": {
+      "type": "object",
+      "description": "A list of XHR headers"
+    },
+    "headers.type": {
+      "type": "string",
+      "description": "string, object, number, etc."
+    },
+    "headers.description": {
+      "type": "string",
+      "description": "A description of the header"
+    },
+    "query_parameters": {
+      "type": "object",
+      "description": "A list of query params and their descriptions"
+    },
+    "query_parameters.type": {
+      "type": "string",
+      "description": "string, object, number, etc."
+    },
+    "query_parameters.description": {
+      "type": "string",
+      "description": "A description of the query parameter"
+    },
+    "response_codes": {
+      "type": "object",
+      "description": "Just an associative array with key/value pairs, displayed in a table."
+    },
+    "sliders": {
+      "type": "array",
+      "description": "A list of sliders to display"
+    },
+    "sliders.metadata": {
+      "type": "object",
+      "description": "Optional. Accepts 2 key/value pairs. `tag` and `title` and their values. The `tag` will be highlighted. The order of output on the frontend can be controlled by switching the order of these keys here."
+    },
+    "sliders.slides": {
+      "type": "array",
+      "description": "A list of slides to display in each slider. Requires an associative array with the `language` (for code highlighting), `tab` (just the tab text) and `content` keys. `content` can contain any JSON stringified text."
+    }
+  },
+  "sliders": [
+    {
+      "metadata": {
+        "title": "Sample API JSON"
+      },
+      "slides": [
+        {
+          "language": "json",
+          "tab": "JSON",
+          "content": {
+            "headers": {
+              "accept": {
+                "type": "string",
+                "description": "Setting to `application/vnd.github+json` is recommended."
+              },
+              "Authorization": {
+                "type": "string",
+                "description": "Bearer token"
+              }
+            },
+            "query_parameters": {
+              "state": {
+                "type": "string",
+                "description": "Indicates the state of the issues to return. \n\nDefault: `open` \n\n Can be one of: `open`, `closed`, `all`"
+              }
+            },
+            "response_codes": {
+              "200": "OK",
+              "304": "Not modified",
+              "404": "Resource not found",
+              "422": "Validation failed, or the endpoint has been spammed"
+            },
+            "sliders": [
+              {
+                "metadata": {
+                  "tag": "GET",
+                  "title": "/api/get-datasets"
+                },
+                "slides": [
+                  {
+                    "language": "curl",
+                    "tab": "cURL",
+                    "content": "curl https://example.com/api/get-datasets"
+                  },
+                  {
+                    "language": "javascript",
+                    "tab": "Javascript",
+                    "content": "const options = {\n  headers: { Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', Authorization: `Bearer ${token}` }, \n  params: { \n    creator: username, \n    per_page: 100 \n  } \n} \nconst response = await Axios.get(`https://filplus.storage/api/get-datasets`, options)"
+                  }
+                ]
+              },
+              {
+                "metadata": {
+                  "title": "Response",
+                  "tag": "200"
+                },
+                "slides": [
+                  {
+                    "language": "json",
+                    "tab": "Example Response",
+                    "content": {
+                      "id": 1,
+                      "node_id": "MDU6SXNzdWUx",
+                      "url": "https://api.github.com/repos/octocat/Hello-World/issues/1347",
+                      "repository_url": "https://api.github.com/repos/octocat/Hello-World",
+                      "labels_url": "https://api.github.com/repos/octocat/Hello-World/issues/1347/labels{/name}",
+                      "comments_url": "https://api.github.com/repos/octocat/Hello-World/issues/1347/comments"
+                    }
+                  },
+                  {
+                    "language": "json",
+                    "tab": "Response Schema",
+                    "content": {
+                      "path": "",
+                      "users": [],
+                      "events": []
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "language": "json",
+          "tab": "JSON Schema",
+          "content": {
+            "headers": {
+              "_section_heading": "",
+              "key": {
+                "type": "",
+                "description": ""
+              }
+            },
+            "query_parameters": {
+              "_section_heading": "",
+              "key": {
+                "type": "",
+                "description": ""
+              }
+            },
+            "response_codes": {
+              "_section_heading": "",
+              "200": "OK"
+            },
+            "sliders": [
+              {
+                "metadata": {
+                  "tag": "",
+                  "title": ""
+                },
+                "slides": [
+                  {
+                    "language": "",
+                    "tab": "",
+                    "content": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
