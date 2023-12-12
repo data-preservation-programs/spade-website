@@ -32,6 +32,7 @@
 </template>
 
 <script setup>
+// ====================================================================== Import
 const additionIcon = resolveComponent('./icon/additions')
 const keyLockIcon = resolveComponent('./icon/key-lock')
 const onrampIcon = resolveComponent('./icon/onramp')
@@ -41,16 +42,21 @@ const heartIcon = resolveComponent('./icon/heart')
 const idIcon = resolveComponent('./icon/id')
 const oracleIcon = resolveComponent('./icon/oracle')
 const tenantIcon = resolveComponent('./icon/tenant')
+const openSourceIcon = resolveComponent('./icon/open-source')
+const spIcon = resolveComponent('./icon/sp')
+const stackIcon = resolveComponent('./icon/stack')
 
+// ======================================================================= Props
 const props = defineProps({
   card: {
     type: Object,
     required: true
   }
 })
-
+// ==================================================================== Computed
 const cta = computed(() => props.card.cta)
 
+// ===================================================================== Methods
 const getIconComponent = (icon) => {
   switch (icon) {
     case 'addition': return additionIcon
@@ -62,6 +68,9 @@ const getIconComponent = (icon) => {
     case 'id': return idIcon
     case 'oracle': return oracleIcon
     case 'tenant': return tenantIcon
+    case 'open-source': return openSourceIcon
+    case 'sp': return spIcon
+    case 'stack': return stackIcon
     default: return false
   }
 }

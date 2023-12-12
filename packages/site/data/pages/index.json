@@ -386,6 +386,77 @@
         "breakpointsMobileX": [30, 100, 240, 320],
         "breakpointsMobileY": [50, 200]
       }
+    },
+    {
+      "id": "section-operating-principles",
+      "off_grid": [
+        {
+          "name": "ResponsiveSvgSectionTrimming",
+          "breakpointsX": [400, 970],
+          "breakpointsMobileX": [120, 140],
+          "trimType": "before",
+          "fill": "#E8EDF6"
+        }
+      ],
+      "grid": [],
+      "col_1": {
+        "type": "text_block",
+        "cols": {
+          "num": "col-6_md-10_ti-12",
+          "push_left": "off-3_md-1_ti-0"
+        },
+        "h": 2,
+        "heading": "Operating Principles",
+        "align": "center"
+      },
+      "col_2": {
+        "type": "card_list_block",
+        "cols": {
+          "num": "col-12_md-8_sm-10_ti-12",
+          "push_left": "off-0_md-2_sm-1_ti-0"
+        },
+        "card_columns": "col-4_md-12",
+        "card_grid": ["equalHeight"],
+        "cards": [
+          {
+            "theme": "basic",
+            "icon": "sp",
+            "title": "Storage provider oriented",
+            "description": "As the most sophisticated stakeholder in the network, storage providers have unique knowledge around optimizing data onboarding. Spade is here to help with easier deal-making for SPs on the Filecoin network."
+          },
+          {
+            "theme": "basic",
+            "icon": "open-source",
+            "title": "Open source",
+            "description": "Everything is open source. Everything can be re-engineered, extended, customized, and run independently of the service Spade operates."
+          },
+          {
+            "theme": "basic",
+            "icon": "stack",
+            "title": "Web3 Native",
+            "description": "Guided by design patterns that comply with web3 principles: the chain state is the source of truth, so we only rely on what's actually written to the blockchain. This minimizes application state management."
+          }
+        ]
+      },
+      "col_3": {
+        "type": "text_block",
+        "cols": {
+          "num": "col-6_md-10_ti-12",
+          "push_left": "off-3_md-1_ti-0"
+        },
+        "theme": "info",
+        "align": "center",
+        "h": 2,
+        "ctas": [
+          {
+            "text": "Get started",
+            "tag": "a",
+            "to": "https://example.com",
+            "target": "_blank",
+            "theme": "gradient-dark"
+          }
+        ]
+      }
     }
   ]
 }
