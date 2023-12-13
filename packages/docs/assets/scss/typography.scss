@@ -24,7 +24,7 @@ $fontAssetPath: 'assets/fonts';
   src: url('#{$fontAssetPath}/suisse-intl/SuisseIntl-LightItalic.eot');
   src: url('#{$fontAssetPath}/suisse-intl/SuisseIntl-LightItalic.eot?#iefix') format('embedded-opentype'),
     url('#{$fontAssetPath}/suisse-intl/SuisseIntl-LightItalic.woff2') format('woff2'),
-    url('#{$fontAssetPath}/suisse-intl/SuisseIntl-LightItalic.otf') format('opentype'),
+    // url('#{$fontAssetPath}/suisse-intl/SuisseIntl-LightItalic.otf') format('opentype'),
     url('#{$fontAssetPath}/suisse-intl/SuisseIntl-LightItalic.svg#SuisseIntl-LightItalic') format('svg');
   font-weight: 300;
   font-style: italic;
@@ -46,7 +46,7 @@ $fontAssetPath: 'assets/fonts';
   src: url('#{$fontAssetPath}/suisse-intl/SuisseIntl-RegularItalic.eot');
   src: url('#{$fontAssetPath}/suisse-intl/SuisseIntl-RegularItalic.eot?#iefix') format('embedded-opentype'),
     url('#{$fontAssetPath}/suisse-intl/SuisseIntl-RegularItalic.woff2') format('woff2'),
-    url('#{$fontAssetPath}/suisse-intl/SuisseIntl-RegularItalic.otf') format('opentype'),
+    // url('#{$fontAssetPath}/suisse-intl/SuisseIntl-RegularItalic.otf') format('opentype'),
     url('#{$fontAssetPath}/suisse-intl/SuisseIntl-RegularItalic.svg#SuisseIntl-RegularItalic') format('svg');
   font-weight: 400;
   font-style: italic;
@@ -68,7 +68,7 @@ $fontAssetPath: 'assets/fonts';
   src: url('#{$fontAssetPath}/suisse-intl/SuisseIntl-BookItalic.eot');
   src: url('#{$fontAssetPath}/suisse-intl/SuisseIntl-BookItalic.eot?#iefix') format('embedded-opentype'),
     url('#{$fontAssetPath}/suisse-intl/SuisseIntl-BookItalic.woff2') format('woff2'),
-    url('#{$fontAssetPath}/suisse-intl/SuisseIntl-BookItalic.otf') format('opentype'),
+    // url('#{$fontAssetPath}/suisse-intl/SuisseIntl-BookItalic.otf') format('opentype'),
     url('#{$fontAssetPath}/suisse-intl/SuisseIntl-BookItalic.svg#SuisseIntl-BookItalic') format('svg');
   font-weight: 450;
   font-style: italic;
@@ -90,7 +90,7 @@ $fontAssetPath: 'assets/fonts';
   src: url('#{$fontAssetPath}/suisse-intl/SuisseIntl-MediumItalic.eot');
   src: url('#{$fontAssetPath}/suisse-intl/SuisseIntl-MediumItalic.eot?#iefix') format('embedded-opentype'),
     url('#{$fontAssetPath}/suisse-intl/SuisseIntl-MediumItalic.woff2') format('woff2'),
-    url('#{$fontAssetPath}/suisse-intl/SuisseIntl-MediumItalic.otf') format('opentype'),
+    // url('#{$fontAssetPath}/suisse-intl/SuisseIntl-MediumItalic.otf') format('opentype'),
     url('#{$fontAssetPath}/suisse-intl/SuisseIntl-MediumItalic.svg#SuisseIntl-MediumItalic') format('svg');
   font-weight: 500;
   font-style: italic;
@@ -112,7 +112,7 @@ $fontAssetPath: 'assets/fonts';
   src: url('#{$fontAssetPath}/suisse-intl/SuisseIntl-SemiBoldItalic.eot');
   src: url('#{$fontAssetPath}/suisse-intl/SuisseIntl-SemiBoldItalic.eot?#iefix') format('embedded-opentype'),
     url('#{$fontAssetPath}/suisse-intl/SuisseIntl-SemiBoldItalic.woff2') format('woff2'),
-    url('#{$fontAssetPath}/suisse-intl/SuisseIntl-SemiBoldItalic.otf') format('opentype'),
+    // url('#{$fontAssetPath}/suisse-intl/SuisseIntl-SemiBoldItalic.otf') format('opentype'),
     url('#{$fontAssetPath}/suisse-intl/SuisseIntl-SemiBoldItalic.svg#SuisseIntl-SemiBoldItalic') format('svg');
   font-weight: 600;
   font-style: italic;
@@ -134,7 +134,7 @@ $fontAssetPath: 'assets/fonts';
   src: url('#{$fontAssetPath}/suisse-intl/SuisseIntl-BoldItalic.eot');
   src: url('#{$fontAssetPath}/suisse-intl/SuisseIntl-BoldItalic.eot?#iefix') format('embedded-opentype'),
     url('#{$fontAssetPath}/suisse-intl/SuisseIntl-BoldItalic.woff2') format('woff2'),
-    url('#{$fontAssetPath}/suisse-intl/SuisseIntl-BoldItalic.otf') format('opentype'),
+    // url('#{$fontAssetPath}/suisse-intl/SuisseIntl-BoldItalic.otf') format('opentype'),
     url('#{$fontAssetPath}/suisse-intl/SuisseIntl-BoldItalic.svg#SuisseIntl-BoldItalic') format('svg');
   font-weight: 700;
   font-style: italic;

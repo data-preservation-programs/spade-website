@@ -23,7 +23,10 @@ export default defineNuxtConfig({
     assetsInclude: ['**/*.md']
   },
   nitro: {
-    prerender: { crawlLinks: false }
+    prerender: {
+      crawlLinks: true,
+      failOnError: false
+    }
   },
   // ============================================================= Global Styles
   css: [
