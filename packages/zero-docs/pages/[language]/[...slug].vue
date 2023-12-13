@@ -28,7 +28,6 @@
         <!-- ======================================================= Content -->
         <div class="col-6_md-8" data-push-left="off-2_lg-3_md-0">
           <div class="content">
-            {{ section.raw }}
             <ZeroMarkdownParser
               id="markdown"
               :markdown="section.raw"
@@ -86,7 +85,7 @@ const headerHeight = ref(0)
 const sections = ref([])
 const scrollWindowEventListenerFunction = ref(null)
 const route = useRoute()
-const contentPath = ref(`/docs${route.path}`)
+// const contentPath = ref(`/docs${route.path}`)
 const navigatedByRoute = ref(false)
 const navigatedByRouteDebounce = ref(null)
 const ctx = getCurrentInstance()
@@ -99,7 +98,7 @@ const pageHeading = useToPascalCase(pageSlug, ' ')
 const { data: content } = await useAsyncData(() => {
   return queryContent({
     where: {
-      _path: { $contains: contentPath.value }
+      _path: { $contains: `/docs${route.path}` }
     }
   }).find()
 }, { watch: [route] })
