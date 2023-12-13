@@ -1,5 +1,3 @@
-console.log('⚡️ load:zero-core')
-
 // ///////////////////////////////////////////////////////////////////// Imports
 // -----------------------------------------------------------------------------
 import { defineNuxtConfig } from 'nuxt/config'
@@ -11,12 +9,6 @@ const env = process.env.SERVER_ENV
 // ////////////////////////////////////////////////////////////////////// Export
 // -----------------------------------------------------------------------------
 export default defineNuxtConfig({
-  // ===================================================== Runtime Configuration
-  runtimeConfig: {
-    public: {
-      // githubOAuthLink: `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_OAUTH_CLIENT_ID}&scope=user:email,public_repo`
-    }
-  },
   // ================================================================== Compiler
   vite: {
     css: {

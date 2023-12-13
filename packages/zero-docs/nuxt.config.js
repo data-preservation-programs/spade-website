@@ -1,5 +1,3 @@
-console.log('⚡️ load:zero-docs')
-
 // ///////////////////////////////////////////////////////////////////// Imports
 // -----------------------------------------------------------------------------
 import { defineNuxtConfig } from 'nuxt/config'
@@ -37,7 +35,7 @@ export default defineNuxtConfig({
       path: '@/../zero-docs/components'
     },
     {
-      path: '@/../zero-docs/content',
+      path: '@/../zero-docs/content/',
       prefix: 'Preview',
       global: true
     }

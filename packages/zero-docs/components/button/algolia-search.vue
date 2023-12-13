@@ -1,5 +1,5 @@
 <template>
-  <ZeroAlgoliaSearchButton />
+  <ZeroAlgoliaTriggerButton />
 </template>
 
 <style lang="scss" scoped>

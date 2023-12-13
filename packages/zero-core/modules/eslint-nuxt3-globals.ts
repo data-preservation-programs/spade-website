@@ -5,6 +5,7 @@
 import { basename, resolve } from 'path'
 import type { Import, Unimport } from 'unimport'
 import { addTemplate, defineNuxtModule } from 'nuxt/kit'
+import Chalk from 'chalk'
 
 // ////////////////////////////////////////////////////////////////////// Module
 // -----------------------------------------------------------------------------
@@ -73,7 +74,15 @@ export default defineNuxtModule({
         write: true
       })
 
-      console.log(`globals file is generated at ${fullPath}`)
+      const hex1 = '#C36B00'
+      const hex2 = '#DB7800'
+      const hex3 = '#FFFFFF'
+      console.log(
+        '\n  🧰',
+        `${Chalk.underline.hex(hex1).bold('load:module ')}${Chalk.bgHex(hex2).hex(hex3).bold(' eslint-nuxt3-globals ')}`,
+        Chalk.bold('\n     Globals file is generated at:'),
+        `\n     ${fullPath}`
+      )
     })
   }
 })

@@ -1,0 +1,70 @@
+{
+  "panel_left": {
+    "heading" : "Support",
+    "description": "Lörem ipsum anadade ben. Profili intrabusam för att preras. Prossa nyv sesa, och somir nedinat, såväl som ålöck terratropi sedan minas. Kvasigt hexav kot. Piperat semir jag kronat var vilig dongar yvis. Replastisk jining, och reation sirtad.",
+    "cta": {
+      "tag": "a",
+      "target": "_blank",
+      "text": "Ol hexasåv en tresonade",
+      "url": "https://example.com"
+    }
+  },
+  "panel_right": {
+    "heading" : "Help",
+    "links": [
+      {
+        "tag": "a",
+        "target": "_blank",
+        "text": "Lörem ipsum anadade ben.",
+        "url": "https://example.com"
+      },
+      {
+        "tag": "a",
+        "target": "_blank",
+        "text": "Profili intrabusam",
+        "url": "https://example.com"
+      },
+      {
+        "tag": "a",
+        "target": "_blank",
+        "text": "Prossa nyv sesa",
+        "url": "https://example.com"
+      }
+    ]
+  },
+  "panel_bottom": {
+    "heading" : "Legal lorem ipsum",
+    "links": [
+      {
+        "tag": "a",
+        "target": "_blank",
+        "text": "Lorem",
+        "url": "https://example.com"
+      },
+      {
+        "tag": "a",
+        "target": "_blank",
+        "text": "Ipsum dolor",
+        "url": "https://example.com"
+      },
+      {
+        "tag": "a",
+        "target": "_blank",
+        "text": "Adipiscing",
+        "url": "https://example.com"
+      },
+      {
+        "tag": "a",
+        "target": "_blank",
+        "text": "Terms",
+        "url": "https://example.com"
+      },
+      {
+        "tag": "a",
+        "target": "_blank",
+        "text": "Privacy",
+        "url": "https://example.com"
+      }
+    ]
+  }
+}

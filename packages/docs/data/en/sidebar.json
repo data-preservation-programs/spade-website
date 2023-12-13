@@ -1,0 +1,142 @@
+[
+  {
+    "title": "Introduction",
+    "slug": "introduction",
+    "icon": "",
+    "children": [
+      {
+        "type": "nuxt-link",
+        "href": "/overview",
+        "title": "Overview"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/glossary-of-terms",
+        "title": "Glossary of Terms"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/why-use-spade",
+        "title": "Why use Spade?"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/how-it-works",
+        "title": "How it works"
+      }
+    ]
+  },
+  {
+    "title": "Getting Started",
+    "slug": "getting-started",
+    "icon": "",
+    "children": [
+      {
+        "type": "nuxt-link",
+        "href": "/tenant-quickstart",
+        "title": "Tenant Quickstart"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/storage-provider-quickstart",
+        "title": "Storage Provider Quickstart"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/why-use-spade",
+        "title": "Why use Spade?"
+      }
+    ]
+  },
+  {
+    "title": "Reference",
+    "slug": "reference",
+    "icon": "",
+    "children": [
+      {
+        "type": "nuxt-link",
+        "href": "/authentication-and-security",
+        "title": "Authentication and Security"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/error-handling",
+        "title": "Error Handling"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/best-practices",
+        "title": "Best Practices"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/examples-and-tutorials",
+        "title": "Examples and Tutorials"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/faqs",
+        "title": "FAQs"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/change-log",
+        "title": "Change Log"
+      }
+    ]
+  },
+  {
+    "title": "Support & Resources",
+    "slug": "support-and-resources",
+    "icon": "",
+    "children": [
+      {
+        "type": "nuxt-link",
+        "href": "/lorem-ipsum",
+        "title": "Lorem Ipsum"
+      }
+    ]
+  },
+  {
+    "title": "Spade Tenant API",
+    "slug": "tenant-api",
+    "icon": "",
+    "children": [
+      {
+        "type": "nuxt-link",
+        "href": "/addresses",
+        "title": "Addresses"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/collections",
+        "title": "Collections"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/constraint-labels",
+        "title": "Constraint Labels"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/settings",
+        "title": "Settings"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/sp",
+        "title": "SP"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/status",
+        "title": "Status"
+      },
+      {
+        "type": "nuxt-link",
+        "href": "/storage-contract",
+        "title": "Storage Contract"
+      }
+    ]
+  }
+]

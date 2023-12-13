@@ -1,8 +1,9 @@
 <template>
   <ZeroDropdown
     :display-selected="true"
-    :default-option="props.options[0]"
+    :default-option="props.options[defaultSelectedIndex].slug"
     @option-selected="handleOptionSelect">
+    <!-- :default-option="props.options[0]" -->
 
     <template #toggle-button="{ togglePanel, panelOpen, selected }">
       <button :class="['selector', { 'panel-open': panelOpen }]" @click="togglePanel">
@@ -14,10 +15,10 @@
     <template #dropdown-panel="{ setSelected, isSelected }">
       <button
         v-for="option in props.options"
-        :key="option"
-        :class="['dropdown-option', { selected: isSelected(option) }]"
-        @click="setSelected(option)">
-        {{ option }}
+        :key="option.slug"
+        :class="['dropdown-option', { selected: isSelected(option.slug) }]"
+        @click="setSelected(option.slug)">
+        {{ option.name }} [{{ option.slug }}]
       </button>
     </template>
 
@@ -31,18 +32,27 @@ const props = defineProps({
     type: Array,
     required: true,
     default: () => []
+  },
+  defaultSelectedIndex: {
+    type: Number,
+    required: false,
+    default: 0
   }
 })
+
+// ======================================================================== Data
+const docsStore = useZeroDocsStore()
+const route = useRoute()
 
 // ===================================================================== Methods
 /**
  * @method handleOptionSelect
  */
-
 const handleOptionSelect = option => {
   if (process.dev) {
-    console.log(option)
-    // fire i18n here
+    const optionLowerCase = option.slug.toLowerCase()
+    docsStore.setLanguage(optionLowerCase)
+    navigateTo(`/${optionLowerCase}${route.params.slug.reduce((acc, slugStr) => { return acc.concat('/', slugStr) }, '')}`)
   }
 }
 </script>
@@ -58,6 +68,7 @@ const handleOptionSelect = option => {
   background-color: var(--background-color);
   border-radius: 1rem;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
 }
 
 .selector {
@@ -97,13 +108,12 @@ const handleOptionSelect = option => {
   padding: toRem(5) toRem(10);
   white-space: nowrap;
   transition: 500ms;
+  font-weight: 600;
   &:hover {
     color: var(--link-color);
   }
   &.selected {
-    font-weight: 500;
     cursor: default;
-    color: var(--link-color);
   }
 }
 </style>

@@ -1,0 +1,49 @@
+{
+  "query_parameters": {
+    "_section_heading": "Parameters",
+    "title": {
+      "type": "string",
+      "description": "Site title, page-specific and visible in online search results. Strings wrapped with pipes (ex: `|title|`) will be parsed and matched to frontmatter strings with keys of the same name."
+    },
+    "description": {
+      "type": "string",
+      "description": "Site description, visible in online search results"
+    },
+    "siteName": {
+      "type": "string",
+      "description": "Similar to `title` but more general, also used in schema.org"
+    },
+    "ogImage": {
+      "type": "string",
+      "description": "Open Graph image url"
+    }
+  },
+  "sliders": [
+    {
+      "slides": [
+        {
+          "language": "json",
+          "tab": "Example Settings File",
+          "content": {
+            "page-name": {
+              "title": "Docs Starter - |title|",
+              "description": "|description|",
+              "siteName": "Docs Starter",
+              "ogImage": "/public/open-graph.jpg"
+            }
+          }
+        },
+        {
+          "language": "json",
+          "tab": "Schema",
+          "content": {
+            "title": "string",
+            "description": "string",
+            "siteName": "string",
+            "ogImage": "string"
+          }
+        }
+      ]
+    }
+  ]
+}

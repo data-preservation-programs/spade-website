@@ -22,6 +22,7 @@
   display: flex;
   flex-direction: column;
   position: fixed;
+  z-index: 5;
   top: $siteHeaderHeight;
   left: calc((100vw - $gridWidth) / 2);
   width: $sidebarWidth;
@@ -37,9 +38,10 @@
 #content-nav,
 #magellan-menu {
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: $sidebarPadding;
   padding-left: 0;
+  @include scrollbars(7px, var(--scrollbar-thumb-color), var(--scrollbar-background-color));
   @include customMaxMQ($gridWidth + 1rem) {
     padding-left: 2rem;
   }

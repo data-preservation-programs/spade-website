@@ -1,0 +1,121 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is the API for the Spade Tenant Application",
+    "title": "Spade Tenant API",
+    "termsOfService": "https://spade.storage",
+    "contact": {
+      "name": "API Support",
+      "url": "https://docs.spade.storage"
+    },
+    "license": {
+      "name": "Apache 2.0 Apache-2.0 OR MIT",
+      "url": "https://github.com/data-preservation-programs/spade/blob/master/LICENSE.md"
+    },
+    "version": "1.0.0"
+  },
+  "host": "api.spade.storage",
+  "basePath": "/tenant",
+  "paths": {
+    "/sp/unsuspend": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "summary": "Unsuspend a storage provider",
+        "parameters": [
+            {
+              "type": "string",
+              "description": "Auth token",
+              "name": "token",
+              "in": "header",
+              "required": true
+            },
+            {
+              "description": "List of SP IDs to unsuspend",
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/api.StorageProviderIDs"
+              }
+            }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/api.ResponseEnvelope"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "response": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/api.StorageProvider"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "preview": {
+    "sliders": [
+      {
+        "metadata": {
+          "tag": "POST",
+          "title": "/tenant/sp/unsuspend"
+        },
+        "slides": [
+          {
+            "language": "curl",
+            "tab": "cURL",
+            "content": "curl https://spade.storage/tenant/sp/unsuspend"
+          },
+          {
+            "language": "javascript",
+            "tab": "Javascript",
+            "content": "const options = {\n  headers: { Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', Authorization: `Bearer ${token}` }, \n  params: { \n    creator: username, \n    per_page: 100 \n  } \n} \nconst response = await Axios.get(`https://spade.storage/tenant/sp/unsuspend`, options)"
+          }
+        ]
+      },
+      {
+        "metadata": {
+          "title": "Response",
+          "tag": "200"
+        },
+        "slides": [
+          {
+            "language": "json",
+            "tab": "Example Response",
+            "content": {
+              "id": 1,
+              "node_id": "MDU6SXNzdWUx",
+              "url": "https://api.github.com/repos/octocat/Hello-World/issues/1347",
+              "repository_url": "https://api.github.com/repos/octocat/Hello-World",
+              "labels_url": "https://api.github.com/repos/octocat/Hello-World/issues/1347/labels{/name}",
+              "comments_url": "https://api.github.com/repos/octocat/Hello-World/issues/1347/comments"
+            }
+          },
+          {
+            "language": "json",
+            "tab": "Response Schema",
+            "content": {
+              "path": "",
+              "users": [],
+              "events": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
