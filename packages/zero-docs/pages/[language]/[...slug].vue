@@ -97,13 +97,13 @@ const pageHeading = useToPascalCase(pageSlug, ' ')
 
 console.log('HIT new page', route.path)
 
-const { data: content } = await useAsyncData(() => {
+const { data: content } = await useAsyncData(async () => {
   console.log({
     where: {
       _path: { $contains: `/docs${route.path}` }
     }
   })
-  const content = queryContent({
+  const content = await queryContent({
     where: {
       _path: { $contains: `/docs${route.path}` }
     }
