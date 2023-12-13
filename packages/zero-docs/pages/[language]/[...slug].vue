@@ -97,7 +97,8 @@ const pageHeading = useToPascalCase(pageSlug, ' ')
 
 console.log('HIT new page', route.path)
 
-const { data: content } = await useAsyncData(async () => {
+const { data: content } = await useAsyncData('page-content', async () => {
+  console.log('FETCH NEW CONTENT')
   console.log({
     where: {
       _path: { $contains: `/docs${route.path}` }
@@ -110,7 +111,7 @@ const { data: content } = await useAsyncData(async () => {
   }).find()
   console.log(content)
   return content
-}, { watch: [route] })
+})
 
 const { data: definitionsSchema } = await useAsyncData('definitions-schema', () => {
   return queryContent({
