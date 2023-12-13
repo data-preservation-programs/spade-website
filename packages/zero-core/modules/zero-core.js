@@ -2,9 +2,9 @@
 // -----------------------------------------------------------------------------
 import Fs from 'fs-extra'
 import Path from 'path'
-import StartCase from 'lodash/startcase'
-import KebabCase from 'lodash/kebabcase'
-import CamelCase from 'lodash/camelcase'
+import StartCase from 'lodash/startCase'
+import KebabCase from 'lodash/kebabCase'
+import CamelCase from 'lodash/camelCase'
 import Chalk from 'chalk'
 
 import {
