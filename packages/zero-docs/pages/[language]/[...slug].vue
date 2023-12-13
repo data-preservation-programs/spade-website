@@ -309,9 +309,19 @@ onBeforeUnmount(() => {
 }
 
 .section {
+  position: relative;
   &:not(:nth-child(2)) {
     padding-top: 2rem;
-    border-top: solid 2px var(--background-color__secondary);
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      bottom: 0;
+      left: calc( $sidebarWidth + 2rem);
+      width: calc(100% - $sidebarWidth - 4rem);
+      height: 2px;
+      background-color: var(--divider);
+    }
     transition: border-color 500ms;
   }
   &:not(:nth-last-child(2)) {
