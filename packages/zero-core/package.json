@@ -12,6 +12,7 @@
     "lodash.clonedeep": "^4.5.0",
     "lodash.debounce": "^4.0.8",
     "mitt": "^3.0.1",
+    "node-html-parser": "^6.1.11",
     "nuxt-primevue": "^0.2.0",
     "nuxt-simple-robots": "^3.1.5",
     "nuxt-simple-sitemap": "^4.1.6",
@@ -24,7 +25,6 @@
     "lodash.camelcase": "^4.3.0",
     "lodash.kebabcase": "^4.1.1",
     "lodash.startcase": "^4.4.0",
-    "node-html-parser": "^6.1.11",
     "undici": "^5.25.4"
   }
 }
