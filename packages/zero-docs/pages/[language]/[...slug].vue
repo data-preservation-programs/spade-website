@@ -312,6 +312,7 @@ onBeforeUnmount(() => {
   position: relative;
   &:not(:nth-child(2)) {
     padding-top: 2rem;
+    // border-top: solid 2px var(--background-color__secondary);
     &::after {
       content: '';
       position: absolute;

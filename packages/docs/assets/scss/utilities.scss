@@ -197,20 +197,19 @@ $replace4: #000000;
   $thumb-color: var(--scrollbar-thumb-color),
   $background-color: var(--scrollbar-background-color)
 ) {
-  // For Chrome & Safari
+  // Chrome & Safari
   &::-webkit-scrollbar {
     width: $size;
     height: $size;
   }
   &::-webkit-scrollbar-thumb {
-    transition: background-color 500ms;
-    background: $thumb-color;
+    border-radius: 10px;
+    background-color: $thumb-color;
   }
   &::-webkit-scrollbar-track {
-    transition: background-color 500ms;
-    background: $background-color;
+    display: none;
   }
-  // Standard version (Firefox only for now)
+  // Firefox (though Chrome + Edge are working on support)
   transition: scrollbar-color 500ms;
   scrollbar-color: $thumb-color $background-color;
 }

@@ -1,0 +1,266 @@
+@keyframes shrink-bounce {
+  0% { transform: scale(1); }
+  33% { transform: scale(0.85); }
+  100% { transform: scale(1); }
+}
+
+.markdown, .markdown-user-input {
+  // ================================================================ Typography
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1.25rem;
+    &:not(:first-child) {
+      margin-top: 3.5rem;
+    }
+    + ul, + ol {
+      margin-top: 2rem;
+    }
+    code {
+      margin: 0 toRem(6);
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  h1 {
+    margin: 0 0 3rem;
+  }
+
+  h1,
+  h1 > .heading-anchor {
+    @include h1;
+  }
+
+  h2 {
+    @include h2;
+  }
+
+  h3 {
+    @include h3;
+  }
+
+  h4 {
+    @include h4;
+  }
+
+  h5 {
+    @include h5;
+  }
+
+  h6 {
+    @include h6;
+  }
+
+  p {
+    @include p1;
+    &:not(:last-child) {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  a {
+    @include p1Link;
+  }
+
+  // =================================================================== General
+  hr {
+    margin-bottom: 2rem;
+    border: solid 1px var(--background-color__secondary);
+    transition: border-color 500ms;
+  }
+
+  // ====================================================================== Code
+  pre {
+    @include blockCode;
+    code {
+      padding: 0;
+      margin: 0;
+      background-color: transparent;
+    }
+  }
+
+  code {
+    @include inlineCode;
+  }
+
+  // ===================================================================== Lists
+  ul, ol {
+    &:not(:last-child) {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  ul {
+    li {
+      list-style-type: none;
+      position: relative;
+      padding-left: toRem(22);
+      margin: 0;
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0.5rem;
+        top: 0.875rem;
+        width: 5px;
+        height: 5px;
+        margin: 0;
+        transform: translateY(-25%);
+        border-radius: 50%;
+        background-color: var(--theme-color);
+        transition: background-color 500ms;
+      }
+    }
+  }
+
+  li > ul {
+    margin-top: 0;
+  }
+
+  li > ul > li {
+    &:before {
+      background-color: transparent;
+      border: solid 1px var(--theme-color);
+      transition: border-color 500ms;
+    }
+  }
+
+  // ==================================================== Callouts / BlockQuotes
+  blockquote {
+    margin: 0;
+    padding-left: toRem(36);
+    border-left: toRem(5) solid var(--background-color__secondary);
+    transition: border-color 500ms;
+    &:not(:first-child) {
+      margin-top: 2rem;
+    }
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
+  /**
+   * @TODO convert the below to a :::tip component
+   */
+  // blockquote > blockquote {
+  //   padding: toRem(21) toRem(23);
+  //   border-radius: toRem(10);
+  //   background-color: var(--background-color__secondary);
+  //   transition: background-color 500ms;
+  //   p {
+  //     @include h4;
+  //     margin-bottom: toRem(9);
+  //   }
+  //   ul {
+  //     margin-bottom: toRem(3);
+  //   }
+  //   li {
+  //     position: relative;
+  //     padding-left: toRem(22);
+  //     margin: 0;
+  //     @include p2;
+  //     &:before {
+  //       content: "";
+  //       display: block;
+  //       position: absolute;
+  //       left: 0.5rem;
+  //       top: 0.625rem;
+  //       width: 4px;
+  //       height: 4px;
+  //       margin: 0;
+  //       border-radius: 50%;
+  //       background-color: var(--theme-color);
+  //       transition: 500ms;
+  //     }
+  //   }
+  // }
+
+  // ==================================================================== Tables
+  table {
+    width: 100%;
+    border-top: solid 2px var(--divider);
+    border-bottom: solid 2px var(--divider);
+    margin-bottom: 1.25rem;
+    transition: 500ms;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: toRem(8) toRem(10);
+  }
+
+  th {
+    @include h5;
+    padding-top: 0.5rem;
+  }
+
+  td {
+    @include p2;
+  }
+
+  thead > tr {
+    background-color: var(--background-color);
+    transition: background-color 500ms;
+  }
+
+  tbody > tr {
+    transition: background-color 500ms;
+    &:nth-child(odd) {
+      background-color: var(--background-color__secondary);
+    }
+    &:nth-child(even) {
+      background-color: var(--background-color);
+    }
+    &:last-child {
+      td {
+        padding-bottom: 0.5rem;
+      }
+    }
+  }
+
+  // ============================================================= Heading Links
+  .heading-anchor {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    &:hover {
+      .copy-button {
+        transition: 150ms ease-in;
+        opacity: 1;
+      }
+    }
+    .copy-button {
+      position: absolute;
+      top: toRem(5);
+      right: 100%;
+      font-size: 100%;
+      line-height: 1;
+      padding-right: toRem(8);
+      color: var(--link-color);
+      opacity: 0;
+      transition: 150ms ease-out;
+      &:hover {
+        transition: 150ms ease-in;
+        color: var(--link-color);
+      }
+      &[data-tooltip] {
+        &:hover {
+          &:before,
+          &:after {
+            transform: translate(calc(-50% - #{toRem(4)}), 0);
+          }
+        }
+        &:before,
+        &:after {
+          transform: translate(calc(-50% - #{toRem(4)}), 0.5rem);
+        }
+      }
+    }
+    h1, h2, h3, h4, h5, h6 {
+      position: relative;
+      padding-left: 2.25rem;
+      margin-left: -2.25rem;
+    }
+  }
+}
