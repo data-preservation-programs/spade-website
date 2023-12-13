@@ -1,0 +1,10 @@
+// aside.sidebar is for reference, doesn't get applied
+aside.sidebar {
+  z-index: 5;
+}
+
+#content-nav,
+#magellan-menu {
+  overflow-y: auto;
+  @include scrollbars(7px, var(--scrollbar-thumb-color), var(--scrollbar-background-color));
+}

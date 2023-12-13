@@ -1,3 +1,5 @@
+// in <script> defaultSelectedLanguage computed as follows to fit repo specific language options structure:
+// const defaultSelectedLanguage = languageOptions.value.findIndex(option => option.slug === route.params.language.toUpperCase())
 #site-header {
   align-items: center;
 
@@ -24,6 +26,8 @@
     width: toRem(60);
   }
   // ========================================================= Language Selector
+  // zero-docs/components/dropdown-selector <template> altered to work with altered
+  // props.options structure
   .dropdown-panel {
     .selector {
       &::before {

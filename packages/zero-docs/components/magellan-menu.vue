@@ -138,10 +138,15 @@ const hashIsActive = (link) => {
 }
 
 .link {
-  @include magellanLink;
+  @include sidebar;
   display: block;
   margin-left: toRem(14);
   padding: toRem(3) 0;
+  &.active {
+    :deep(.button-label) {
+      font-weight: 600;
+    }
+  }
 }
 
 .button-label {
