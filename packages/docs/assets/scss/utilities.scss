@@ -37,6 +37,9 @@ $mineShaft: #242424;
 $linkWater: #DEE9F6;
 $mercury: #E7E7E7;
 $periwinkleGray: #CFD7EE;
+$mischka: #DCDDE4;
+$tuna: #353744;
+
 
 
 // ------------------------------------------------------------------- from base
@@ -95,23 +98,25 @@ $replace4: #000000;
 }
 
 .dark {
- --background-color: #{$codGray};
- --background-color__secondary: black;
- --theme-toggle__background-color: #383838;
- --theme-toggle__border-color: #5A5A5A;
- --theme-toggle__icon-container: #{$aliceBlue};
- --theme-toggle__icon-container__onHover: white;
- --theme-toggle__icon__onHover: #{$codGray};
- --theme-color: #{$aliceBlue};
- --theme-color__inverted: #{$codGray};
+  --background-color: #{$codGray};
+  --background-color__secondary: black;
+  --theme-toggle__background-color: #383838;
+  --theme-toggle__border-color: #5A5A5A;
+  --theme-toggle__icon-container: black;
+  --theme-toggle__icon-container__onHover: #{$aliceBlue};
+  --theme-toggle__icon__onHover: #{$codGray};
+  --theme-color: #{$linkWater};
+  --theme-color__inverted: #{$codGray};
+  --heading-color: #{$mischka};
  --divider: #{$mineShaft};
- --link-color: #{$dodgerBlue};
- --link-hover-color: #{$bayOfMany};
+ --link-color: #{$royalBlue};
+ --link-hover-color: #{$royalBlue};
  --code__block__background-color: #{$mineShaft};
  --code__inline__color: #{$aliceBlue};
  --code__inline__background-color: #383838;
- --sidebar__title-color: #{$aliceBlue};
- --sidebar__title-color__active: #{$aliceBlue};
+ --sidebar__title-color: #{$mischka};
+ --sidebar__title-color__active: #{$mischka};
+ --sidebar-text-color: #{$mischka};
  --algolia-backdrop: #{$pickledBluewood};
  --algolia-background: #{$codGray};
  --algolia__searchbox__background-color: #{$mineShaft};
@@ -120,6 +125,8 @@ $replace4: #000000;
  --algolia__highlight: #{$royalBlue}; // not used because contrast too intense
  --api-preview__http-status-code__background-color: #{$mineShaft};
  --api-preview__http-status-code__color: #{$portage};
+ --scrollbar-background-color: #{$codGray};
+ --scrollbar-thumb-color: #{$tuna};
 }
 
 // ===================================================================== Styling
@@ -196,11 +203,14 @@ $replace4: #000000;
     height: $size;
   }
   &::-webkit-scrollbar-thumb {
+    transition: background-color 500ms;
     background: $thumb-color;
   }
   &::-webkit-scrollbar-track {
+    transition: background-color 500ms;
     background: $background-color;
   }
   // Standard version (Firefox only for now)
+  transition: scrollbar-color 500ms;
   scrollbar-color: $thumb-color $background-color;
 }
