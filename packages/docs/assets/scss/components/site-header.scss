@@ -21,13 +21,13 @@
   }
   // ============================================================== Theme Toggle
   #theme-toggle {
-    width: toRem(70);
+    width: toRem(60);
   }
   // ========================================================= Language Selector
   .dropdown-panel {
     .selector {
       &::before {
-        background-color: $periwinkleGray;
+        background-color: var(--scrollbar-thumb-color);
       }
     }
     .panel-container {
@@ -48,7 +48,7 @@
     }
     &:hover {
       color: var(--theme-color);
-      background-color: $linkWater;
+      background-color: var(--scrollbar-thumb-color);
     }
   }
 }
