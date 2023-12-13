@@ -329,6 +329,6 @@ onBeforeUnmount(() => {
 
 .heading {
   @include h1;
-  margin-bottom: 2rem;
+  margin-bottom: toRem(25);
 }
 </style>
