@@ -101,7 +101,7 @@ const { data: content } = await useAsyncData(() => {
       _path: { $contains: `/docs${route.path}` }
     }
   }).find()
-}, { watch: [route] })
+})
 
 const { data: definitionsSchema } = await useAsyncData('definitions-schema', () => {
   return queryContent({
