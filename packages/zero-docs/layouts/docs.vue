@@ -10,7 +10,11 @@
 
     <slot />
 
-    <SiteFooter />
+    <div class="grid">
+      <div class="col-10" data-push-left="off-2">
+        <SiteFooter />
+      </div>
+    </div>
 
   </div>
 </template>
