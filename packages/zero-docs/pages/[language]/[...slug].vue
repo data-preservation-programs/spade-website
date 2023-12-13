@@ -95,7 +95,7 @@ const docsStore = useZeroDocsStore()
 const pageSlug = dirNameSplit[2]
 const pageHeading = useToPascalCase(pageSlug, ' ')
 
-const { data: content } = await useAsyncData('page-content', () => {
+const { data: content } = await useAsyncData(() => {
   return queryContent({
     where: {
       _path: { $contains: contentPath.value }
