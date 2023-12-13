@@ -95,7 +95,7 @@ const docsStore = useZeroDocsStore()
 const pageSlug = dirNameSplit[2]
 const pageHeading = useToPascalCase(pageSlug, ' ')
 
-console.log('HIT new page', route)
+console.log('HIT new page', route.path)
 
 const { data: content } = await useAsyncData(() => {
   const content = queryContent({
@@ -160,6 +160,8 @@ const generatePageContent = () => {
   console.log(array)
   pageContent.value = array
 }
+
+generatePageContent()
 
 /**
  * @method intersectionObserveHeadings
@@ -255,17 +257,17 @@ const getPreviewComponentName = path => {
 }
 
 // ==================================================================== Watchers
-watch(content, async content => {
-  console.log('WATCH', content)
-  generatePageContent()
-  // if (navigatedByRouteDebounce.value) { clearTimeout(navigatedByRouteDebounce.value) }
-  // navigatedByRouteDebounce.value = setTimeout(() => {
-  //   navigatedByRoute.value = false
-  //   clearTimeout(navigatedByRouteDebounce.value)
-  // }, 100)
-  // navigatedByRoute.value = true
-  // docsStore.setActiveSection({ id: route.hash.slice(1) })
-}, { immediate: true })
+// watch(content, async content => {
+//   console.log('WATCH', content)
+//   generatePageContent()
+//   // if (navigatedByRouteDebounce.value) { clearTimeout(navigatedByRouteDebounce.value) }
+//   // navigatedByRouteDebounce.value = setTimeout(() => {
+//   //   navigatedByRoute.value = false
+//   //   clearTimeout(navigatedByRouteDebounce.value)
+//   // }, 100)
+//   // navigatedByRoute.value = true
+//   // docsStore.setActiveSection({ id: route.hash.slice(1) })
+// }, { immediate: true })
 
 // ======================================================================= Hooks
 onMounted(async () => {
