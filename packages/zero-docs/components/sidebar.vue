@@ -38,10 +38,9 @@
 #content-nav,
 #magellan-menu {
   height: 100%;
-  overflow-y: auto;
+  overflow-y: scroll;
   padding: $sidebarPadding;
   padding-left: 0;
-  @include scrollbars(7px, var(--scrollbar-thumb-color), var(--scrollbar-background-color));
   @include customMaxMQ($gridWidth + 1rem) {
     padding-left: 2rem;
   }
