@@ -85,6 +85,7 @@ import AccordionBlock from '@/components/blocks/accordion-block'
 import HeroHeader from '@/components/hero-header'
 import SectionBanner from '@/components/section-banner'
 import SectionInfographic from '@/components/section-infographic'
+import SectionRoadmap from '@/components/section-roadmap'
 import ResponsiveSvgSectionTrimming from '@/components/responsive-svg-section-trimming'
 import GraphCard from '@/components/graph-card'
 // import BlockBuilder from '@/components/blocks/block-builder'
@@ -101,6 +102,7 @@ export default {
     HeroHeader,
     SectionBanner,
     SectionInfographic,
+    SectionRoadmap,
     ResponsiveSvgSectionTrimming,
     GraphCard
     // BlockBuilder,
@@ -141,6 +143,7 @@ export default {
         case 'hero_header': name = 'HeroHeader'; break
         case 'section_banner': name = 'SectionBanner'; break
         case 'section_infographic': name = 'SectionInfographic'; break
+        case 'section_roadmap': name = 'SectionRoadmap'; break
         case 'custom' : name = block.component; break
       }
       return name
