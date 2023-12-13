@@ -104,7 +104,7 @@ const { data: content } = await useAsyncData(() => {
     }
   }).find()
   return content
-})
+}, { watch: [route] })
 
 const { data: definitionsSchema } = await useAsyncData('definitions-schema', () => {
   return queryContent({
@@ -255,16 +255,16 @@ const getPreviewComponentName = path => {
 }
 
 // ==================================================================== Watchers
-watch(route, async route => {
-  console.log('WATCH', route)
+watch(content, async content => {
+  console.log('WATCH', content)
   generatePageContent()
-  if (navigatedByRouteDebounce.value) { clearTimeout(navigatedByRouteDebounce.value) }
-  navigatedByRouteDebounce.value = setTimeout(() => {
-    navigatedByRoute.value = false
-    clearTimeout(navigatedByRouteDebounce.value)
-  }, 100)
-  navigatedByRoute.value = true
-  docsStore.setActiveSection({ id: route.hash.slice(1) })
+  // if (navigatedByRouteDebounce.value) { clearTimeout(navigatedByRouteDebounce.value) }
+  // navigatedByRouteDebounce.value = setTimeout(() => {
+  //   navigatedByRoute.value = false
+  //   clearTimeout(navigatedByRouteDebounce.value)
+  // }, 100)
+  // navigatedByRoute.value = true
+  // docsStore.setActiveSection({ id: route.hash.slice(1) })
 }, { immediate: true })
 
 // ======================================================================= Hooks
