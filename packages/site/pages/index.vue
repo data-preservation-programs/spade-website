@@ -338,6 +338,7 @@ onBeforeUnmount(() => {
   z-index: 10;
   padding-top: 2.25rem;
   padding-bottom: toRem(52);
+  background-color: white;
   @include small {
     padding-top: 0;
     padding-bottom: toRem(16);
@@ -374,8 +375,55 @@ onBeforeUnmount(() => {
 :deep(#section-roadmap) {
   position: relative;
   z-index: 9;
-  background-color: $blackPearl;
-  padding: 10rem 0;
+  background-color: #010101;
+  padding-top: toRem(254);
+  padding-bottom: toRem(300);
+  @include small {
+    padding-top: toRem(220);
+    padding-bottom: toRem(140);
+  }
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-repeat: repeat-x;
+    background-size: cover;
+    z-index: 1;
+    transform: scale(1.055);
+  }
+  &:before {
+    top: -3.25rem;
+    height: toRem(924);
+    background: url('/images/roadmap-background-top.svg');
+    background-position: center bottom;
+    @include small {
+      width: 365%;
+      left: -129%;
+      transform: scale(0.30);
+      top: -19.75rem;
+    }
+  }
+  &:after {
+    bottom: -0.5rem;
+    height: toRem(836);
+    background: url('/images/roadmap-background-bottom.svg');
+    background-position: center top;
+    @include small {
+      transform: scale(0.3);
+      width: 360%;
+      left: -129%;
+      bottom: -16rem;
+    }
+  }
+  .roadmap {
+    position: relative;
+    z-index: 10;
+    @include medium {
+      padding: 2.5%;
+    }
+  }
 }
 
 :deep(#section-operating-principles) {
