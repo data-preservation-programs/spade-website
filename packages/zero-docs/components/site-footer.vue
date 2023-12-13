@@ -7,7 +7,7 @@
           <div class="grid-noGutter full">
 
             <div class="col-8">
-              <section class="section-support">
+              <section v-if="support" class="section-support">
 
                 <div class="heading">
                   {{ support.heading }}
@@ -30,7 +30,7 @@
             </div>
 
             <div class="col-4">
-              <section class="section-help">
+              <section v-if="help" class="section-help">
 
                 <div class="heading">
                   {{ help.heading }}
@@ -52,7 +52,7 @@
             </div>
 
             <div class="col-12">
-              <section class="section-legal">
+              <section v-if="legal" class="section-legal">
 
                 <div class="heading">
                   {{ legal.heading }}
@@ -83,18 +83,23 @@
 
 <script setup>
 // ======================================================================== Data
-const { data: Footer } = await useAsyncData('footer', async () => {
-  const content = await queryContent({
-    where: {
-      _file: { $contains: 'data/footer.json' }
-    }
-  }).find()
-  return content[0]
-})
+const route = useRoute()
+const routeLang = computed(() => route.params.language)
 
-const support = Footer.value.panel_left
-const help = Footer.value.panel_right
-const legal = Footer.value.panel_bottom
+const { data: Footer } = await useAsyncData( 'footer', async () => {
+    const content = await queryContent({
+      where: {
+        _file: { $contains: `data/${routeLang.value}/footer.json` }
+      }
+    }).find()
+    return content[0]
+}, { watch: [routeLang] } )
+
+// ==================================================================== Computed
+const support = computed(() => Footer?.value?.panel_left)
+const help = computed(() => Footer?.value?.panel_right)
+const legal = computed(() => Footer?.value?.panel_bottom)
+
 </script>
 
 <style lang="scss" scoped>
@@ -112,10 +117,11 @@ section {
   padding-bottom: toRem(30);
 }
 
+
 .footer-contents,
 .section-legal {
   padding-top: toRem(30);
-  border-top: solid 0.125rem var(--background-color__secondary);
+  border-top: solid 0.125rem var(--background-color_secondary);
   transition: border-color 500ms;
 }
 
@@ -157,8 +163,10 @@ section {
     height: toRem(5);
     background-color: var(--link-color);
     transition: background-color 500ms;
-    &:hover {
-      background-color: var(--link-hover-color);
+  }
+  &:hover {
+    &::before {
+      background-color: var(--link-hover-color)
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="!disableAlgolia"
+    v-if="enableAlgolia"
     :class="['algolia-modal', { active: modalActive }]"
     @click.self="closeModal">
     <AisInstantSearch :index-name="indexName" :search-client="algolia">
@@ -55,8 +55,8 @@ const keyCommandEventListener = ref(null)
 const searchFocused = ref(false)
 const searchInput = ref(null)
 const route = useRoute()
-const indexName = runtimeConfig.public.algolia.indexName
-const disableAlgolia = runtimeConfig.public.algolia.disable
+const indexName = runtimeConfig.public.zeroAlgolia.indexName
+const enableAlgolia = runtimeConfig.public.zeroAlgolia.enable
 const algolia = useAlgoliaRef()
 const serverRootMixin = ref(
   createServerRootMixin({

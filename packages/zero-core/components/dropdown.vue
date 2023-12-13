@@ -51,19 +51,12 @@ const emit = defineEmits(['dropdownPanelToggled', 'optionSelected'])
 
 // ======================================================================== Data
 const panelOpen = ref(false)
-const selected = ref('')
+const selected = ref(props.defaultOption)
 
 // ==================================================================== Watchers
 watch(panelOpen, (state) => { emit('dropdownPanelToggled', state) })
 
 watch(selected, (val) => { emit('optionSelected', val) })
-
-// ======================================================================= Hooks
-onMounted(() => {
-  if (props.defaultOption) {
-    setSelected(props.defaultOption)
-  }
-})
 
 // ===================================================================== Methdos
 /**

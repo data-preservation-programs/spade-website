@@ -6,11 +6,13 @@
     "build": "nuxi build",
     "dev": "nuxi dev --no-clear",
     "preview": "nuxi preview",
+    "generate": "nuxi generate",
     "upgrade-nuxt": "nuxi upgrade"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
-    "pinia": "^2.0.35"
+    "pinia": "^2.0.35",
+    "svg-path-parser": "^1.1.0"
   },
   "devDependencies": {
     "@nuxt/content": "^2.8.5",

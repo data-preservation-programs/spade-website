@@ -1,0 +1,18 @@
+{
+  "definitions": {
+    "cat": {
+      "type": "object",
+      "properties": {
+        "color": {
+          "type": "string"
+        },
+        "chonk": {
+          "type": "boolean"
+        },
+        "can_loaf": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

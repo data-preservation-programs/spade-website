@@ -31,7 +31,7 @@ const toggleTheme = () => {
 </script>
 
 <style lang="scss" scoped>
-$toggleHeight: toRem(30);
+$toggleHeight: var(--theme-toggle-height);
 
 // ///////////////////////////////////////////////////////////////////// General
 #theme-toggle {
@@ -45,7 +45,7 @@ $toggleHeight: toRem(30);
   transition: 150ms ease-out;
   &:hover {
     .icon-container {
-      background-color: var(--theme-toggle__onHover);
+      background-color: var(--theme-toggle__icon-container__onHover);
     }
     .icon {
       :deep(path) {
@@ -64,7 +64,7 @@ $toggleHeight: toRem(30);
   height: calc(#{$toggleHeight} - 8px);
   margin-top: 2px;
   margin-left: 2px;
-  background-color: var(--background-color);
+  background-color: var(--theme-toggle__icon-container);
   border-radius: 50%;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   transition: background-color 500ms, transform 150ms ease-out;

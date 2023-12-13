@@ -1,5 +1,9 @@
 // ////////////////////////////////////////////////////////////////////// Export
 // -----------------------------------------------------------------------------
+/**
+ * @note be VERY VERY careful if editing this composable. It's used in a lot of
+ * places throughout zero-core
+ */
 export default (slug, type = 'pascal-case', splitWith = '-', joinWith = '') => {
   if (type === 'pascal-case') {
     return slug

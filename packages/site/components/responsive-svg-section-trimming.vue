@@ -29,7 +29,7 @@
 
 <script setup>
 // ====================================================================== Import
-import { parseSVG } from 'svg-path-parser'
+import parseSVG from 'svg-path-parser'
 
 // ======================================================================= Props
 const props = defineProps({
@@ -276,7 +276,7 @@ const resizeDimensions = () => {
 
 const getSvgPathData = (path) => {
   const commands = parseSVG(path)
-  
+
   const xValues = commands.map(el => {
     const coords = []
     Object.keys(el).forEach((key) => {
@@ -284,7 +284,7 @@ const getSvgPathData = (path) => {
     })
     return coords
   }).flat()
-  
+
   const yValues = commands.map(el => {
     const coords = []
     Object.keys(el).forEach((key) => {
@@ -292,17 +292,17 @@ const getSvgPathData = (path) => {
     })
     return coords
   }).flat()
-  
+
   const bounds = {
     minX: Math.min(...xValues),
     maxX: Math.max(...xValues),
     minY: Math.min(...yValues),
     maxY: Math.max(...yValues)
   }
-  
+
   const rangeX = Math.abs(bounds.maxX - bounds.minX)
   const rangeY = Math.abs(bounds.maxY - bounds.minY)
-  
+
   return {
     rangeX,
     rangeY,

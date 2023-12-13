@@ -20,8 +20,8 @@
 
       <ButtonClear
         v-for="link in directory.children"
-        :key="generateLink(directory.slug, link.href)"
-        :to="generateLink(directory.slug, link.href)"
+        :key="generateLink(routeLang, directory.slug, link.href)"
+        :to="generateLink(routeLang, directory.slug, link.href)"
         :tag="link.type"
         :disabled="isCurrentRoute(generateLink(directory.slug, link.href))"
         class="link">
@@ -35,22 +35,27 @@
 <script setup>
 // ======================================================================== Data
 const route = useRoute()
+const routeLang = computed(() => route.params.language)
 
 const { data: Sidebar } = await useAsyncData('sidebar', async () => {
   const content = await queryContent({
     where: {
-      _file: { $contains: 'data/sidebar.json' }
+      _file: { $contains: `data/${routeLang.value}/sidebar.json` }
     }
   }).find()
   return content[0].body
-})
+  },
+  {
+    watch: [routeLang]
+  }
+)
 
 // ===================================================================== Methods
 /**
  * @method generateLink
  */
-const generateLink = (dirSlug, href) => {
-  return `/${dirSlug}${href}`
+const generateLink = (lang, dirSlug, href) => {
+  return `/${lang}/${dirSlug}${href}`
 }
 
 /**
@@ -125,13 +130,18 @@ const isCurrentRoute = (path) => {
     cursor: pointer;
     .button-label {
       transition: 500ms ease-in;
+      // text-shadow:
+      //   0.25px 0.25px 0 var(--link-color),
+      //   -0.25px 0.25px 0 var(--link-color),
+      //   -0.25px -0.25px 0 var(--link-color),
+      //   0.25px -0.25px 0 var(--link-color);
       color: var(--link-color);
     }
   }
   &.router-link-active {
     .button-label {
       font-weight: 700;
-      color: var(--link-color);
+      // font-weight: 600;
     }
   }
   &[disabled="true"] {

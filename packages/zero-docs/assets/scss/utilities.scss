@@ -70,8 +70,8 @@ $replace4: #000000;
   --algolia__result__background-color: white;
   --algolia__result__hover__color: white;
   --algolia__highlight: #{$blueRibbon}; // not used because contrast too intense
-  --api-explorer__http-status-code__background-color: #{$mercury};
-  --api-explorer__http-status-code__color: #{$blueViolet};
+  --api-preview__http-status-code__background-color: #{$mercury};
+  --api-preview__http-status-code__color: #{$blueViolet};
 }
 
 .dark {
@@ -97,8 +97,8 @@ $replace4: #000000;
   --algolia__result__background-color: #{$mineShaft};
   --algolia__result__hover__color: #{$mineShaft};
   --algolia__highlight: #{$blueRibbon}; // not used because contrast too intense
-  --api-explorer__http-status-code__background-color: #{$mineShaft};
-  --api-explorer__http-status-code__color: #{$portage};
+  --api-preview__http-status-code__background-color: #{$mineShaft};
+  --api-preview__http-status-code__color: #{$portage};
 }
 
 // ===================================================================== Styling

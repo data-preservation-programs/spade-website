@@ -1,0 +1,19 @@
+#content-nav {
+  // =================================================================== Nav Links
+  .link.button {
+    &:hover:not(.router-link-active){
+      .button-label {
+        text-shadow:
+        0.25px 0.25px 0 var(--link-color),
+        -0.25px 0.25px 0 var(--link-color),
+        -0.25px -0.25px 0 var(--link-color),
+        0.25px -0.25px 0 var(--link-color);
+      }
+    }
+    &.router-link-active {
+      .button-label {
+        font-weight: 600;
+      }
+    }
+  }
+}

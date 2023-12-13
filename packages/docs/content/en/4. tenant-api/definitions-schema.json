@@ -1,0 +1,310 @@
+{
+  "definitions": {
+    "api.Address": {
+        "type": "object",
+        "properties": {
+            "actor_id": {
+                "description": "TODO :swagger docs should be null not 0",
+                "type": "integer"
+            },
+            "address": {
+                "type": "string"
+            },
+            "is_signing": {
+                "description": "true - active dealmaking from this address, false - still counts as an associated wallet",
+                "type": "boolean"
+            }
+        }
+    },
+    "api.AddressMutable": {
+        "type": "object",
+        "properties": {
+            "address": {
+                "type": "string"
+            },
+            "is_signing": {
+                "description": "true - active dealmaking from this address, false - still counts as an associated wallet",
+                "type": "boolean"
+            }
+        }
+    },
+    "api.AddressedStorageContract": {
+        "type": "object",
+        "properties": {
+            "cid": {
+                "type": "string"
+            },
+            "storage_contract": {
+                "$ref": "#/definitions/api.StorageContract"
+            }
+        }
+    },
+    "api.Collection": {
+        "type": "object",
+        "properties": {
+            "deal_params": {
+                "$ref": "#/definitions/api.DealParams"
+            },
+            "inactive": {
+                "type": "boolean"
+            },
+            "name": {
+                "type": "string"
+            },
+            "piece_list_source": {
+                "$ref": "#/definitions/api.PieceListSource"
+            },
+            "replication_constraints": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/api.ReplicationConstraint"
+                }
+            },
+            "uuid": {
+                "type": "string"
+            }
+        }
+    },
+    "api.DealParams": {
+        "type": "object",
+        "properties": {
+            "duration_days": {
+                "type": "integer"
+            },
+            "start_within_hours": {
+                "type": "integer"
+            }
+        }
+    },
+    "api.EligibilityClause": {
+        "type": "object",
+        "properties": {
+            "attribute": {
+                "type": "string"
+            },
+            "operator": {
+                "type": "string"
+            },
+            "value": {
+                "description": "TODO: type - either []string or string"
+            }
+        }
+    },
+    "api.EligibilityCriteria": {
+        "type": "object",
+        "properties": {
+            "clauses": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/api.EligibilityClause"
+                }
+            }
+        }
+    },
+    "api.Label": {
+        "type": "object",
+        "properties": {
+            "label": {
+                "type": "string"
+            },
+            "options": {
+                "description": "example: {\"CA\": 10, \"US\": 20}",
+                "type": "object",
+                "additionalProperties": {
+                    "type": "integer"
+                }
+            },
+            "uuid": {
+                "type": "string"
+            }
+        }
+    },
+    "api.MutableCollection": {
+        "type": "object",
+        "properties": {
+            "deal_params": {
+                "$ref": "#/definitions/api.DealParams"
+            },
+            "inactive": {
+                "type": "boolean"
+            },
+            "name": {
+                "type": "string"
+            },
+            "piece_list_source": {
+                "$ref": "#/definitions/api.PieceListSource"
+            },
+            "replication_constraints": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/api.ReplicationConstraint"
+                }
+            }
+        }
+    },
+    "api.PieceListSource": {
+        "type": "object",
+        "properties": {
+            "connection_details": {
+                "description": "TODO: better types / validation for the connection details",
+                "type": "string"
+            },
+            "method": {
+                "type": "string"
+            },
+            "poll_interval_hours": {
+                "type": "integer"
+            }
+        }
+    },
+    "api.ReplicationConstraint": {
+        "type": "object",
+        "properties": {
+            "constraint_id": {
+                "type": "integer"
+            },
+            "constraint_max": {
+                "type": "integer"
+            }
+        }
+    },
+    "api.ResponseEnvelope": {
+        "type": "object",
+        "properties": {
+            "error_code": {
+                "type": "integer"
+            },
+            "error_lines": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "error_slug": {
+                "type": "string"
+            },
+            "info_lines": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "request_uuid": {
+                "type": "string"
+            },
+            "response": {},
+            "response_code": {
+                "type": "integer"
+            },
+            "response_entries": {
+                "type": "integer"
+            },
+            "response_state_epoch": {
+                "type": "integer"
+            },
+            "response_timestamp": {
+                "type": "string"
+            }
+        }
+    },
+    "api.Settings": {
+        "type": "object",
+        "properties": {
+            "max_in_flight_gib": {
+                "type": "integer"
+            },
+            "sp_auto_approve": {
+                "type": "boolean"
+            },
+            "sp_auto_suspend": {
+                "type": "boolean"
+            }
+        }
+    },
+    "api.StorageContract": {
+        "type": "object",
+        "properties": {
+            "content": {
+                "type": "object",
+                "properties": {
+                    "info_lines": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "retrieval": {
+                "type": "object",
+                "properties": {
+                    "mechanisms": {
+                        "type": "object",
+                        "properties": {
+                            "ipld_bitswap": {
+                                "type": "boolean"
+                            },
+                            "piece_rrhttp": {
+                                "type": "boolean"
+                            }
+                        }
+                    },
+                    "sla": {
+                        "type": "object",
+                        "properties": {
+                            "info_lines": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "api.StorageProvider": {
+        "type": "object",
+        "properties": {
+            "first_activated_at": {
+                "type": "string"
+            },
+            "sp_id": {
+                "type": "integer"
+            },
+            "state": {
+                "description": "State:\n* eligible: The SP is eligible to work with the tenant, but has not yet begun the subscription process\n* pending: The SP has begun the subscription process, but has not yet been approved by the tenant (note: only valid if auto-approve=false)\n* active: The SP is active and working with the tenant. Deals may be made with this SP.\n* suspended: The SP is suspended and deals may not be made with this SP, until it is un-suspended",
+                "type": "string",
+                "enum": [
+                    "eligible",
+                    "pending",
+                    "active",
+                    "suspended"
+                ]
+            },
+            "status_last_changed": {
+                "type": "string"
+            }
+        }
+    },
+    "api.StorageProviderIDs": {
+        "type": "object",
+        "properties": {
+            "sp_ids": {
+                "type": "array",
+                "items": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+  },
+  "securityDefinitions": {
+    "apiKey": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  }
+}
