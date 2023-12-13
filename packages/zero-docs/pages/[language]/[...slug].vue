@@ -98,11 +98,17 @@ const pageHeading = useToPascalCase(pageSlug, ' ')
 console.log('HIT new page', route.path)
 
 const { data: content } = await useAsyncData(() => {
+  console.log({
+    where: {
+      _path: { $contains: `/docs${route.path}` }
+    }
+  })
   const content = queryContent({
     where: {
       _path: { $contains: `/docs${route.path}` }
     }
   }).find()
+  console.log(content)
   return content
 }, { watch: [route] })
 
@@ -144,6 +150,7 @@ const headerHeightOffset = computed(() => headerHeight.value * 3)
 
 const generatePageContent = () => {
   console.log('GENERATE PAGE CONTENT')
+  console.log(content.value)
   const array = content.value.filter(item => item._extension === 'md' && !item._file.includes('src.md'))
   array.forEach(mdContent => {
     const jsonContent = content.value.find(item => item._path === mdContent._path && item._extension === 'json')
