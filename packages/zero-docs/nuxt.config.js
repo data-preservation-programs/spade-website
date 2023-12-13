@@ -55,6 +55,9 @@ export default defineNuxtConfig({
   },
   // ========================================================== [Module] Content
   content: {
+    experimental: {
+      clientDb: true
+    },
     sources: {
       targetDocs: {
         driver: 'fs',
