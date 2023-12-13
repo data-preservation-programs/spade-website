@@ -41,8 +41,5 @@
     "packages/zero-ui",
     "packages/site",
     "packages/docs"
-  ],
-  "dependencies": {
-    "svg-path-parser": "^1.1.0"
-  }
+  ]
 }
