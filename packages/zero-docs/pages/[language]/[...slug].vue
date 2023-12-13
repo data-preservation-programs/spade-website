@@ -95,12 +95,15 @@ const docsStore = useZeroDocsStore()
 const pageSlug = dirNameSplit[2]
 const pageHeading = useToPascalCase(pageSlug, ' ')
 
+console.log('HIT new page')
+
 const { data: content } = await useAsyncData(() => {
-  return queryContent({
+  const content = queryContent({
     where: {
       _path: { $contains: `/docs${route.path}` }
     }
   }).find()
+  return content
 })
 
 const { data: definitionsSchema } = await useAsyncData('definitions-schema', () => {
@@ -140,6 +143,7 @@ const headerHeightOffset = computed(() => headerHeight.value * 3)
  */
 
 const generatePageContent = () => {
+  console.log('GENERATE PAGE CONTENT')
   const array = content.value.filter(item => item._extension === 'md' && !item._file.includes('src.md'))
   array.forEach(mdContent => {
     const jsonContent = content.value.find(item => item._path === mdContent._path && item._extension === 'json')
@@ -153,6 +157,7 @@ const generatePageContent = () => {
       }
     }
   })
+  console.log(array)
   pageContent.value = array
 }
 
@@ -251,6 +256,7 @@ const getPreviewComponentName = path => {
 
 // ==================================================================== Watchers
 watch(route, async route => {
+  console.log('WATCH', route)
   generatePageContent()
   if (navigatedByRouteDebounce.value) { clearTimeout(navigatedByRouteDebounce.value) }
   navigatedByRouteDebounce.value = setTimeout(() => {
