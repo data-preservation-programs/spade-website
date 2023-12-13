@@ -97,7 +97,7 @@ const pageHeading = useToPascalCase(pageSlug, ' ')
 
 console.log('HIT new page', route.path)
 
-const { data: content } = await useAsyncData('page-content', async () => {
+const { data: content } = await useAsyncData(`page-${route.path}-content`, async () => {
   console.log('FETCH NEW CONTENT')
   console.log({
     where: {
@@ -111,15 +111,15 @@ const { data: content } = await useAsyncData('page-content', async () => {
   }).find()
   console.log(content)
   return content
-})
+}, { watch: [route] })
 
-// const { data: definitionsSchema } = await useAsyncData('definitions-schema', () => {
-//   return queryContent({
-//     where: {
-//       _path: { $contains: `/docs/${dirNameSplit[0]}/${dirNameSplit[1]}/definitions-schema` }
-//     }
-//   }).findOne()
-// })
+const { data: definitionsSchema } = await useAsyncData('definitions-schema', () => {
+  return queryContent({
+    where: {
+      _path: { $contains: `/docs/${dirNameSplit[0]}/${dirNameSplit[1]}/definitions-schema` }
+    }
+  }).findOne()
+})
 
 const routePathSplitLength = route.path.split('/').length
 const sectionCount = content.value.length
@@ -157,9 +157,9 @@ const generatePageContent = () => {
     const jsonContent = content.value.find(item => item._path === mdContent._path && item._extension === 'json')
     if (jsonContent) {
       if (Object.hasOwn(jsonContent, 'swagger')) {
-        // const { overview, preview } = useFormatSwaggerData(jsonContent, {...definitionsSchema.value})
-        // mdContent.apiOverview = overview
-        // mdContent.apiPreview = preview
+        const { overview, preview } = useFormatSwaggerData(jsonContent, {...definitionsSchema.value})
+        mdContent.apiOverview = overview
+        mdContent.apiPreview = preview
       } else {
         mdContent.apiPreview = jsonContent
       }

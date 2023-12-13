@@ -6,7 +6,7 @@ import Path from 'path'
 // ////////////////////////////////////////////////////////////////////// Export
 // -----------------------------------------------------------------------------
 export default defineNuxtConfig({
-  ssr: true,
+  ssr: false,
   // ================================================================== Compiler
   vite: {
     css: {
@@ -25,7 +25,6 @@ export default defineNuxtConfig({
   },
   nitro: {
     prerender: {
-      crawlLinks: true,
       failOnError: false
     }
   },
@@ -56,7 +55,7 @@ export default defineNuxtConfig({
   // ========================================================== [Module] Content
   content: {
     experimental: {
-      clientDb: true
+      clientDB: true
     },
     sources: {
       targetDocs: {
