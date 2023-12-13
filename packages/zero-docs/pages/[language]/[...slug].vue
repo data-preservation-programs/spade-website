@@ -95,7 +95,7 @@ const docsStore = useZeroDocsStore()
 const pageSlug = dirNameSplit[2]
 const pageHeading = useToPascalCase(pageSlug, ' ')
 
-console.log('HIT new page')
+console.log('HIT new page', route)
 
 const { data: content } = await useAsyncData(() => {
   const content = queryContent({
