@@ -75,8 +75,8 @@ export default defineNitroPlugin(async nitroApp => {
     if (file.ext === '.md' && file.name !== 'src') {
       siteUrls.push(
         file.level < 4 ?
-          `${file.levelPath}/${file.slug}` :
-          `${file.levelPath}`
+          `${file.levelPath.replace(/[0-9]. /g, '')}/${file.slug.replace(/[0-9]. /g, '')}` :
+          `${file.levelPath.replace(/[0-9]. /g, '')}`
       )
     }
   })
