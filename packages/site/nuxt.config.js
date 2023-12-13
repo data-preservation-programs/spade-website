@@ -64,8 +64,8 @@ export default defineNuxtConfig({
         { name: 'msapplication-config', content: '/favicon/light/browserconfig.xml' }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon/light/favicon-96x96.png' },
-        { rel: 'manifest', href: '/favicon/light/manifest.json' }
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon/light/favicon-96x96.png' }
+        // { rel: 'manifest', href: '/favicon/light/manifest.json' }
       ]
     }
   },

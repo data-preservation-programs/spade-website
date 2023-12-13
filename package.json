@@ -1,7 +1,7 @@
 {
-  "name": "@undone-labs/nuxt3-starter",
+  "name": "@data-preservation-programs/spade-website",
   "version": "1.0.0",
-  "description": "Get a Nuxt 3 site up and running fast 🚀",
+  "description": "Websites for Spade, including the main site and the documentation site",
   "author": {
     "name": "Agency Undone",
     "email": "hello@agencyundone.com"
@@ -10,12 +10,12 @@
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "git@github.com:undone-labs/nuxt3-starter.git"
+    "url": "git@github.com:data-preservation-programs/spade-website.git"
   },
   "bugs": {
-    "url": "https://github.com/undone-labs/nuxt3-starter/issues"
+    "url": "https://github.com/data-preservation-programs/spade-website/issues"
   },
-  "homepage": "https://github.com/undone-labs/nuxt3-starter#readme",
+  "homepage": "https://github.com/data-preservation-programs/spade-website#readme",
   "engines": {
     "node": ">=20.9.0"
   },
@@ -26,13 +26,13 @@
     "upgrade-nuxt-ui": "npm run upgrade-nuxt -w zero-ui",
     "dev-site": "npm run dev -w site",
     "build-site": "npm run build -w packages/site",
-    "generate-site": "npm ci -w site && npm run generate -w site",
+    "generate-site": "npm run generate -w site",
     "start-site": "node packages/site/.output/server/index.mjs",
     "upgrade-nuxt-site": "npm run upgrade-nuxt -w site",
     "dev-docs": "npm run dev -w docs",
     "build-docs": "npm run build -w packages/docs",
     "start-docs": "node packages/docs/.output/server/index.mjs",
-    "generate-docs": "npm ci -w docs && npm run generate -w docs",
+    "generate-docs": "npm run generate -w docs",
     "upgrade-nuxt-docs": "npm run upgrade-nuxt -w docs"
   },
   "workspaces": [
