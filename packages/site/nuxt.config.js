@@ -41,7 +41,10 @@ export default defineNuxtConfig({
     public: {
       siteUrl: env === 'development' ? `${baseUrls[env]}:${frontendPort}` : baseUrls[env],
       backendUrl: env === 'development' ? `${baseUrls[env]}:${backendPort}` : `${baseUrls[env]}/api`,
-      serverFlag: env
+      serverFlag: env,
+      seo: {
+        siteName: ''
+      }
     }
   },
   // ======================================================== Development Server
@@ -61,11 +64,11 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'msapplication-config', content: '/favicon/light/browserconfig.xml' }
+        { name: 'msapplication-config', content: '/favicon/browserconfig.xml' }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon/light/favicon-96x96.png' },
-        { rel: 'manifest', href: '/favicon/light/manifest.json' }
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon-96x96.png' },
+        { rel: 'manifest', href: '/favicon/manifest.json' }
       ]
     }
   },

@@ -415,6 +415,14 @@ const resizeInfographic = () => {
   .button {
     font-weight: 500;
   }
+  .button {
+    display: block;
+    width: fit-content;
+    transition: 200ms ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 }
 
 .card-content {
