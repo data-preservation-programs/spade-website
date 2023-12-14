@@ -3,6 +3,22 @@
 #site-header {
   align-items: center;
 
+  .logo {
+    overflow: visible;
+    .left-arrow,
+    .right-arrow {
+      transition: transform 500ms ease;
+    }
+    &:hover {
+      .left-arrow {
+        transform: translateX(-.3rem);
+      }
+      .right-arrow {
+        transform: translateX(.3rem);
+      }
+    }
+  }
+
   #site-nav {
     position: absolute;
     padding-left: 0;
