@@ -142,41 +142,6 @@ export default {
   }
 }
 
-.heading {
-  &.heading-image {
-    display: flex;
-    align-items: center;
-    img {
-      width: toRem(90);
-      height: toRem(90);
-      margin-right: toRem(35);
-      @include medium {
-        width: toRem(60);
-        height: toRem(60);
-      }
-      @include tiny {
-        margin-right: toRem(17);
-      }
-    }
-  }
-  :deep(.highlight) {
-    color: unset;
-    -webkit-text-fill-color: unset;
-    -moz-text-fill-color: unset;
-    text-fill-color: unset;
-    &::-moz-selection {
-      -webkit-text-fill-color: unset;
-      -moz-text-fill-color: unset;
-      text-fill-color: unset;
-    }
-    &::selection {
-      -webkit-text-fill-color: unset;
-      -moz-text-fill-color: unset;
-      text-fill-color: unset;
-    }
-  }
-}
-
 .button-row {
   :deep(.button) {
     &.theme__primary {

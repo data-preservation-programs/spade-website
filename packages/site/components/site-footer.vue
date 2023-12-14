@@ -64,7 +64,12 @@
                 <div class="grid-middle-noGutter-noBottom">
 
                   <div class="col-3" data-push-right="off-3">
-                    <DataProgramsLogo class="dp-logo" />
+                    <ZeroButton
+                      to="https://dataprograms.org/"
+                      tag="nuxt-link">
+                      <DataProgramsLogo class="dp-logo" />
+                    </ZeroButton>
+                    
                   </div>
 
                   <div class="col-3" data-push-left="off-3">
@@ -344,8 +349,13 @@ const resizeHandler = () => {
 }
 
 .dp-logo {
+  display: block;
+  transition: 200ms ease;
   @include mini {
     width: toRem(107);
+  }
+  &:hover {
+    transform: scale(1.08);
   }
 }
 
@@ -366,6 +376,13 @@ const resizeHandler = () => {
   }
   @include mini {
     padding-top: toRem(14);
+  }
+  :deep(a) {
+    border-bottom: solid 1px rgba($woodsmoke, 0);
+    transition: 200ms ease;
+    &:hover {
+      border-bottom: solid 1px $woodsmoke;
+    }
   }
 }
 

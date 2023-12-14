@@ -194,6 +194,33 @@ const props = defineProps({
   }
 }
 
+.theme__gradient-dark {
+  transition: 300ms ease;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include gradientYellowBlue(280deg);
+    opacity: 0;
+    transition: 300ms ease;
+  }
+  .inner-content {
+    transition: 300ms ease;
+  }
+  &:hover {
+    &:before {
+      opacity: 1;
+    }
+    .inner-content {
+      background-color: #162349;
+    }
+  }
+  
+}
+
 .theme__icon {
   border-radius: 50%;
   padding: toRem(6);

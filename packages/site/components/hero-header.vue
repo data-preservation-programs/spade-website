@@ -1,5 +1,5 @@
 <template>
-  <div class="hero-header">
+  <div :class="['hero-header', { 'error-page': errorPage }]">
 
     <div class="main-panels">
       <div class="panel-before">
@@ -35,20 +35,21 @@
             <template #clipped-content>
               <div class="main-bg-panel-after"></div>
             </template>
-            <template v-if="small" #overlay-content>
-              <div class="graph-block">
+            <template #overlay-content>
+              <div v-if="small && !errorPage" class="graph-block">
                 <DataOnboardingTrendMobile class="graph" />
                 <div class="caption">
                   {{ imageblock.caption }}
                 </div>
               </div>
+              <TextBlock v-if="errorPage" :block="errorblock" />
             </template>
           </ResponsiveClipper>
         </div>
       </div>
     </div>
 
-    <div class="grid-noGutter-noBottom-equalHeight">
+    <div v-if="cardsblock" class="grid-noGutter-noBottom-equalHeight">
 
       <div v-if="!small" class="col-3">
         <div class="graph-block">
@@ -109,6 +110,11 @@ const props = defineProps({
   block: {
     type: Object,
     required: true
+  },
+  errorPage: {
+    type: Boolean,
+    required: false,
+    default: false
   }
 })
 
@@ -116,6 +122,7 @@ const props = defineProps({
 const textblock = computed(() => props.block.textblock)
 const imageblock = computed(() => props.block.imageblock)
 const cardsblock = computed(() => props.block.cardsblock)
+const errorblock = computed(() => props.block.errorblock)
 
 // ======================================================================= Hooks
 onMounted(() => {
@@ -154,6 +161,90 @@ onBeforeUnmount(() => {
     width: 100%;
     padding: 0 !important;
   }
+  &.error-page {
+    .panel-before {
+      width: 35%;
+      @include gridMaxMQ {
+        width: 40%;
+      }
+      .hero-text-block {
+        padding: toRem(313) toRem(114);
+        @include large {
+          padding: toRem(313) toRem(80);
+        }
+        @include small {
+          padding: toRem(89) toRem(25) toRem(114) toRem(25);
+        }
+        :deep(.heading) {
+          margin-bottom: 0;
+          @include small {
+            display: flex;
+            justify-content: center;
+          }
+        }
+        :deep(.h1) {
+          width: fit-content;
+          font-size: toRem(100);
+          @include medium {
+            font-size: toRem(54);
+            line-height: leading(70, 54);
+            letter-spacing: 0.54px;
+          }
+        }
+      }
+    }
+    .panel-after {
+      width: 65%;
+      @include gridMaxMQ {
+        width: 60%;
+      }
+      :deep(.main-bg-panel-after) {
+        &:before {
+          transform: translate(calc(-50% - toRem(50)), calc(-50% - toRem(50))) scale(1.7);
+          @include small {
+            transform: translate(-50%, calc(-50% - toRem(50))) scale(1.7, -1.7);
+          }
+        }
+      }
+      :deep(.overlay-content) {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      :deep(.text-block) {
+        padding-left: 22%;
+        @include small {
+          padding: toRem(149) toRem(25) toRem(264) toRem(25);
+        }
+        .heading {
+          color: $perano;
+          @include small {
+            display: flex;
+            justify-content: center;
+          }
+          .h2 {
+            @include large {
+              font-size: toRem(32);
+            }
+            @include medium {
+              font-size: toRem(24);
+              white-space: nowrap;
+            }
+          }
+        }
+        .text-wrapper {
+          display: none;
+        }
+        .button-row {
+          @include small {
+            display: flex;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
 }
 
 .main-panels {
@@ -169,15 +260,15 @@ onBeforeUnmount(() => {
 .panel-before {
   width: 67.5%;
   @include small {
-    width: 100%;
-    margin-bottom: -2.375rem;
+    width: 100% !important;
+    margin-bottom: -2.375rem !important;
   }
 }
 
 .panel-after {
   width: 32.5%;
   @include small {
-    width: 100%;
+    width: 100% !important;
   }
   .stretch-wrapper {
     height: 100%;
@@ -387,6 +478,9 @@ onBeforeUnmount(() => {
       }
       .cta {
         .button-content {
+          display: block;
+          width: fit-content;
+          transition: 200ms ease;
           font-family: $fontSuisseIntl;
           font-size: toRem(16);
           font-weight: 500;
@@ -395,6 +489,9 @@ onBeforeUnmount(() => {
           color: $electricLime;
           @include medium {
             font-size: toRem(14);
+          }
+          &:hover {
+            transform: scale(1.1);
           }
         }
       }
