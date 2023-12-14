@@ -187,6 +187,8 @@ const handleNavClick = () => {
 .site-header {
   padding: toRem(8) 0;
   height: $siteHeaderHeight;
+  background-color: rgba(white, 0);
+  transition: background-color 250ms ease-in;
   @include small {
     position: absolute;
     padding: toRem(5) 0;
@@ -198,6 +200,8 @@ const handleNavClick = () => {
     position: fixed;
     width: 100%;
     z-index: 1000;
+    height: 100vh;
+    background-color: white;
     .main-content,
     .mobile-background-panel {
       z-index: 1001;
