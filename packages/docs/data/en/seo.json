@@ -1,12 +1,12 @@
 {
   "_": {
-    "title": "Spade Docs",
+    "title": "Spade - Documentation",
     "description": "Spade API docs",
-    "siteName": "Spade Docs",
-    "ogImage": "/public/open-graph.jpg"
+    "siteName": "Spade Documentation",
+    "ogImage": "/public/spade-docs-open-graph.jpg"
   },
   "*": {
-    "title": "Spade Docs - |title|",
+    "title": "Spade Documentation - |title|",
     "description": "|description|"
   }
 }
