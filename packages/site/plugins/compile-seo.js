@@ -9,6 +9,8 @@
 export default defineNuxtPlugin(nuxtApp => {
   const config = useRuntimeConfig()
   nuxtApp.provide('CompileSeo', (seo) => {
+    console.log(seo)
+    console.log(config.public)
     const siteName = config.public.seo.siteName
     const siteUrl = config.public.siteUrl
     const title = seo.title

@@ -1,5 +1,5 @@
 <template>
-  <div class="layout default">
+  <div :class="['layout', 'default', { error }]">
 
     <SiteHeader />
 
@@ -25,6 +25,7 @@ if (process.client && window.matchMedia('(prefers-color-scheme: dark)').matches)
 }
 
 // ======================================================================== Data
+const route = useRoute()
 const zeroStore = useZeroStore()
 
 const { data: Seo } = await useAsyncData('seo', async () => {
@@ -37,6 +38,8 @@ const { data: Seo } = await useAsyncData('seo', async () => {
 })
 
 zeroStore.setSeo(Seo)
+
+const error = computed(() => route.path === '/error')
 </script>
 
 <style lang="scss" scoped>
@@ -47,5 +50,10 @@ zeroStore.setSeo(Seo)
   width: 100vw;
   height: 100%;
   overflow: hidden;
+  &.error {
+    :deep(#site-footer) {
+      background-color: white;
+    }
+  }
 }
 </style>

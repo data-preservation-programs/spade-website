@@ -127,13 +127,13 @@ $replace4: #000000;
 }
 
 @mixin selection-dark {
-  ::-moz-selection { background: unset; }
-  ::selection { background: unset; }
+  ::-moz-selection { background: $perano; }
+  ::selection { background: $perano; }
 }
 
 @mixin selection-light {
-  ::-moz-selection { background: unset; }
-  ::selection { background: unset; }
+  ::-moz-selection { background: $perano; }
+  ::selection { background: $perano; }
 }
 
 @mixin radialGradientDarkBlue($position) {
@@ -145,7 +145,7 @@ $replace4: #000000;
 }
 
 @mixin gradientYellowBlue($angle) {
-  background: linear-gradient(95deg, $electricLime 1.52%, $royalBlue 97.89%);
+  background: linear-gradient($angle, $electricLime 1.52%, $royalBlue 97.89%);
 }
 
 @mixin gradientBlueBlueLight($angle) {
