@@ -8,7 +8,7 @@
 // -----------------------------------------------------------------------------
 // ////////////////////////////////////////////////////////// getSecurityHeaders
 const getSecurityHeaders = (security, securityDefinitions) => {
-  console.log('security ', security)
+  // console.log('security ', security)
   let securityHeaders = false
   if (security) {
     security.forEach(securityRequirements => {
@@ -30,7 +30,7 @@ const getSecurityHeaders = (security, securityDefinitions) => {
       })
     })
   }
-  console.log('securityHeaders ', securityHeaders)
+  // console.log('securityHeaders ', securityHeaders)
   return securityHeaders
 }
 // //////////////////////////////////////////////////// getHeadersAndQueryParams
@@ -155,7 +155,7 @@ export const useFormatSwaggerData = (swaggerObject, definitionsSchema) => {
     Object.keys(paths[path]).forEach(requestMethod => {
       // const pathSlug = path.slice(1)
       const requestMethodConfig = paths[path][requestMethod]
-      console.log('requestMethodConfig ', requestMethodConfig)
+      // console.log('requestMethodConfig ', requestMethodConfig)
       // ------------ overview + preview: compile header values and query params
       const { paramHeaders, queryParams, bodyParams, pathParams } = getHeadersAndQueryParams(requestMethodConfig.parameters || false, definitions)
       const securityHeaders = getSecurityHeaders(requestMethodConfig.security || false, securityDefinitions)

@@ -22,6 +22,11 @@ export default defineNuxtConfig({
     },
     assetsInclude: ['**/*.md']
   },
+  nitro: {
+    prerender: {
+      failOnError: false
+    }
+  },
   // ============================================================= Global Styles
   css: [
     '@/../zero-docs/assets/scss/main.scss'
@@ -48,6 +53,9 @@ export default defineNuxtConfig({
   },
   // ========================================================== [Module] Content
   content: {
+    experimental: {
+      clientDB: true
+    },
     sources: {
       targetDocs: {
         driver: 'fs',

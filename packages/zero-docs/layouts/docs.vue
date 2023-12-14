@@ -27,8 +27,8 @@ if (process.client && window.matchMedia('(prefers-color-scheme: dark)').matches)
       { name: 'msapplication-config', content: '/public/favicon/light/browserconfig.xml' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/public/favicon/light/favicon-96x96.png' },
-      { rel: 'manifest', href: '/public/favicon/light/manifest.json' }
+      { rel: 'icon', type: 'image/x-icon', href: '/public/favicon/light/favicon-96x96.png' }
+      // { rel: 'manifest', href: '/public/favicon/light/manifest.json' }
     ]
   })
 }
