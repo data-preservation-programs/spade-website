@@ -155,8 +155,6 @@ const generatePageContent = () => {
   pageContent.value = array
 }
 
-// generatePageContent()
-
 /**
  * @method intersectionObserveHeadings
  * @see {@link https://www.smashingmagazine.com/2018/01/deferring-lazy-loading-intersection-observer-api/} for a thorough overview of how the IntersectionObserver works
