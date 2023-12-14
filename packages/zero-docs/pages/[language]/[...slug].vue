@@ -95,22 +95,12 @@ const docsStore = useZeroDocsStore()
 const pageSlug = dirNameSplit[2]
 const pageHeading = useToPascalCase(pageSlug, ' ')
 
-console.log('HIT new page', route.path)
-
 const { data: content } = await useAsyncData(`page-${route.path}-content`, async () => {
-  console.log('FETCH NEW CONTENT')
-  console.log({
-    where: {
-      _path: { $contains: `/docs${route.path}` }
-    }
-  })
-  const content = await queryContent({
+  return await queryContent({
     where: {
       _path: { $contains: `/docs${route.path}` }
     }
   }).find()
-  console.log(content)
-  return content
 }, { watch: [route] })
 
 const { data: definitionsSchema } = await useAsyncData('definitions-schema', () => {
@@ -150,8 +140,6 @@ const headerHeightOffset = computed(() => headerHeight.value * 3)
  */
 
 const generatePageContent = () => {
-  console.log('GENERATE PAGE CONTENT')
-  console.log(content.value)
   const array = content.value.filter(item => item._extension === 'md' && !item._file.includes('src.md'))
   array.forEach(mdContent => {
     const jsonContent = content.value.find(item => item._path === mdContent._path && item._extension === 'json')
@@ -165,11 +153,10 @@ const generatePageContent = () => {
       }
     }
   })
-  console.log(array)
   pageContent.value = array
 }
 
-generatePageContent()
+// generatePageContent()
 
 /**
  * @method intersectionObserveHeadings
@@ -265,17 +252,16 @@ const getPreviewComponentName = path => {
 }
 
 // ==================================================================== Watchers
-// watch(content, async content => {
-//   console.log('WATCH', content)
-//   generatePageContent()
-//   // if (navigatedByRouteDebounce.value) { clearTimeout(navigatedByRouteDebounce.value) }
-//   // navigatedByRouteDebounce.value = setTimeout(() => {
-//   //   navigatedByRoute.value = false
-//   //   clearTimeout(navigatedByRouteDebounce.value)
-//   // }, 100)
-//   // navigatedByRoute.value = true
-//   // docsStore.setActiveSection({ id: route.hash.slice(1) })
-// }, { immediate: true })
+watch(route, async route => {
+  generatePageContent()
+  if (navigatedByRouteDebounce.value) { clearTimeout(navigatedByRouteDebounce.value) }
+  navigatedByRouteDebounce.value = setTimeout(() => {
+    navigatedByRoute.value = false
+    clearTimeout(navigatedByRouteDebounce.value)
+  }, 100)
+  navigatedByRoute.value = true
+  docsStore.setActiveSection({ id: route.hash.slice(1) })
+}, { immediate: true })
 
 // ======================================================================= Hooks
 onMounted(async () => {
