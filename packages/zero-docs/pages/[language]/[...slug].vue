@@ -85,7 +85,6 @@ const headerHeight = ref(0)
 const sections = ref([])
 const scrollWindowEventListenerFunction = ref(null)
 const route = useRoute()
-// const contentPath = ref(`/docs${route.path}`)
 const navigatedByRoute = ref(false)
 const navigatedByRouteDebounce = ref(null)
 const ctx = getCurrentInstance()
@@ -95,7 +94,7 @@ const docsStore = useZeroDocsStore()
 const pageSlug = dirNameSplit[2]
 const pageHeading = useToPascalCase(pageSlug, ' ')
 
-const { data: content } = await useAsyncData(`page-${route.path}-content`, async () => {
+const { data: content } = await useAsyncData(`page-content-${route.path}`, async () => {
   return await queryContent({
     where: {
       _path: { $contains: `/docs${route.path}` }
@@ -103,13 +102,13 @@ const { data: content } = await useAsyncData(`page-${route.path}-content`, async
   }).find()
 }, { watch: [route] })
 
-const { data: definitionsSchema } = await useAsyncData('definitions-schema', () => {
+const { data: definitionsSchema } = await useAsyncData(`definitions-schema-${route.path}`, () => {
   return queryContent({
     where: {
       _path: { $contains: `/docs/${dirNameSplit[0]}/${dirNameSplit[1]}/definitions-schema` }
     }
   }).findOne()
-})
+}, { watch: [route] })
 
 const routePathSplitLength = route.path.split('/').length
 const sectionCount = content.value.length
