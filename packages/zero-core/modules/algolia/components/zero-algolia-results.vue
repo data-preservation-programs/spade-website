@@ -4,23 +4,23 @@
     <!-- =========================================================== results -->
     <template v-if="resultsFound">
       <section
-        v-for="group in headings"
-        :key="group.heading"
-        class="result-group">
+        v-for="group in groups"
+        :key="group.heading">
 
         <slot name="group-heading" :heading="group.heading" />
 
         <div class="results-list">
           <nuxt-link
             v-for="result in group.results"
-            :key="result"
-            :to="result.objectID"
+            :key="result.objectID"
+            :to="result.path"
             @mouseenter="algoliaStore.setActiveResult(result.objectID)"
             @click="handleClick">
             <slot
               name="result"
               :result="result"
-              :get-result-title="getResultTitle" />
+              :get-result-title="getResultTitle"
+              :get-result-content="getResultContent" />
           </nuxt-link>
         </div>
 
@@ -36,6 +36,9 @@
 </template>
 
 <script setup>
+// ===================================================================== Imports
+import StartCase from 'lodash/startCase'
+
 // ======================================================================== Data
 const props = defineProps({
   results: {
@@ -48,29 +51,43 @@ const props = defineProps({
 const algoliaStore = useZeroAlgoliaStore()
 const { activeResult, modalActive } = storeToRefs(algoliaStore)
 const keyCommandEventListener = ref(null)
+const docsStore = useZeroDocsStore()
+const { language } = storeToRefs(docsStore)
 
 // ==================================================================== Computed
-const headings = computed(() => {
-  const uniqueHeadings = [...new Set(props.results.map(result => result.sidebarHeading))]
-  const array = []
-  uniqueHeadings.forEach((itemHeading) => {
-    const filtered = props.results.filter(result => result.sidebarHeading === itemHeading)
-    array.push({
-      heading: itemHeading,
-      results: filtered.slice(0, 5)
-    })
+const groups = computed(() => {
+  const results = props.results
+  const len = results.length
+  const compiled = {}
+  for (let i = 0; i < len; i++) {
+    const result = results[i]
+    let breadcrumbs = result.breadcrumbs.full
+    const index = breadcrumbs.indexOf(language.value)
+    if (index !== -1) {
+      breadcrumbs.splice(index, 1)
+    }
+    const section = StartCase(breadcrumbs[0])
+    if (!compiled.hasOwnProperty(section)) {
+      compiled[section] = [result]
+    } else {
+      compiled[section].push(result)
+    }
+  }
+  return Object.keys(compiled).map(key => {
+    return {
+      heading: key,
+      results: compiled[key]
+    }
   })
-  return array
 })
 
 const filteredResultList = computed(() => {
-  return headings.value.reduce((acc, group) => {
-    acc = acc.concat(group.results)
-    return acc
+  return groups.value.reduce((acc, group) => {
+    return acc.concat(group.results)
   }, [])
 })
 
-const resultsFound = computed(() => headings.value.length > 0)
+const resultsFound = computed(() => [] /* headings.value.length > 0 */)
 
 // ======================================================================= Hooks
 onMounted(() => {
@@ -128,23 +145,29 @@ onBeforeUnmount(() => {
  * @method getResultTitle
  */
 
-const getResultTitle = (result) => {
-  if (result._highlightResult.entryName.matchLevel === 'full') {
-    return result.entrySection
-  }
-  if (result._highlightResult.content.matchLevel === 'full') {
-    return formatMatchingContent(result._highlightResult.content.value, result)
-  }
-  return result.entrySection
+const getResultTitle = result => {
+  return result._highlightResult.heading.matchLevel === 'full' ?
+    result.heading :
+    result.heading
+}
+
+/**
+ * @method getResultContent
+ */
+
+const getResultContent = result => {
+  return `<div>${result._highlightResult.content.matchLevel === 'full' ?
+    formatMatchingContent(result._highlightResult.content.value) :
+    result.content}</div>`
 }
 
 /**
  * @method formatMatchingContent
  */
 
-const formatMatchingContent = (string, result) => {
+const formatMatchingContent = string => {
   const sentences = string.split('.')
-  result = sentences.find(sentence => sentence.includes('<mark>'))
+  const result = sentences.find(sentence => sentence.includes('<mark>'))
   if (result) {
     const text = result.trim()
     const maxChars = 75
@@ -156,7 +179,7 @@ const formatMatchingContent = (string, result) => {
       return `${text.substring(0, maxChars)}`
     }
   }
-  return result.entrySection
+  return string
 }
 
 /**
