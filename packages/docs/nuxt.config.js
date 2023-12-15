@@ -1,7 +1,5 @@
 // ///////////////////////////////////////////////////////////////////// Imports
 // -----------------------------------------------------------------------------
-import Path from 'path'
-
 import { defineNuxtConfig } from 'nuxt/config'
 
 // /////////////////////////////////////////////////////////// Variables & Setup
@@ -10,7 +8,7 @@ const env = process.env.SERVER_ENV
 
 const baseUrls = {
   development: 'https://localhost',
-  stable: '',
+  stable: 'https://spade-docs.on.fleek.co/',
   production: ''
 }
 
@@ -101,13 +99,10 @@ export default defineNuxtConfig({
     modules: {
       button: { enable: true },
       algolia: {
-        enable: false,
+        enable: true,
         apiKey: process.env.ALGOLIA_API_KEY,
         applicationId: process.env.ALGOLIA_APPLICATION_ID,
-        indexName: process.env.ALGOLIA_INDEX_ID,
-        sources: [
-          Path.resolve(__dirname, 'content')
-        ]
+        indexName: process.env.ALGOLIA_INDEX_ID
       }
     }
   },

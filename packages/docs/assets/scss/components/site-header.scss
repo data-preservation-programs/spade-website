@@ -3,6 +3,22 @@
 #site-header {
   align-items: center;
 
+  .logo {
+    overflow: visible;
+    .left-arrow,
+    .right-arrow {
+      transition: transform 500ms ease;
+    }
+    &:hover {
+      .left-arrow {
+        transform: translateX(-.3rem);
+      }
+      .right-arrow {
+        transform: translateX(.3rem);
+      }
+    }
+  }
+
   #site-nav {
     position: absolute;
     padding-left: 0;
@@ -14,11 +30,18 @@
     justify-content: center;
     &::before {
       bottom: toRem(-7);
-      width: 80%;
+      height: toRem(5);
+      width: 0;
       background-color: var(--primary-accent-color)
     }
     .text {
       font-weight: 600;
+    }
+    &:hover {
+      &:before {
+        transition: 150ms ease-in;
+        width: 80%;
+      }
     }
   }
   // ============================================================== Theme Toggle

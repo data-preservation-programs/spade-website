@@ -41,6 +41,11 @@
               :body-parameters="section.apiOverview.bodyParameters"
               :path-parameters="section.apiOverview.pathParameters"
               :response-codes="section.apiOverview.responseCodes" />
+
+              <component
+              :is="getCustomComponentName(section._path)"
+              v-if="getCustomComponentName(section._path)" />
+
           </div>
         </div>
 
@@ -248,6 +253,18 @@ const getPreviewComponentName = path => {
   return false
 }
 
+
+/**
+ * @method getCustomComponentName
+ */
+const getCustomComponentName = path => {
+  const componentList = ctx.appContext.components
+  const previewComponentName = useToPascalCase(path.split('/').pop())
+  const previewExists = componentList.hasOwnProperty(previewComponentName)
+  if (previewExists) { return previewComponentName }
+  return false
+}
+
 // ==================================================================== Watchers
 watch(route, async route => {
   generatePageContent()
@@ -284,7 +301,7 @@ onBeforeUnmount(() => {
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// Content
 .page {
-  padding-bottom: 1rem;
+  padding-bottom: 5rem;
 }
 
 .content,
@@ -308,20 +325,9 @@ onBeforeUnmount(() => {
 }
 
 .section {
-  position: relative;
   &:not(:nth-child(2)) {
     padding-top: 2rem;
-    // border-top: solid 2px var(--background-color__secondary);
-    &::after {
-      content: '';
-      position: absolute;
-      display: block;
-      bottom: 0;
-      left: calc( $sidebarWidth + 2rem);
-      width: calc(100% - $sidebarWidth - 4rem);
-      height: 2px;
-      background-color: var(--divider);
-    }
+    border-top: solid 2px var(--background-color__secondary);
     transition: border-color 500ms;
   }
   &:not(:nth-last-child(2)) {
@@ -339,6 +345,6 @@ onBeforeUnmount(() => {
 
 .heading {
   @include h1;
-  margin-bottom: toRem(25);
+  margin-bottom: 2rem;
 }
 </style>

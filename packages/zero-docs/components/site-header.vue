@@ -198,9 +198,13 @@ const defaultSelectedLanguage = languageOptions.value.findIndex(option => option
 
 .github-link {
   display: flex;
+  transition: 150ms ease-in;
   :deep(path) {
     transition: 150ms ease-out;
     fill: var(--theme-color);
+  }
+  &:hover {
+    transform: scale(1.15)
   }
 }
 </style>

@@ -18,11 +18,12 @@
               <template #group-heading="{ heading }">
                 <slot name="group-heading" :heading="heading" />
               </template>
-              <template #result="{ result, getResultTitle }">
+              <template #result="{ result, getResultTitle, getResultContent }">
                 <slot
                   name="result"
                   :result="result"
-                  :get-result-title="getResultTitle" />
+                  :get-result-title="getResultTitle"
+                  :get-result-content="getResultContent" />
               </template>
             </ZeroAlgoliaResults>
           </template>

@@ -330,6 +330,26 @@ onBeforeUnmount(() => {
   @include tiny {
     padding: toRem(27) toRem(17);
   }
+  :deep(.underline) {
+    display: inline-block;
+    &:after {
+      content: '';
+      position: absolute;
+      width: toRem(87);
+      height: toRem(9);
+      transform: translate(toRem(-93), toRem(66));
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='87' height='9' viewBox='0 0 87 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M86.0015 1.90276C86.4626 1.29494 86.0291 0.421875 85.2661 0.421875H0V1.91293C0 2.94131 0.840363 3.77141 1.86866 3.75879L81.9984 2.77505C82.4009 2.7701 82.6163 3.24675 82.3468 3.54562L79.2233 7.00841C78.9018 7.36478 78.8333 7.8824 79.0508 8.31018C79.4386 9.07261 80.4903 9.16675 81.0073 8.48531L86.0015 1.90276Z' fill='%23E8FF5A'/%3e%3c/svg%3e ");
+      @include medium {
+        transform: translate(toRem(-82), toRem(53)) scale(0.81);
+      }
+      @include small {
+        transform: translate(toRem(-72), toRem(40)) scale(0.68);
+      }
+    }
+  }
 }
 
 .graph-block,
@@ -477,6 +497,10 @@ onBeforeUnmount(() => {
         margin-top: toRem(2);
       }
       .cta {
+        @include mini {
+          display: flex;
+          justify-content: center;
+        }
         .button-content {
           display: block;
           width: fit-content;
