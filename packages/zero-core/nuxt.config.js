@@ -31,7 +31,7 @@ export default defineNuxtConfig({
       failOnError: false,
       routes: [ // adds route to prerender
         '/prerender-ssg-sitemap',
-        '/compile-algolia-index',
+        '/generate-algolia-index',
         '/sitemap.xml'
       ]
     }
