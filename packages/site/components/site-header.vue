@@ -59,22 +59,43 @@
             <div class="col-4_lg-5_sm-6" data-push-left="off-0">
               <div class="nav-ctas">
 
-                <ButtonCta
-                  v-for="cta in ctas"
-                  :key="cta.component || cta.text"
-                  :tag="cta.tag"
-                  :target="cta.target"
-                  :theme="cta.theme"
-                  :to="cta.to"
-                  :class="zeroSlugify(cta.icon || cta.text)">
-                  <component
-                    :is="getCtaComponent(cta.icon)"
-                    v-if="cta.icon"
-                    class="icon" />
-                  <span v-if="cta.text">
-                    {{ cta.text }}
-                  </span>
-                </ButtonCta>
+                <template v-for="cta in ctas">
+                  <Tooltip
+                    v-if="cta.text === 'Login'"
+                    :key="cta.text"
+                    animate-from="bottom">
+                    <template #tooltip>
+                      <div>
+                        Coming soon
+                      </div>
+                    </template>
+                    <ButtonCta
+                      :tag="cta.tag"
+                      :target="cta.target"
+                      :theme="cta.theme"
+                      :to="cta.to"
+                      :disabled="true"
+                      :class="zeroSlugify(cta.text)">
+                      <span>{{ cta.text }}</span>
+                    </ButtonCta>
+                  </Tooltip>
+                  <ButtonCta
+                    v-else
+                    :key="cta.component || cta.text"
+                    :tag="cta.tag"
+                    :target="cta.target"
+                    :theme="cta.theme"
+                    :to="cta.to"
+                    :class="zeroSlugify(cta.icon || cta.text)">
+                    <component
+                      :is="getCtaComponent(cta.icon)"
+                      v-if="cta.icon"
+                      class="icon" />
+                    <span v-if="cta.text">
+                      {{ cta.text }}
+                    </span>
+                  </ButtonCta>
+                </template>
 
                 <div class="nav-toggle-wrapper">
                   <ZeroButton
@@ -283,6 +304,12 @@ const handleNavClick = () => {
   }
   :deep(.button) {
     margin-right: toRem(10);
+    &.login,
+    &.sign-up {
+      .inner-content {
+        padding: toRem(6) toRem(20);
+      }
+    }
     &:nth-child(3) {
       margin-right: auto;
     }
@@ -311,6 +338,38 @@ const handleNavClick = () => {
           display: none;
         }
       }
+    }
+  }
+}
+
+:deep(.tooltip) {
+  .floating {
+    z-index: 1000;
+    white-space: nowrap;
+    font-size: toRem(13);
+    background-color: $athensGray;
+    padding: toRem(6) toRem(18);
+    border-radius: toRem(10);
+    &:before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      left: 50%;
+      top: -3px;
+      transform: translateX(-50%);
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 3px solid $athensGray;
+      @include small {
+        top: -5px;
+      }
+    }
+  }
+  .button {
+    display: block;
+    &.login {
+      cursor: default;
     }
   }
 }

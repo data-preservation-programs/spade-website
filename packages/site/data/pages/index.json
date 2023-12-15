@@ -11,7 +11,7 @@
         "textblock": {
           "h": 1,
           "label": "<span>Update</span><span>Tenant API pilot is here!</span>",
-          "heading": "Get large datasets onboarded fast with your ideal decentralized storage partners",
+          "heading": "Get large datasets onboarded <span class='underline'>fast</span> with your ideal decentralized storage partners",
           "description": "<span class='highlight'>Spade</span> matches storage clients to storage providers and facilitates low-friction, high-throughput Filecoin data onboarding.",
           "theme": "hero-header"
         },
@@ -217,14 +217,14 @@
       "col_1": {
         "type": "section_infographic",
         "cols": {
-          "num": "col-12_md-8_mi-10_ti-12",
-          "push_left": "off-0_md-2_mi-1_ti-0"
+          "num": "col-10_lg-12_md-8_mi-10_ti-12",
+          "push_left": "off-1_lg-0_md-2_mi-1_ti-0"
         },
         "heading": "Spade gives tenants highly tunable options for how their data is onboarded to Filecoin.",
         "stages": [
           {
             "name": "Tenant",
-            "width": 30,
+            "width": 28,
             "card": {
               "heading": "Tenant organizes their data into collections",
               "description": "The tenant places data  into discrete groups called collections, which will later be used for deal-making"
@@ -232,7 +232,7 @@
           },
           {
             "name": "Policy",
-            "width": 16.5,
+            "width": 17.5,
             "card": {
               "heading": "Tenant sets a policy for what kind of storage providers they would like",
               "description": "This may include factors such as replication requirements and geographic distribution of data (geofencing)"
@@ -248,7 +248,7 @@
           },
           {
             "name": "Storage Providers",
-            "width": 27.5,
+            "width": 28.5,
             "card": {
               "heading": "Spade broker creates suitable deals based on policy and matching SPs",
               "description": "The rest is automated Spade makes the deals, decreasing overhead for both the client and for storage providers — everyone wins!"

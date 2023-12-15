@@ -90,5 +90,8 @@ export default {
 
 .clip-type-1 {
   padding-bottom: toRem(40) !important;
+  @include mini {
+    padding-bottom: toRem(25) !important;
+  }
 }
 </style>

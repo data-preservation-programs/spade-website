@@ -30,7 +30,7 @@
           </div>
         </div>
 
-        <div class="card-track">
+        <div ref="track" class="card-track">
           <div
             v-if="card"
             ref="cardRef"
@@ -161,7 +161,7 @@
                 <div
                   v-for="i in (mobile ? 8 : 7)"
                   :key="`sp-col-${i}`"
-                  :class="['sp-col', `sp-col-${i}`, { offset: i % 2 === 0 }]">
+                  :class="['sp-col', `sp-col-${i}`, { offset: i % 2 === (mobile ? 1 : 0) }]">
                   <div
                     v-for="j in (mobile ? 2 : 3)"
                     :key="`sp-${i}-${j}`"
@@ -186,8 +186,10 @@
 </template>
 
 <script setup>
+// ====================================================================== Import
 import InfographicArrow from './svgs/infographic-arrow'
 
+// ======================================================================= Props
 const props = defineProps({
   block: {
     type: Object,
@@ -199,6 +201,7 @@ const props = defineProps({
 const cardRef = ref(null)
 const cardContent = ref(null)
 const stagesRef = ref(null)
+const track = ref(null)
 const activeIndex = ref(1)
 const cardX = ref(0)
 const cardHeight = ref(0)
@@ -235,13 +238,15 @@ onBeforeUnmount(() => {
 
 // ===================================================================== Methods
 const moveCardTo = (index) => {
-  if (stagesRef.value && cardRef.value && cardContent.value) {
+  if (stagesRef.value && cardRef.value && cardContent.value && track.value) {
     if (!mobile.value) {
+      const trackWidth = track.value.getBoundingClientRect().width
       const stageWidths = stagesRef.value.map(stg => stg.getBoundingClientRect().width)
       const currentStage = stagesRef.value[index - 1]
       const width = currentStage.getBoundingClientRect().width
       const cardWidth = cardRef.value.getBoundingClientRect().width
-      cardX.value = currentStage.offsetLeft + (width - cardWidth) * 0.5 + 45
+      // console.log(trackWidth)
+      cardX.value = Math.max(0, Math.min(currentStage.offsetLeft + (width - cardWidth) * 0.5 + 45, trackWidth - cardWidth))
       const arr = numberOffsets.value.map((_, i) => {
         const current = index - 1
         if (i === current) { return 0 }
@@ -279,6 +284,7 @@ const resizeInfographic = () => {
 </script>
 
 <style lang="scss" scoped>
+$animationSpeed: 500ms;
 // ///////////////////////////////////////////////////////////////////// General
 .infographic {
   position: relative;
@@ -295,6 +301,9 @@ const resizeInfographic = () => {
   @include medium {
     margin-bottom: toRem(18);
   }
+  @include tiny {
+    padding: 0 toRem(22);
+  }
   [class~=grid], [class*=grid-], [class*=grid_] {
     width: 100%;
     padding: 0 !important;
@@ -306,8 +315,10 @@ const resizeInfographic = () => {
     font-weight: 600;
     line-height: leading(36, 24);
     letter-spacing: 0.48px;
+    margin: 0 toRem(-41);
     @include large {
-      padding: 0 toRem(32);
+      margin: 0;
+      padding: toRem(20);
     }
     @include medium {
       padding: 0;
@@ -330,7 +341,9 @@ const resizeInfographic = () => {
     display: flex;
     justify-content: space-between;
     height: unset;
+    padding: 0 toRem(22) 0 3rem;
     margin-bottom: toRem(24);
+    min-height: 10rem;
   }
 }
 
@@ -338,7 +351,7 @@ const resizeInfographic = () => {
   height: 0;
   @include medium {
     height: unset;
-    width: 80%;
+    width: 100%;
   }
 }
 
@@ -346,7 +359,7 @@ const resizeInfographic = () => {
   position: relative;
   display: flex;
   justify-content: center;
-  transition: height 300ms ease;
+  transition: height $animationSpeed ease;
 }
 
 .number {
@@ -358,7 +371,7 @@ const resizeInfographic = () => {
   width: toRem(30);
   height: toRem(30);
   background-color: $blackPearl;
-  transition: 300ms ease;
+  transition: $animationSpeed ease;
   opacity: 1;
   z-index: 100;
   &.hidden {
@@ -389,7 +402,7 @@ const resizeInfographic = () => {
   border: solid 1px $cornflowerBlue;
   border-radius: toRem(10);
   background-color: $blackPearl;
-  transition: 300ms ease;
+  transition: $animationSpeed ease;
   overflow: hidden;
   z-index: 101;
   @include medium {
@@ -478,7 +491,7 @@ const resizeInfographic = () => {
   }
   &:after {
     width: var(--track-highlight-width);
-    transition: width 300ms ease;
+    transition: width $animationSpeed ease;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='969' height='3' viewBox='0 0 969 3' fill='none'%3e%3cpath d='M968.594 1.51562H0.875' stroke='%23E8FF5A' stroke-width='2' stroke-dasharray='4 7'/%3e%3c/svg%3e");
   }
 }
@@ -514,6 +527,10 @@ const resizeInfographic = () => {
     .arrow {
       :deep(path) {
         fill: $canary;
+        @include mini {
+          filter: drop-shadow(0px 0px 2.149px #0740F9);
+          z-index: -1;
+        }
       }
     }
     .dashed-line {
@@ -532,6 +549,9 @@ const resizeInfographic = () => {
 }
 
 .stage-3 {
+  .name {
+    justify-content: flex-start;
+  }
   @include medium {
     padding-top: 0;
   }
@@ -585,17 +605,19 @@ const resizeInfographic = () => {
   position: relative;
   border-style: solid;
   border-color: $toreaBay;
-  border-radius: toRem(10);
+  border-radius: toRem(6);
   transition: 200ms ease;
   &.border-lg {
     border-width: 3px;
     &:before {
+      border-width: 3px;
       transform: translate(-3px, -3px);
     }
   }
   &.border-md {
     border-width: 2px;
     &:before {
+      border-width: 2px;
       transform: translate(-2px, -2px);
     }
   }
@@ -605,6 +627,7 @@ const resizeInfographic = () => {
       border-radius: toRem(5);
     }
     &:before {
+      border-width: 1.5px;
       transform: translate(-1.5px, -1.5px);
       @include medium {
         border-radius: toRem(5);
@@ -618,10 +641,9 @@ const resizeInfographic = () => {
     top: 0;
     width: 100%;
     height: 100%;
-    border-width: inherit;
     border-style: solid;
     border-color: $canary;
-    border-radius: toRem(10);
+    border-radius: toRem(6);
     transition: inherit;
     box-sizing: content-box;
     box-shadow: inset 0px 0px 7.221px 0.722px $scienceBlue, 0px 0px 7.221px 0.722px $scienceBlue;
@@ -668,8 +690,8 @@ const resizeInfographic = () => {
     .arrow-wrapper {
       top: 0;
       left: calc(50% - 4px);
-      transform: translate(-50%, -4px) rotate(90deg);
-      width: toRem(70);
+      transform: translate(-50%, -6px) rotate(90deg) scale(0.9);
+      width: toRem(74);
       .arrow {
         right: 0;
       }
@@ -720,12 +742,15 @@ const resizeInfographic = () => {
     :deep(svg) {
       display: block;
       margin-top: toRem(4);
+      transform: translate(-3px, -2px);
       @include medium {
         width: toRem(52);
         margin: 0 auto;
       }
     }
     @include medium {
+      position: relative;
+      z-index: 1;
       padding: toRem(13) toRem(39);
       min-width: toRem(166);
       max-width: unset;
@@ -751,11 +776,14 @@ const resizeInfographic = () => {
       top: 0;
       width: toRem(32);
       align-self: center;
-      transform: rotate(90deg);
+      transform: rotate(90deg) scale(0.9);
     }
     .arrow {
       position: absolute;
-      right: 0;
+      right: toRem(10);
+      @include medium {
+        right: 0;
+      }
     }
   }
 }
@@ -772,8 +800,8 @@ const resizeInfographic = () => {
     }
     &.secondary {
       position: absolute;
-      width: 25%;
-      left: -0.5rem;
+      width: 20%;
+      left: calc(-0.5rem - 10px);
       @include medium {
         left: calc(50% - 4px);
         top: toRem(-40);
@@ -782,13 +810,13 @@ const resizeInfographic = () => {
       &.top {
         transform: translate(-100%, toRem(-51)) scaleX(-1);
         @include medium {
-          transform: rotate(-90deg) translate(0, calc(-50% - toRem(54)));
+          transform: rotate(-90deg) translate(0, calc(-50% - toRem(54))) scale(0.9);
         }
       }
       &.bottom {
         transform: translate(-100%, toRem(51)) scaleX(-1);
         @include medium {
-          transform: rotate(-90deg) translate(0, calc(-50% + toRem(54)));
+          transform: rotate(-90deg) translate(0, calc(-50% + toRem(54))) scale(0.9);
         }
       }
     }
@@ -825,12 +853,13 @@ const resizeInfographic = () => {
   flex-direction: column;
   justify-content: center;
   margin-bottom: toRem(7);
-  padding: toRem(6) toRem(5);
+  padding: toRem(5.5) toRem(4.5);
   @include medium {
     padding: toRem(3) toRem(4.5);
     border-color: $cornflowerBlue;
   }
   :deep(svg) {
+    width: toRem(22);
     @include medium {
       width: toRem(17);
     }
@@ -852,7 +881,8 @@ const resizeInfographic = () => {
 
 // ////////////////////////////////////////////////////////////////////// mobile
 .mobile-numbers {
-  width: 20%;
+  position: absolute;
+  left: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
