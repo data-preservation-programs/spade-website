@@ -1,24 +1,25 @@
-// all styles for reference, not being applied
 // in <template>: the <div> around <Pagination/> changed to class="col-10"
 .page {
-  padding-bottom: 1rem;
-}
-
-.section {
-  position: relative;
-  border-top: none;
-  &::after {
-    content: '';
-    position: absolute;
-    display: block;
-    bottom: 0;
-    left: calc( $sidebarWidth + 2rem);
-    width: calc(100% - $sidebarWidth - 4rem);
-    height: 2px;
-    background-color: var(--divider);
+  padding-bottom: 2rem !important;
+  .section {
+    position: relative;
+    border-top: none;
+    &:not(:nth-child(2)) {
+      border-top: none !important;
+      &::before {
+        content: '';
+        position: absolute;
+        display: block;
+        top: 0;
+        left: calc( $sidebarWidth + 2rem);
+        width: calc(100% - $sidebarWidth - 4rem);
+        height: 2px;
+        background-color: var(--divider);
+      }
+    }
   }
-}
 
-.heading {
-  margin-bottom: toRem(25);
+  .heading {
+    margin-bottom: toRem(25) !important;
+  }
 }

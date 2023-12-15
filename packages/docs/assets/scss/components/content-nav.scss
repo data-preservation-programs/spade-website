@@ -1,6 +1,7 @@
 #content-nav {
   // =================================================================== Nav Links
   .link.button {
+    transition: text-shadow 150ms ease;
     &:hover:not(.router-link-active){
       .button-label {
         text-shadow:
