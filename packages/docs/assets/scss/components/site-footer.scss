@@ -5,7 +5,7 @@
     }
     &:hover {
       .button-content {
-        transform: scale(1.05) translateX($x);
+        transform: scale(1.10) translateX($x);
       }
     }
 }
@@ -23,7 +23,7 @@
 
   .section-support {
     a.button {
-      @include footerLinkHover(toRem(15));
+      @include footerLinkHover(toRem(20));
     }
   }
 
