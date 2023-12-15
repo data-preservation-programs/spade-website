@@ -1,3 +1,7 @@
 #pagination {
   padding: 0 2.5rem;
+
+  .page-title {
+    @include h6;
+  }
 }
