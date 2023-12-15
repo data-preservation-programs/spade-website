@@ -1,5 +1,4 @@
-// aside.sidebar is for reference, doesn't get applied
-aside.sidebar {
+#site-header ~ aside.sidebar {
   z-index: 5;
 }
 

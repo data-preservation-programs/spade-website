@@ -101,15 +101,18 @@
         display: block;
         position: absolute;
         left: 0.5rem;
-        top: 0.875rem;
+        top: 50%;
         width: 5px;
         height: 5px;
         margin: 0;
-        transform: translateY(-25%);
+        transform: translateY(-50%);
         border-radius: 50%;
         background-color: var(--theme-color);
         transition: background-color 500ms;
       }
+    }
+    li:not(:last-child) {
+      margin-bottom: toRem(5);
     }
   }
 

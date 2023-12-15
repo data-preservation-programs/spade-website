@@ -7,12 +7,12 @@
       </div>
     </template>
 
-    <template #result="{ result, getResultTitle }">
+    <template #result="{ result, getResultTitle, getResultContent }">
       <div :class="['result-container', { active: result.objectID === activeResult }]">
         <IconHash class="icon hash" />
         <div class="content">
-          <span class="result-title" v-html="getResultTitle(result)"></span>
-          <span class="result-path">{{ `${result.entryName}` }}</span>
+          <span class="result-title" v-html="getResultTitle(result)" />
+          <span class="result-description" v-html="getResultContent(result)" />
         </div>
         <IconReturn class="icon action" />
       </div>
@@ -153,14 +153,8 @@ const { activeResult } = storeToRefs(algoliaStore)
   &.active {
     background-color: var(--link-color);
     .result-title,
-    .result-path {
+    .result-description {
       color: var(--algolia__result__hover__color);
-      :deep(mark) {
-        color: var(--algolia__result__hover__color);
-      }
-    }
-    .result-path {
-      opacity: 0.7;
     }
     .icon {
       :deep(path) {
@@ -171,6 +165,8 @@ const { activeResult } = storeToRefs(algoliaStore)
 }
 
 :deep(.result-title) {
+  margin-bottom: toRem(5);
+  font-weight: 600;
   mark {
     background-color: var(--theme-color);
     color: var(--theme-color__inverted);
@@ -179,10 +175,19 @@ const { activeResult } = storeToRefs(algoliaStore)
   }
 }
 
+:deep(.result-description) {
+  display: -webkit-box;
+  -webkit-box-flex: 1;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .content {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
   padding: 0 toRem(14);
 }
 

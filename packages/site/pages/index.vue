@@ -50,9 +50,18 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="scss" scoped>
+// ///////////////////////////////////////////////////////////////////// General
 .page-index {
   @include small {
     padding-top: $siteHeaderHeightMobile;
+  }
+}
+
+:deep(.section-background) {
+  path {
+    @include mini {
+      stroke: transparent;
+    }
   }
 }
 
@@ -61,6 +70,24 @@ onBeforeUnmount(() => {
   padding-bottom: toRem(79);
   @include small {
     padding-bottom: toRem(70);
+  }
+}
+
+:deep(#section-intro-1),
+:deep(#section-banner-1),
+:deep(#section-onboarding),
+:deep(#section-policy),
+:deep(#section-card-list),
+:deep(#section-banner-2),
+:deep(#section-how-it-works),
+:deep(#section-operating-principles)  {
+  [class~=grid], [class*=grid-], [class*=grid_] {
+    &.full {
+      padding: 0 toRem(50);
+      @include medium {
+        padding: 0 toRem(8)
+      }
+    }
   }
 }
 
@@ -230,17 +257,19 @@ onBeforeUnmount(() => {
   .section-background {
     position: absolute;
     bottom: calc(100% - toRem(24));
-    left: -2px;
-    width: calc(100% + 0.25rem);
+    left: toRem(-6);
+    width: calc(100% + toRem(10));
     @include small {
       bottom: calc(100% - toRem(72));
-      left: -4px;
-      width: calc(100% + 0.5rem);
+      left: toRem(-6);
+      width: calc(100% + toRem(12));
     }
   }
-  .image-block,
+  .image-block {
+    padding: 0 6.4% 0 10%;
+  }
   .text-block {
-    padding: 0 6.4%;
+    padding: 0 10% 0 6.4%;
   }
   @include medium {
     .image-block {
@@ -395,7 +424,7 @@ onBeforeUnmount(() => {
     top: -3.25rem;
     height: toRem(924);
     background: url('/images/roadmap-background-top.svg');
-    background-position: center bottom;
+    background-position: center 99%;
     @include small {
       width: 365%;
       left: -129%;
@@ -436,8 +465,8 @@ onBeforeUnmount(() => {
   .section-background {
     position: absolute;
     bottom: calc(100% - toRem(48));
-    left: -2px;
-    width: calc(100% + 0.25rem);
+    left: -6px;
+    width: calc(100% + toRem(12));
     @include small {
       bottom: calc(100% - toRem(72));
       left: -4px;

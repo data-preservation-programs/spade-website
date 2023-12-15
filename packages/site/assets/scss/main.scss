@@ -20,6 +20,31 @@ body {
   }
 }
 
+[class~="grid"], [class*="grid-"], [class*="grid_"] {
+  width: $gridWidth;
+  margin: 0 auto;
+  @include gridMaxMQ {
+    width: 100%;
+    padding: 0 4.1665%;
+  }
+  &[class*="-noGutter"] {
+    margin: 0 auto;
+  }
+  &.full {
+    width: 100%;
+    max-width: $gridWidth;
+    padding: 0 0.5rem;
+    &.maxed {
+      max-width: 90rem;
+    }
+  }
+  &.max-height {
+    height: 100%;
+  }
+  &.no-padding {
+    padding: 0;
+  }
+}
 
 
 ///////////////////////////////////////////////////////////////////// Components

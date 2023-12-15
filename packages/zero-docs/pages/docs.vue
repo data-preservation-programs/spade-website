@@ -10,8 +10,7 @@ const { data: Sidebar } = await useAsyncData('sidebar', async () => {
     }
   }).find()
   return content[0].body
-  }
-)
+})
 
 // ======================================================================= Setup
 await navigateTo(`/${language.value}/${Sidebar.value[0].slug}${Sidebar.value[0].children[0].href}`)

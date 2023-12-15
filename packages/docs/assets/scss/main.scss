@@ -43,7 +43,8 @@ body {
 }
 
 // @import 'components/chevron';
-// @import 'components/markdown';
+@import 'components/markdown';
+@import 'components/[...slug]';
 // @import 'components/toast';
 // @import 'components/tooltip';
 // @import 'components/video-wrapper';

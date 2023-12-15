@@ -203,7 +203,7 @@ const resizeHandler = () => {
 .footer-clipped-background {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 101%;
   background-color: $blackPearl;
   &:before {
     content: '';
@@ -318,7 +318,7 @@ const resizeHandler = () => {
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='15' height='18' viewBox='0 0 15 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M-6.99382e-07 9L13 9M13 9L5.39023 17M13 9L5.39023 1' stroke='%230036DE' stroke-width='2.5'/%3e%3c/svg%3e ");
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='15' height='18' viewBox='0 0 15 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M 0 9 L 13 9 M 13.75 8.25 L 5.39 17 M 13.75 9.75 L 5.39 1' stroke='%230036DE' stroke-width='2.5'/%3e%3c/svg%3e ");
   }
   &:hover {
     &:after {
@@ -331,10 +331,11 @@ const resizeHandler = () => {
   padding: toRem(18) toRem(44);
   margin-top: toRem(19);
   background-color: white;
-  border-radius: toRem(10);
+  border-radius: toRem(8);
   @include tiny {
     padding: toRem(12) toRem(17);
     margin-top: toRem(313);
+    border-radius: toRem(6);
   }
   .text,
   :deep(a) {

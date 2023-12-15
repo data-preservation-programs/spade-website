@@ -1,76 +1,79 @@
 <template>
   <footer id="site-footer">
-    <div class="grid">
-      <div class="footer-contents">
-        <div class="grid-noGutter full">
+    <div class="grid-noBottom">
+      <div class="col-10" data-push-left="off-2">
 
-          <div class="col-8">
-            <section class="section-support">
+        <div class="footer-contents">
+          <div class="grid-noGutter full">
 
-              <div class="heading">
-                {{ support.heading }}
-              </div>
+            <div class="col-8">
+              <section class="section-support">
 
-              <div class="description">
-                {{ support.description }}
-              </div>
+                <div class="heading">
+                  {{ support.heading }}
+                </div>
 
-              <div class="cta">
-                <ButtonCta
-                  :tag="support.cta.tag"
-                  :target="support.cta.target"
-                  :to="support.cta.url">
-                  {{ support.cta.text }}
-                </ButtonCta>
-              </div>
+                <div class="description">
+                  {{ support.description }}
+                </div>
 
-            </section>
+                <div class="cta">
+                  <ButtonCta
+                    :tag="support.cta.tag"
+                    :target="support.cta.target"
+                    :to="support.cta.url">
+                    {{ support.cta.text }}
+                  </ButtonCta>
+                </div>
+
+              </section>
+            </div>
+
+            <div class="col-4">
+              <section class="section-help">
+
+                <div class="heading">
+                  {{ help.heading }}
+                </div>
+
+                <div class="links-column">
+                  <ButtonCta
+                    v-for="link in help.links"
+                    :key="link.text"
+                    :tag="link.tag"
+                    :target="link.target"
+                    :to="link.url"
+                    class="help-link">
+                    {{ link.text }}
+                  </ButtonCta>
+                </div>
+
+              </section>
+            </div>
+
+            <div class="col-12">
+              <section class="section-legal">
+
+                <div class="heading">
+                  {{ legal.heading }}
+                </div>
+
+                <div class="links-row">
+                  <ButtonCta
+                    v-for="link in legal.links"
+                    :key="link.text"
+                    :tag="link.tag"
+                    :target="link.target"
+                    :to="link.url"
+                    class="legal-link">
+                    {{ link.text }}
+                  </ButtonCta>
+                </div>
+
+              </section>
+            </div>
+
           </div>
-
-          <div class="col-4">
-            <section class="section-help">
-
-              <div class="heading">
-                {{ help.heading }}
-              </div>
-
-              <div class="links-column">
-                <ButtonCta
-                  v-for="link in help.links"
-                  :key="link.text"
-                  :tag="link.tag"
-                  :target="link.target"
-                  :to="link.url"
-                  class="help-link">
-                  {{ link.text }}
-                </ButtonCta>
-              </div>
-
-            </section>
-          </div>
-
-          <div class="col-12">
-            <section class="section-legal">
-
-              <div class="heading">
-                {{ legal.heading }}
-              </div>
-
-              <div class="links-row">
-                <ButtonCta
-                  v-for="link in legal.links"
-                  :key="link.text"
-                  :tag="link.tag"
-                  :target="link.target"
-                  :to="link.url"
-                  class="legal-link">
-                  {{ link.text }}
-                </ButtonCta>
-              </div>
-
-            </section>
-          </div>
-
         </div>
       </div>
     </div>
