@@ -231,11 +231,33 @@ const getIconComponent = (icon) => {
 
 .card.theme__block {
   min-height: toRem(321);
+  .title {
+    font-size: toRem(18);
+    margin-top: 0.5rem;
+    @include mini {
+      margin-top: 0;
+      font-size: toRem(16);
+    }
+  }
+  @include mini {
+    min-height: unset;
+  }
 }
 
 .card.theme__light-blue {
   background-color: $zircon;
   padding-left: toRem(43);
+  @include mini {
+    padding: toRem(15) toRem(16);
+    .icon {
+      margin-bottom: auto;
+    }
+    .cta {
+      :deep(.button-content) {
+        font-size: toRem(14);
+      }
+    }
+  }
   :deep(.theme__arrow) {
     padding-left: 0;
   }
