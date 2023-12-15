@@ -12,13 +12,8 @@
     },
     {
       "tag": "nuxt-link",
-      "to": "/",
-      "label": "ECOSYSTEM"
-    },
-    {
-      "tag": "nuxt-link",
-      "to": "/",
-      "label": "APIS"
+      "to": "/tenant-api",
+      "label": "API"
     }
   ],
   "toolbar": {

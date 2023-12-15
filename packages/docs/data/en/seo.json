@@ -1,12 +1,12 @@
 {
   "_": {
-    "title": "Spade Docs",
-    "description": "Spade API docs",
-    "siteName": "Spade Docs",
-    "ogImage": "/public/open-graph.jpg"
+    "title": "Spade - Documentation",
+    "description": "Documentation for Spade, a two-sided marketplace designed for high-throughput, low-friction data onboarding",
+    "siteName": "Spade Documentation",
+    "ogImage": "/public/spade-docs-open-graph.jpg"
   },
   "*": {
-    "title": "Spade Docs - |title|",
+    "title": "Spade Documentation - |title|",
     "description": "|description|"
   }
 }

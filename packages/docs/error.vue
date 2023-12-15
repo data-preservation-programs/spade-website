@@ -3,8 +3,8 @@
 
     <SiteHeader />
 
-    <div class="grid-center">
-      <div class="col-6">
+    <div class="grid">
+      <div class="col-6" data-push-left="off-2">
         <div class="page-content">
 
           <h1 class="heading">
@@ -17,11 +17,19 @@
 
           <pre v-if="error.stack"><code>{{ error.stack }}</code></pre>
 
-          <nuxt-link
+          <!-- <NuxtLink
             v-if="error.data?.from"
             :to="error.data.from">
             Go back
-          </nuxt-link>
+          </NuxtLink> -->
+
+          <ButtonClear
+            class="button-home"
+            tag="nuxt-link"
+            to="/">
+            Back to Home
+          </ButtonClear>
+
 
         </div>
       </div>
@@ -45,30 +53,38 @@ defineProps({
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
 .page.error {
-  // padding-top: 0;
+  padding-top: $siteHeaderHeight;
   min-height: 100vh;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-end;
 }
 .page-content {
-  padding-bottom: $siteHeaderHeight;
+  padding: 6rem 0;
+  margin-left: 2rem;
 }
 
 .heading {
   @include h1;
-  font-size: toRem(100);
+  font-size: toRem(80);
   line-height: 1;
-  color: var(--link-color);
   margin-bottom: 2rem;;
 }
 
 .message {
-  @include h3;
+  @include h2;
   transition: color 500ms;
+  margin-bottom: 2rem;
 }
 
-.page-content {
-
+.button-home {
+  display: block;
+  width: fit-content;
+  :deep(.button-content) {
+    padding: toRem(8) toRem(12);
+    background-color: var(--primary-accent-color);
+    border-radius: toRem(8);
+    color: var(--theme-color__inverted);
+  }
 }
 </style>
