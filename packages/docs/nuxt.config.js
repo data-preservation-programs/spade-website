@@ -8,7 +8,7 @@ const env = process.env.SERVER_ENV
 
 const baseUrls = {
   development: 'https://localhost',
-  stable: '',
+  stable: 'https://spade-docs.on.fleek.co/',
   production: ''
 }
 
