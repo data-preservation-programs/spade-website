@@ -22,7 +22,6 @@
   display: flex;
   flex-direction: column;
   position: fixed;
-  z-index: 5;
   top: $siteHeaderHeight;
   left: calc((100vw - $gridWidth) / 2);
   width: $sidebarWidth;
