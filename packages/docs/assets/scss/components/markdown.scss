@@ -243,6 +243,7 @@
       color: var(--link-color);
       opacity: 0;
       transition: 150ms ease-out;
+      z-index: 5;
       &:hover {
         transition: 150ms ease-in;
         color: var(--link-color);
