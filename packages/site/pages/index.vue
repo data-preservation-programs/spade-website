@@ -69,8 +69,14 @@ onBeforeUnmount(() => {
 :deep(#hero-header) {
   padding-top: 0;
   padding-bottom: toRem(79);
+  div[data-block-id="col_1-small"] {
+    display: none;
+    @include small {
+      display: block;
+    }
+  }
   @include small {
-    padding-bottom: toRem(70);
+    padding-bottom: toRem(50);
   }
 }
 

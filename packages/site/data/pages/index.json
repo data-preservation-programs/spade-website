@@ -6,7 +6,7 @@
       "col_1": {
         "type": "hero_header",
         "cols": {
-          "num": "col-12"
+          "num": "col-12_sm-hidden"
         },
         "textblock": {
           "h": 1,
@@ -14,6 +14,62 @@
           "heading": "Get large datasets onboarded <span class='underline'>fast</span> with your ideal decentralized storage partners",
           "description": "<span class='highlight'>Spade</span> matches storage clients to storage providers and facilitates low-friction, high-throughput Filecoin data onboarding.",
           "theme": "hero-header"
+        },
+        "imageblock": {
+          "src": "/images/blue-gradient-squiggle.jpg",
+          "background": true,
+          "caption": "Data onboarding trend"
+        },
+        "cardsblock": {
+          "card_grid": "",
+          "card_columns": "col-3_mi-4",
+          "cards": [
+            {
+              "title": "7.5+ PiB",
+              "description": "Data onboarded",
+              "theme": "big-number"
+            },
+            {
+              "title": "30+",
+              "description": "Storage providers available",
+              "theme": "big-number"
+            },
+            {
+              "title": "250K+",
+              "description": "Deals made",
+              "theme": "big-number"
+            },
+            {
+              "description": "Learn more about becoming part of the Spade ecosystem.",
+              "cta": {
+                "text": "Read docs",
+                "tag": "a",
+                "to": "https://example.com",
+                "target": "_blank"
+              }
+            }
+          ]
+        }
+      },
+      "col_1-small": {
+        "type": "hero_header",
+        "cols": {
+          "num": "col-12"
+        },
+        "textblock": {
+          "h": 1,
+          "label": "<span>Update</span><span>Tenant API pilot is here!</span>",
+          "heading": "Get large datasets onboarded <span class='underline'>fast</span>",
+          "description": "<span class='highlight'>Spade</span> matches storage clients to decentralized storage providers and facilitates low-friction, high-throughput Filecoin data onboarding.",
+          "theme": "hero-header",
+          "ctas": [
+            {
+              "text": "How it works",
+              "tag": "nuxt-link",
+              "to": "#section-how-it-works",
+              "theme": "gradient-dark"
+            }
+          ]
         },
         "imageblock": {
           "src": "/images/blue-gradient-squiggle.jpg",
