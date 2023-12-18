@@ -8,20 +8,14 @@
         <div class="page-content">
 
           <h1 class="heading">
-            {{ error.statusCode }}
+            {{ statusCode }}
           </h1>
 
           <div class="message">
-            {{ error.message }}
+            {{ message }}
           </div>
 
-          <pre v-if="error.stack"><code>{{ error.stack }}</code></pre>
-
-          <!-- <NuxtLink
-            v-if="error.data?.from"
-            :to="error.data.from">
-            Go back
-          </NuxtLink> -->
+          <pre v-if="stack && stack !== ''"><code>{{ stack }}</code></pre>
 
           <ButtonClear
             class="button-home"
@@ -29,7 +23,6 @@
             to="/">
             Back to Home
           </ButtonClear>
-
 
         </div>
       </div>
@@ -43,9 +36,25 @@
 <script setup>
 // ======================================================================== Data
 defineProps({
-  error: {
+  statusCode: {
+    type: Number,
+    required: false,
+    default: 404
+  },
+  message: {
+    type: String,
+    required: false,
+    default: 'Looks like the page you\'re looking for doesn\'t exist'
+  },
+  stack: {
+    type: String,
+    required: false,
+    default: ''
+  },
+  data: {
     type: Object,
-    required: true
+    required: false,
+    default: () => {}
   }
 })
 </script>

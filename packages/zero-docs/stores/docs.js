@@ -111,6 +111,7 @@ export const useZeroDocsStore = defineStore('docs', () => {
     // ----- state
     activeSection,
     magellanLinks,
+    settings,
     activeLinkMarkerHeight,
     // ----- computed
     theme,

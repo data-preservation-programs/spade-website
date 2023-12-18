@@ -107,6 +107,13 @@ const { data: content } = await useAsyncData(`page-content-${route.path}`, async
   }).find()
 }, { watch: [route] })
 
+if (content.value.length === 0) {
+  throw createError({
+    statusCode: 404,
+    message: 'Looks like the page you\'re looking for doesn\'t exist'
+  })
+}
+
 const { data: definitionsSchema } = await useAsyncData(`definitions-schema-${route.path}`, () => {
   return queryContent({
     where: {
@@ -115,23 +122,13 @@ const { data: definitionsSchema } = await useAsyncData(`definitions-schema-${rou
   }).findOne()
 }, { watch: [route] })
 
-const routePathSplitLength = route.path.split('/').length
-const sectionCount = content.value.length
-
-if (routePathSplitLength < 3 || sectionCount === 0) {
-  throw createError({
-    statusCode: 404,
-    message: 'Looks like the page you\'re looking for doesn\'t exist'
-  })
-}
-
 const pageContent = ref([])
 
 // ======================================================================= Setup
 nuxtApp.$seo(
   '*',
-  sectionCount === 1 ?
-    content.value[0].metadata :
+  content.value.length === 1 ?
+    content.value[0].frontmatter :
     content.value.find(item => item._file.includes('src.md')) || {}
 )
 
