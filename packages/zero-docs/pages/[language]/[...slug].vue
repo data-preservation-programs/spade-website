@@ -84,7 +84,7 @@ definePageMeta({
 })
 
 // ======================================================================== Data
-const nuxtApp = useNuxtApp()
+const { $seo } = useNuxtApp()
 const intersectionObserver = ref(null)
 const headerHeight = ref(0)
 const sections = ref([])
@@ -126,7 +126,7 @@ const { data: definitionsSchema } = await useAsyncData(`definitions-schema-${rou
 const pageContent = ref([])
 
 // ======================================================================= Setup
-nuxtApp.$seo(
+$seo(
   '*',
   content.value.length === 1 ?
     content.value[0].frontmatter :

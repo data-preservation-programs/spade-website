@@ -54,7 +54,7 @@ const { data: Seo } = await useAsyncData('seo', async () => {
   return content[0]
 })
 
-zeroStore.setSeo(Seo)
+zeroStore.setSeo(Seo.value)
 
 const config = useRuntimeConfig()
 const algoliaEnabled = config.public?.zeroAlgolia?.enable
