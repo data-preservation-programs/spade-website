@@ -14,9 +14,4 @@
 <script setup lang="ts">
 // ======================================================================= Setup
 const { data: routes } = await useFetch('/api/generate-sitemap')
-
-// ======================================================================= Hooks
-onMounted(() => {
-  navigateTo('/sitemap.xml')
-})
 </script>

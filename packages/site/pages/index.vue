@@ -1,12 +1,13 @@
 <template>
   <div class="page page-index">
-    
+
     <BlockBuilder :sections="sections" />
 
   </div>
 </template>
 
 <script setup>
+// ===================================================================== Imports
 import { storeToRefs } from 'pinia'
 import { useGeneralStore } from '../stores/general.js'
 import BlockBuilder from '@/components/blocks/block-builder'

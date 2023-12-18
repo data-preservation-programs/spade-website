@@ -1,12 +1,8 @@
 {
   "_": {
-    "title": "",
-    "description": "",
-    "siteName": "",
+    "title": "Spade",
+    "description": "Spade, a two-sided marketplace designed for high-throughput, low-friction data onboarding",
+    "siteName": "Spade",
     "ogImage": "/spade-open-graph.jpg"
-  },
-  "*": {
-    "title": "",
-    "description": ""
   }
 }

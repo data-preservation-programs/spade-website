@@ -12,7 +12,7 @@ const env = process.env.SERVER_ENV
 const baseUrls = {
   development: 'https://localhost',
   stable: 'https://spade-site.on.fleek.co/',
-  production: ''
+  production: 'https://spade.storage'
 }
 
 const frontendPort = (function () {

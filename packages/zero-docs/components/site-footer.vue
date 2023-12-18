@@ -94,22 +94,23 @@ const { data: Settings } = await useAsyncData('settings', () => {
 })
 
 const { data: Footer } = await useAsyncData( 'footer', async () => {
-    const content = await queryContent({
-      where: {
-        _file: { $in: [
+  const content = await queryContent({
+    where: {
+      _file: {
+        $in: [
           `data/${routeLang.value}/footer.json`,
           `data/${Settings.value.language}/footer.json`
-        ]}
+        ]
       }
-    }).find()
-    return content[0]
+    }
+  }).find()
+  return content[0]
 }, { watch: [routeLang] } )
 
 // ==================================================================== Computed
 const support = computed(() => Footer.value.panel_left)
 const help = computed(() => Footer.value.panel_right)
 const legal = computed(() => Footer.value.panel_bottom)
-
 </script>
 
 <style lang="scss" scoped>
