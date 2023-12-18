@@ -90,6 +90,13 @@
     }
   }
 
+  ol {
+    padding-left: toRem(16);
+    li {
+      padding-left: toRem(6);
+    }
+  }
+
   ul {
     li {
       list-style-type: none;
@@ -243,6 +250,7 @@
       color: var(--link-color);
       opacity: 0;
       transition: 150ms ease-out;
+      z-index: 5;
       &:hover {
         transition: 150ms ease-in;
         color: var(--link-color);
