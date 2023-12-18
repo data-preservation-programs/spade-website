@@ -6,18 +6,19 @@
       "label": "DOCS"
     },
     {
-      "tag": "nuxt-link",
-      "to": "/",
-      "label": "ABOUT"
+      "tag": "a",
+      "to": "https://spade.storage",
+      "label": "ABOUT",
+      "target": "_blank"
     },
     {
       "tag": "nuxt-link",
-      "to": "/tenant-api",
+      "to": "/en/tenant-api/addresses",
       "label": "API"
     }
   ],
   "toolbar": {
-    "github_url": "https://github.com/undone-labs/docs-starter",
+    "github_url": "https://github.com/data-preservation-programs/spade-website/tree/main/packages/docs/content/en",
     "language_options": [{ "slug": "EN", "name": "English"}, { "slug": "ZH", "name": "中文"}, {"slug": "ES", "name": "Español"}]
   }
 }
