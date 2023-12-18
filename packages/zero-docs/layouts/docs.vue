@@ -1,6 +1,8 @@
 <template>
   <div class="layout default">
 
+    <NuxtLoadingIndicator />
+
     <!-- must be placed behind a v-if="algoliaEnabled" -->
     <AlgoliaModal v-if="algoliaEnabled" />
 
