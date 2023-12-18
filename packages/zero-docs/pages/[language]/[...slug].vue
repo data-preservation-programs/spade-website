@@ -28,12 +28,14 @@
         <!-- ======================================================= Content -->
         <div class="col-6_md-8" data-push-left="off-2_lg-3_md-0">
           <div class="content">
+
             <ZeroMarkdownParser
               id="markdown"
               :markdown="section.raw"
               :section="content.length > 1 ? section._path.split('/').pop() : ''"
               class="markdown"
               @found-heading-nodes="docsStore.compileMagellanLinks" />
+
             <ZeroApiOverview
               v-if="section.apiOverview"
               :headers="section.apiOverview.headers"
@@ -143,6 +145,9 @@ const headerHeightOffset = computed(() => headerHeight.value * 3)
  */
 
 const generatePageContent = () => {
+  if (process.client) {
+    docsStore.compileMagellanLinks([])
+  }
   const array = content.value.filter(item => item._extension === 'md' && !item._file.includes('src.md'))
   array.forEach(mdContent => {
     const jsonContent = content.value.find(item => item._path === mdContent._path && item._extension === 'json')
