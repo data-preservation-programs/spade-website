@@ -235,7 +235,7 @@ export default {
   .text-wrapper {
     margin-bottom: 0;
     @include small {
-      margin-bottom: toRem(50);
+      margin-bottom: toRem(25);
     }
   }
   .description {
@@ -248,6 +248,13 @@ export default {
     :deep(.highlight) {
       font-weight: 700;
       color: white;
+    }
+  }
+  .button-row {
+    margin-bottom: toRem(25);
+    :deep(.button) {
+      display: block;
+      width: fit-content;
     }
   }
 }

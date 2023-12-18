@@ -76,7 +76,7 @@ onBeforeUnmount(() => {
     }
   }
   @include small {
-    padding-bottom: toRem(70);
+    padding-bottom: toRem(50);
   }
 }
 

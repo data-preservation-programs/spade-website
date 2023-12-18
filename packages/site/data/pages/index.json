@@ -61,7 +61,15 @@
           "label": "<span>Update</span><span>Tenant API pilot is here!</span>",
           "heading": "Get large datasets onboarded <span class='underline'>fast</span>",
           "description": "<span class='highlight'>Spade</span> matches storage clients to decentralized storage providers and facilitates low-friction, high-throughput Filecoin data onboarding.",
-          "theme": "hero-header"
+          "theme": "hero-header",
+          "ctas": [
+            {
+              "text": "How it works",
+              "tag": "nuxt-link",
+              "to": "#section-how-it-works",
+              "theme": "gradient-dark"
+            }
+          ]
         },
         "imageblock": {
           "src": "/images/blue-gradient-squiggle.jpg",
