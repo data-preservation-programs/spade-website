@@ -2,7 +2,7 @@
   "navigation": [
     {
       "tag": "nuxt-link",
-      "to": "/docs",
+      "to": "/en/introduction/overview",
       "label": "DOCS"
     },
     {
