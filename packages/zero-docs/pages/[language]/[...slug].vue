@@ -100,11 +100,12 @@ const pageSlug = dirNameSplit[2]
 const pageHeading = useToPascalCase(pageSlug, ' ')
 
 const { data: content } = await useAsyncData(`page-content-${route.path}`, async () => {
-  return await queryContent({
+  const content = await queryContent({
     where: {
       _path: { $contains: `/docs${route.path}` }
     }
   }).find()
+  return content.filter(file => file._extension === 'md')
 }, { watch: [route] })
 
 if (content.value.length === 0) {
