@@ -19,6 +19,6 @@
   ],
   "toolbar": {
     "github_url": "https://github.com/data-preservation-programs/spade-website/tree/main/packages/docs/content/en",
-    "language_options": [{ "slug": "EN", "name": "English"}, { "slug": "ZH", "name": "中文"}, {"slug": "ES", "name": "Español"}]
+    "language_options": [{ "slug": "EN", "name": "English"}]
   }
 }
