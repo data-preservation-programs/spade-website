@@ -101,7 +101,7 @@ const docsStore = useZeroDocsStore()
 const pageSlug = dirNameSplit[2]
 const pageHeading = useToPascalCase(pageSlug, ' ')
 
-const { data: content } = await useAsyncData(`page-content-${route.path}`, async () => {
+const { data: content } = await useAsyncData(`page-content-md-${route.path}`, async () => {
   const content = await queryContent({
     where: {
       _path: { $contains: `/docs${route.path}` }
@@ -117,6 +117,15 @@ if (content.value.length === 0) {
     fatal: true
   })
 }
+
+const { data: jsonContent } = await useAsyncData(`page-content-json-${route.path}`, async () => {
+  const jsonContent = await queryContent({
+    where: {
+      _path: { $contains: `/docs${route.path}` }
+    }
+  }).find()
+  return jsonContent.filter(file => file._extension === 'json')
+}, { watch: [route] })
 
 const { data: definitionsSchema } = await useAsyncData(`definitions-schema-${route.path}`, () => {
   return queryContent({
@@ -150,14 +159,15 @@ const generatePageContent = () => {
   }
   const array = content.value.filter(item => item._extension === 'md' && !item._file.includes('src.md'))
   array.forEach(mdContent => {
-    const jsonContent = content.value.find(item => item._path === mdContent._path && item._extension === 'json')
-    if (jsonContent) {
-      if (Object.hasOwn(jsonContent, 'swagger')) {
-        const { overview, preview } = useFormatSwaggerData(jsonContent, {...definitionsSchema.value})
+    const jsonData = jsonContent.value.find(item => item._path === mdContent._path)
+    console.log('jsonData ', jsonData)
+    if (jsonData) {
+      if (Object.hasOwn(jsonData, 'swagger')) {
+        const { overview, preview } = useFormatSwaggerData(jsonData, {...definitionsSchema.value})
         mdContent.apiOverview = overview
         mdContent.apiPreview = preview
       } else {
-        mdContent.apiPreview = jsonContent
+        mdContent.apiPreview = jsonData
       }
     }
   })
