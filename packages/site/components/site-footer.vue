@@ -193,11 +193,23 @@ const resizeHandler = () => {
 // ///////////////////////////////////////////////////////////////////// General
 #site-footer {
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: $whiteLilac;
   padding-bottom: toRem(17);
+  @include largeScreenMarginFillElements;
+  &:before {
+    margin-top: 1.5px;
+    height: calc(100% - 1.0625rem);
+    border-radius: toRem(10);
+  }
+  &:after {
+    margin-top: toRem(60);
+    height: calc(100% - 1.0625rem - toRem(58));
+    border-radius: toRem(10);
+  }
 }
 
 .footer-clipped-background {

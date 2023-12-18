@@ -501,7 +501,7 @@
             ]
           },
           {
-            "heading": "June 2023",
+            "heading": "July 2023",
             "description": "Includes everything required to support the above stories, with additional development effort",
             "milestones": [
               "Tenant service: supporting policy setting and management for clients, offer hosting intermediary datastore for CIDs to be onboarded, view into onboarded data",
