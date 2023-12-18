@@ -1,7 +1,7 @@
 <template>
   <div :class="['hero-header', { 'error-page': errorPage }]">
 
-    <div class="main-panels">
+    <div class="main-panels large-screen-margin-blocks">
       <div class="panel-before">
         <ResponsiveClipper
           :key="`clip-before-small-${small}`"
@@ -49,7 +49,9 @@
       </div>
     </div>
 
-    <div v-if="cardsblock" class="grid-noGutter-noBottom-equalHeight">
+    <div
+      v-if="cardsblock"
+      class="grid-noGutter-noBottom-equalHeight large-screen-margin-blocks">
 
       <div v-if="!small" class="col-3">
         <div class="graph-block">
@@ -244,6 +246,30 @@ onBeforeUnmount(() => {
         }
       }
     }
+  }
+}
+
+.large-screen-margin-blocks {
+  position: relative;
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: calc(50vw - $gridWidth * 0.5 - 0.5rem);
+    height: 100%;
+    border-radius: toRem(8);
+    background-color: $blackPearl;
+    margin: 0 0.5rem;
+    @include xlarge {
+      display: none;
+    }
+  }
+  &:before {
+    left: 100%;
+  }
+  &:after {
+    right: 100%;
   }
 }
 
