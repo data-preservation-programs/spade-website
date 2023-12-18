@@ -111,7 +111,8 @@ const { data: content } = await useAsyncData(`page-content-${route.path}`, async
 if (content.value.length === 0) {
   throw createError({
     statusCode: 404,
-    message: 'Looks like the page you\'re looking for doesn\'t exist'
+    message: 'Looks like the page you\'re looking for doesn\'t exist',
+    fatal: true
   })
 }
 
