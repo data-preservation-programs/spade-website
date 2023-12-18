@@ -90,6 +90,13 @@
     }
   }
 
+  ol {
+    padding-left: toRem(16);
+    li {
+      padding-left: toRem(6);
+    }
+  }
+
   ul {
     li {
       list-style-type: none;
