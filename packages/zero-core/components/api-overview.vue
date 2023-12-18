@@ -2,13 +2,13 @@
   <div v-if="headers || queryParameters || responseCodes" class="api-overview">
 
     <!-- =========================================================== headers -->
-    <div v-if="headers" class="headers section">
+    <div v-if="headers" class="headers subsection">
       <div class="heading">
         {{ getHeading('headers', headers) }}
       </div>
       <template v-for="(header, key) in props.headers">
         <div
-          v-if="key !== '_section_heading'"
+          v-if="key !== '_subsection_heading'"
           :key="key"
           class="entry">
           <div class="metadata">
@@ -28,13 +28,13 @@
     </div>
 
     <!-- ================================================== query parameters -->
-    <div v-if="queryParameters" class="query-parameters section">
+    <div v-if="queryParameters" class="query-parameters subsection">
       <div class="heading">
         {{ getHeading('query_parameters', queryParameters) }}
       </div>
       <template v-for="(parameter, key) in props.queryParameters">
         <div
-          v-if="key !== '_section_heading'"
+          v-if="key !== '_subsection_heading'"
           :key="key"
           class="entry">
           <div class="metadata">
@@ -54,13 +54,13 @@
     </div>
 
     <!-- =================================================== body parameters -->
-    <div v-if="bodyParameters" class="body-parameters section">
+    <div v-if="bodyParameters" class="body-parameters subsection">
       <div class="heading">
         {{ getHeading('body_parameters', bodyParameters) }}
       </div>
       <template v-for="(parameter, key) in props.bodyParameters">
         <div
-          v-if="key !== '_section_heading'"
+          v-if="key !== '_subsection_heading'"
           :key="key"
           class="entry">
           <div class="metadata">
@@ -80,13 +80,13 @@
     </div>
 
     <!-- =================================================== path parameters -->
-    <div v-if="pathParameters" class="path-parameters section">
+    <div v-if="pathParameters" class="path-parameters subsection">
       <div class="heading">
         {{ getHeading('path_parameters', pathParameters) }}
       </div>
       <template v-for="(parameter, key) in props.pathParameters">
         <div
-          v-if="key !== '_section_heading'"
+          v-if="key !== '_subsection_heading'"
           :key="key"
           class="entry">
           <div class="metadata">
@@ -106,7 +106,7 @@
     </div>
 
     <!-- ==================================================== response codes -->
-    <div v-if="responseCodes" class="response-codes section">
+    <div v-if="responseCodes" class="response-codes subsection">
       <div class="heading">
         {{ getHeading('response_codes', responseCodes) }}
       </div>
@@ -120,7 +120,7 @@
         <tbody>
           <template v-for="(description, code) in props.responseCodes">
             <tr
-              v-if="code !== '_section_heading'"
+              v-if="code !== '_subsection_heading'"
               :key="code">
               <td>
                 <div class="http-code">
@@ -177,7 +177,7 @@ const props = defineProps({
  * @method getHeading
  */
 
-const getHeading = (key, section) => {
+const getHeading = (key, subsection) => {
   const map = {
     headers: "Headers",
     query_parameters: "Query Parameters",
@@ -185,7 +185,7 @@ const getHeading = (key, section) => {
     path_parameters: "Path Parameters",
     response_codes: "HTTP Response Status Codes"
   }
-  return section._section_heading || map[key]
+  return subsection._subsection_heading || map[key]
 }
 </script>
 
@@ -195,7 +195,7 @@ const getHeading = (key, section) => {
   margin-top: 3rem;
 }
 
-.section {
+.subsection {
   &:not(:first-child) {
     margin-top: 3rem;
   }
