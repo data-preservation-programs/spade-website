@@ -14,7 +14,7 @@
     </div>
 
     <div
-      class="clipped-content"
+      :class="['clipped-content', { display: clipPath && clipPathElementId }]"
       :style="{ width: `${clipPathData.rangeX}px`, height: `${clipPathData.rangeY}px`, clipPath: `url(#clip-path-${clipPathElementId})` }">
       <slot name="clipped-content"></slot>
     </div>
@@ -135,7 +135,9 @@ onMounted(() => {
   resizeDimensions()
   resizeEventListener.value = zeroThrottle(() => { resizeDimensions() }, 50)
   window.addEventListener('resize', resizeEventListener.value)
-  setTimeout(() => { resizeDimensions() }, 500)
+  nextTick(() => {
+    setTimeout(() => { resizeDimensions() }, 100)
+  })
 })
 
 onBeforeUnmount(() => {
@@ -298,6 +300,10 @@ const getSvgPathData = (path) => {
   position: absolute;
   top: 0;
   left: 0;
+  visibility: hidden;
+  &.display {
+    visibility: visible;
+  }
 }
 
 .overlay-content {
