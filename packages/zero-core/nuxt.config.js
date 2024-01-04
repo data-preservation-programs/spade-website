@@ -32,7 +32,8 @@ export default defineNuxtConfig({
       routes: [ // adds route to prerender
         '/prerender-ssg-sitemap',
         '/generate-algolia-index',
-        '/sitemap.xml'
+        '/sitemap.xml',
+        '/ipfs-404'
       ]
     }
   },

@@ -79,7 +79,7 @@
 
         <template v-for="(stage, n) in stages">
           <div
-            v-if="!mobile || activeIndex >= n + 1"
+            v-if="(!mobile || activeIndex >= n + 1) || (mobile && (activeIndex === 3))"
             ref="stagesRef"
             :key="stage.name"
             :class="['stage', `stage-${n + 1}`, { active: activeIndex >= n + 1 }]"

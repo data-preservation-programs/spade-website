@@ -1,6 +1,8 @@
 <template>
   <div class="layout default">
 
+    <NuxtLoadingIndicator />
+
     <!-- must be placed behind a v-if="algoliaEnabled" -->
     <AlgoliaModal v-if="algoliaEnabled" />
 
@@ -54,7 +56,7 @@ const { data: Seo } = await useAsyncData('seo', async () => {
   return content[0]
 })
 
-zeroStore.setSeo(Seo)
+zeroStore.setSeo(Seo.value)
 
 const config = useRuntimeConfig()
 const algoliaEnabled = config.public?.zeroAlgolia?.enable

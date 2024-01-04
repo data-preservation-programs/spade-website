@@ -191,6 +191,7 @@ export default {
     margin-bottom: toRem(35);
     @include small {
       margin-bottom: toRem(22);
+      background-color: #0A1844;
     }
     :deep(span) {
       display: inline-block;
@@ -211,12 +212,17 @@ export default {
         border-radius: toRem(26);
         @include gradientBlueBlue(100deg);
         @include small {
-          padding: toRem(2) toRem(22);
+          background: transparent;
+          color: $canary;
+          padding: toRem(2) 0 toRem(2) toRem(22);
         }
       }
       &:last-child {
         font-weight: 400;
         margin: 0 toRem(22);
+        @include small {
+          margin:0 toRem(10) 0 toRem(22);
+        }
       }
     }
   }
@@ -229,7 +235,7 @@ export default {
   .text-wrapper {
     margin-bottom: 0;
     @include small {
-      margin-bottom: toRem(50);
+      margin-bottom: toRem(25);
     }
   }
   .description {
@@ -242,6 +248,13 @@ export default {
     :deep(.highlight) {
       font-weight: 700;
       color: white;
+    }
+  }
+  .button-row {
+    margin-bottom: toRem(25);
+    :deep(.button) {
+      display: block;
+      width: fit-content;
     }
   }
 }

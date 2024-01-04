@@ -9,7 +9,7 @@ const env = process.env.SERVER_ENV
 const baseUrls = {
   development: 'https://localhost',
   stable: 'https://spade-docs.on.fleek.co/',
-  production: ''
+  production: 'https://docs.spade.storage'
 }
 
 const frontendPort = (function () {
@@ -27,6 +27,9 @@ const backendPort = (function () {
 export default defineNuxtConfig({
   // =================================================================== General
   devtools: { enabled: false },
+  site: {
+    url: env === 'development' ? `${baseUrls[env]}:${frontendPort}` : baseUrls[env]
+  },
   extends: [
     '../zero-docs',
     '../zero-core'

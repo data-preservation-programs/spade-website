@@ -206,10 +206,16 @@ const handleNavClick = () => {
 <style lang="scss" scoped>
 // ///////////////////////////////////////////////////////////////////// General
 .site-header {
+  position: relative;
   padding: toRem(8) 0;
   height: $siteHeaderHeight;
   background-color: rgba(white, 0);
   transition: background-color 250ms ease-in;
+  @include largeScreenMarginFillElements;
+  &:before,
+  &:after {
+    height: calc($siteHeaderHeight - 1rem);
+  }
   @include small {
     position: absolute;
     padding: toRem(5) 0;

@@ -1,12 +1,13 @@
 <template>
   <div class="page page-index">
-    
+
     <BlockBuilder :sections="sections" />
 
   </div>
 </template>
 
 <script setup>
+// ===================================================================== Imports
 import { storeToRefs } from 'pinia'
 import { useGeneralStore } from '../stores/general.js'
 import BlockBuilder from '@/components/blocks/block-builder'
@@ -68,8 +69,14 @@ onBeforeUnmount(() => {
 :deep(#hero-header) {
   padding-top: 0;
   padding-bottom: toRem(79);
+  div[data-block-id="col_1-small"] {
+    display: none;
+    @include small {
+      display: block;
+    }
+  }
   @include small {
-    padding-bottom: toRem(70);
+    padding-bottom: toRem(50);
   }
 }
 

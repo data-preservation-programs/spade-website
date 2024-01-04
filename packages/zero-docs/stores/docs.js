@@ -82,7 +82,7 @@ export const useZeroDocsStore = defineStore('docs', () => {
       magellanLinks.value = []
       return
     }
-    magellanLinks.value = headings.reduce((acc, item) => {
+    magellanLinks.value = magellanLinks.value.concat(headings.reduce((acc, item) => {
       acc.push({
         level: `level-${item.localName}`,
         hash: `#${item.id}`,
@@ -91,7 +91,7 @@ export const useZeroDocsStore = defineStore('docs', () => {
         text: item.textContent.replace('#', '')
       })
       return acc
-    }, [])
+    }, []))
     setActiveLinkMarkerHeight()
   }
 
@@ -111,6 +111,7 @@ export const useZeroDocsStore = defineStore('docs', () => {
     // ----- state
     activeSection,
     magellanLinks,
+    settings,
     activeLinkMarkerHeight,
     // ----- computed
     theme,

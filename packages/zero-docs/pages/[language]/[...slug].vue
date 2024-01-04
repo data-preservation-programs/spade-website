@@ -28,12 +28,14 @@
         <!-- ======================================================= Content -->
         <div class="col-6_md-8" data-push-left="off-2_lg-3_md-0">
           <div class="content">
+
             <ZeroMarkdownParser
               id="markdown"
               :markdown="section.raw"
               :section="content.length > 1 ? section._path.split('/').pop() : ''"
               class="markdown"
               @found-heading-nodes="docsStore.compileMagellanLinks" />
+
             <ZeroApiOverview
               v-if="section.apiOverview"
               :headers="section.apiOverview.headers"
@@ -84,7 +86,7 @@ definePageMeta({
 })
 
 // ======================================================================== Data
-const nuxtApp = useNuxtApp()
+const { $seo } = useNuxtApp()
 const intersectionObserver = ref(null)
 const headerHeight = ref(0)
 const sections = ref([])
@@ -99,12 +101,30 @@ const docsStore = useZeroDocsStore()
 const pageSlug = dirNameSplit[2]
 const pageHeading = useToPascalCase(pageSlug, ' ')
 
-const { data: content } = await useAsyncData(`page-content-${route.path}`, async () => {
-  return await queryContent({
+const { data: content } = await useAsyncData(`page-content-md-${route.path}`, async () => {
+  const content = await queryContent({
     where: {
       _path: { $contains: `/docs${route.path}` }
     }
   }).find()
+  return content.filter(file => file._extension === 'md')
+}, { watch: [route] })
+
+if (content.value.length === 0) {
+  throw createError({
+    statusCode: 404,
+    message: 'Looks like the page you\'re looking for doesn\'t exist',
+    fatal: true
+  })
+}
+
+const { data: jsonContent } = await useAsyncData(`page-content-json-${route.path}`, async () => {
+  const jsonContent = await queryContent({
+    where: {
+      _path: { $contains: `/docs${route.path}` }
+    }
+  }).find()
+  return jsonContent.filter(file => file._extension === 'json')
 }, { watch: [route] })
 
 const { data: definitionsSchema } = await useAsyncData(`definitions-schema-${route.path}`, () => {
@@ -115,23 +135,13 @@ const { data: definitionsSchema } = await useAsyncData(`definitions-schema-${rou
   }).findOne()
 }, { watch: [route] })
 
-const routePathSplitLength = route.path.split('/').length
-const sectionCount = content.value.length
-
-if (routePathSplitLength < 3 || sectionCount === 0) {
-  throw createError({
-    statusCode: 404,
-    message: 'Looks like the page you\'re looking for doesn\'t exist'
-  })
-}
-
 const pageContent = ref([])
 
 // ======================================================================= Setup
-nuxtApp.$seo(
+$seo(
   '*',
-  sectionCount === 1 ?
-    content.value[0].metadata :
+  content.value.length === 1 ?
+    content.value[0].frontmatter :
     content.value.find(item => item._file.includes('src.md')) || {}
 )
 
@@ -144,16 +154,19 @@ const headerHeightOffset = computed(() => headerHeight.value * 3)
  */
 
 const generatePageContent = () => {
+  if (process.client) {
+    docsStore.compileMagellanLinks([])
+  }
   const array = content.value.filter(item => item._extension === 'md' && !item._file.includes('src.md'))
   array.forEach(mdContent => {
-    const jsonContent = content.value.find(item => item._path === mdContent._path && item._extension === 'json')
-    if (jsonContent) {
-      if (Object.hasOwn(jsonContent, 'swagger')) {
-        const { overview, preview } = useFormatSwaggerData(jsonContent, {...definitionsSchema.value})
+    const jsonData = jsonContent.value.find(item => item._path === mdContent._path)
+    if (jsonData) {
+      if (Object.hasOwn(jsonData, 'swagger')) {
+        const { overview, preview } = useFormatSwaggerData(jsonData, {...definitionsSchema.value})
         mdContent.apiOverview = overview
         mdContent.apiPreview = preview
       } else {
-        mdContent.apiPreview = jsonContent
+        mdContent.apiPreview = jsonData
       }
     }
   })
