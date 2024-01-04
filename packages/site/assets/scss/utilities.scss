@@ -182,3 +182,26 @@ $replace4: #000000;
   background: linear-gradient($angle, $zircon 6.23%, $whiteLilac 48.53%, $royalBlue 85.09%);
   @include gradientTextBase;
 }
+
+@mixin largeScreenMarginFillElements {
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: calc(50% - $gridWidth * 0.5 - 0.5rem);
+    height: 100%;
+    border-radius: toRem(8);
+    background-color: $blackPearl;
+    margin: 0.5rem;
+    @include xlarge {
+      display: none;
+    }
+  }
+  &:before {
+    left: 0;
+  }
+  &:after {
+    right: 0;
+  }
+}

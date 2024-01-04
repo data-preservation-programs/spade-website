@@ -28,7 +28,7 @@
         tag="a"
         :to="githubUrl"
         target="_blank"
-        :disabled="!githubUrl"
+        :disabled="!githubUrl || githubUrl === ''"
         class="github-link">
         <IconGithub />
       </ZeroButton>
@@ -37,7 +37,7 @@
       <ButtonAlgoliaSearch v-if="algoliaEnabled" />
 
       <DropdownSelector
-        v-if="languageSelectorVisible"
+        v-if="languageSelectorVisible && defaultSelectedLanguage !== -1"
         :default-selected-index="defaultSelectedLanguage"
         :options="languageOptions" />
 
@@ -64,10 +64,12 @@ const { data: Settings } = await useAsyncData('settings', () => {
 const { data: Header } = await useAsyncData('header', async () => {
   const content = await queryContent({
     where: {
-      _file: { $in: [
-        `data/${routeLang.value}/header.json`,
-        `data/${Settings.value.language}/header.json`
-      ]}
+      _file: {
+        $in: [
+          `data/${routeLang.value}/header.json`,
+          `data/${Settings.value.language}/header.json`
+        ]
+      }
     }
   }).find()
   return content[0]
@@ -97,7 +99,9 @@ const links = computed(() => Header.value.navigation)
 const githubUrl = computed(() => Header.value.toolbar.github_url)
 const languageOptions = computed(() => Header.value.toolbar.language_options)
 
-const defaultSelectedLanguage = languageOptions.value.findIndex(option => option.slug === route.params.language.toUpperCase())
+const defaultSelectedLanguage = routeLang.value ?
+  languageOptions.value.findIndex(option => option.slug.toUpperCase() === routeLang.value.toUpperCase()) :
+  -1
 </script>
 
 <style lang="scss" scoped>

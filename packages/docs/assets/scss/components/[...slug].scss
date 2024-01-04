@@ -11,8 +11,8 @@
         position: absolute;
         display: block;
         top: 0;
-        left: calc( $sidebarWidth + 2rem);
-        width: calc(100% - $sidebarWidth - 4rem);
+        right: 2rem;
+        width: calc(100% - ($gridWidth / 4) - 4rem);
         height: 2px;
         background-color: var(--divider);
       }

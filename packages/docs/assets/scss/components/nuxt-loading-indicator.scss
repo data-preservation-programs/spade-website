@@ -1,0 +1,4 @@
+div.nuxt-loading-indicator {
+  top: calc(#{$siteHeaderHeight} - 3px) !important;
+  background: $royalBlue !important;
+}
