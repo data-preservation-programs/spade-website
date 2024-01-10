@@ -9,28 +9,28 @@
 
     <div class="roadmap-sections">
       <div
-        v-for="(section, i) in sections"
+        v-for="(month, i) in roadmap"
         :key="`roadmap-section-${i}`"
         class="section">
 
         <div class="section-heading">
           <div class="text">
-            {{ section.heading }}
+            {{ moment(month.eta).format('MMMM YYYY') }}
           </div>
         </div>
 
         <div class="section-milestones">
 
-          <div class="description">
-            {{ section.description }}
+          <div v-if="month.description" class="description">
+            {{ month.description }}
           </div>
 
           <div class="milestones">
             <div
-              v-for="item in section.milestones"
+              v-for="item in month.milestones"
               :key="item"
               class="milestone">
-              {{ item }}
+              {{ item.title }}
             </div>
           </div>
 
@@ -43,6 +43,12 @@
 </template>
 
 <script setup>
+// ===================================================================== Imports
+import { storeToRefs } from 'pinia';
+import { useGeneralStore } from '../stores/general.js'
+import moment from 'moment'
+
+// ======================================================================= Props
 const props = defineProps({
   block: {
     type: Object,
@@ -50,7 +56,24 @@ const props = defineProps({
   }
 })
 
+// ======================================================================== Data
+const generalStore = useGeneralStore()
+const { siteContent } = storeToRefs(generalStore)
+
+// ==================================================================== Computed
 const sections = computed(() => props.block.sections)
+const roadmap = computed(() => {
+  const items = []
+  if (siteContent.value?.roadmap) {
+    const keys = Object.keys(siteContent.value.roadmap).sort((a, b) => moment(a).valueOf() - moment(b).valueOf())
+    keys.forEach((key) => {
+      const month = sections.value.find(section => section.eta === key) || {}
+      items.push(Object.assign(month, { eta: key, milestones: siteContent.value.roadmap[key] }))
+    })
+  }
+  return items
+})
+
 </script>
 
 <style lang="scss" scoped>

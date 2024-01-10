@@ -537,6 +537,7 @@
         "sections": [
           {
             "heading": "March 2023",
+            "eta": "2023-03",
             "description": "The pilot launch comprises of the following functionality",
             "milestones": [
               "Pulling CIDs from a known location for each storage client.",
@@ -549,6 +550,7 @@
           },
           {
             "heading": "June 2023",
+            "eta": "2023-06",
             "description": "Storage clients participating in the pilot",
             "milestones": [
               "Spade tenant tracking.",
@@ -558,6 +560,7 @@
           },
           {
             "heading": "July 2023",
+            "eta": "2023-07",
             "description": "Includes everything required to support the above stories, with additional development effort",
             "milestones": [
               "Tenant service: supporting policy setting and management for clients, offer hosting intermediary datastore for CIDs to be onboarded, view into onboarded data",
