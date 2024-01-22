@@ -170,6 +170,7 @@ const generatePageContent = () => {
       }
     }
   })
+  console.log(array)
   pageContent.value = array
 }
 
@@ -261,6 +262,7 @@ const detectPageScrolledToEdgesOfViewport = () => {
 const getPreviewComponentName = path => {
   const componentList = ctx.appContext.components
   const previewComponentName = 'Preview' + useToPascalCase(path.replace('/docs/', '').replace('/', '-'))
+  console.log(previewComponentName)
   const previewExists = componentList.hasOwnProperty(previewComponentName)
   if (previewExists) { return previewComponentName }
   return false

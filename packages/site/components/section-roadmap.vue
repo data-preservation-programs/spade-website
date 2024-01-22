@@ -63,15 +63,18 @@ const { siteContent } = storeToRefs(generalStore)
 // ==================================================================== Computed
 const sections = computed(() => props.block.sections)
 const roadmap = computed(() => {
-  const items = []
+  const items = [].concat(sections.value)
   if (siteContent.value?.roadmap) {
-    const keys = Object.keys(siteContent.value.roadmap).sort((a, b) => moment(a).valueOf() - moment(b).valueOf())
+    const keys = Object.keys(siteContent.value.roadmap)
     keys.forEach((key) => {
-      const month = sections.value.find(section => section.eta === key) || {}
-      items.push(Object.assign(month, { eta: key, milestones: siteContent.value.roadmap[key] }))
+      const milestones = siteContent.value.roadmap[key]
+      const month = sections.value.find(section => section.eta === key) || { milestones: [] }
+      items.push({ eta: key, milestones: milestones.concat(month.milestones) })
     })
   }
   return items
+    .sort((a, b) => moment(a.eta).valueOf() - moment(b.eta).valueOf())
+    .filter((month) => moment(month.eta).isBefore(moment().add(1, 'years')))
 })
 
 </script>

@@ -540,12 +540,12 @@
             "eta": "2023-03",
             "description": "The pilot launch comprises of the following functionality",
             "milestones": [
-              "Pulling CIDs from a known location for each storage client.",
-              "Hard coded tenant policy based on info collected directly from each storage client.",
-              "Broker API that supports CID selection per client for SPs.",
-              "Address provisioning on behalf of client (riba) (implies work for clients to get DataCap).",
-              "Support for remote signing of deal proposal messages from client that will own their address private key.",
-              "SP Selection logic based on up-front KYC only (per CID eligibility based on replication policy set by storage client)."
+              { "title": "Pulling CIDs from a known location for each storage client." },
+              { "title": "Hard coded tenant policy based on info collected directly from each storage client." },
+              { "title": "Broker API that supports CID selection per client for SPs." },
+              { "title": "Address provisioning on behalf of client (riba) (implies work for clients to get DataCap)." },
+              { "title": "Support for remote signing of deal proposal messages from client that will own their address private key." },
+              { "title": "SP Selection logic based on up-front KYC only (per CID eligibility based on replication policy set by storage client)." }
             ]
           },
           {
@@ -553,9 +553,9 @@
             "eta": "2023-06",
             "description": "Storage clients participating in the pilot",
             "milestones": [
-              "Spade tenant tracking.",
-              "The first tenant to go live will be DAGHouse (web3.storage and nft.storage).",
-              "Broker API thaInternet Archive will begin testing soon after initial launch, with additional time baked in for Spade to stabilize and for testing. More details here.t supports CID selection per client for SPs."
+              { "title": "Spade tenant tracking." },
+              { "title": "The first tenant to go live will be DAGHouse (web3.storage and nft.storage)." },
+              { "title": "Broker API thaInternet Archive will begin testing soon after initial launch, with additional time baked in for Spade to stabilize and for testing. More details here.t supports CID selection per client for SPs." }
             ]
           },
           {
@@ -563,11 +563,11 @@
             "eta": "2023-07",
             "description": "Includes everything required to support the above stories, with additional development effort",
             "milestones": [
-              "Tenant service: supporting policy setting and management for clients, offer hosting intermediary datastore for CIDs to be onboarded, view into onboarded data",
-              "SP KYC service: focus on SP UX - tenant discovery and signup, measured QoS tracking",
-              "ValidationBot: support for HTTP retrievals, integrated into point-in-time SP eligibility (i.e., moving average of retrieval success rate as a metric of QoS that suspends an SPs eligibility temporarily)",
-              "Key escrow service: more robust support for client address management.",
-              "<TBD>"
+              { "title": "Tenant service: supporting policy setting and management for clients, offer hosting intermediary datastore for CIDs to be onboarded, view into onboarded data" },
+              { "title": "SP KYC service: focus on SP UX - tenant discovery and signup, measured QoS tracking" },
+              { "title": "ValidationBot: support for HTTP retrievals, integrated into point-in-time SP eligibility (i.e., moving average of retrieval success rate as a metric of QoS that suspends an SPs eligibility temporarily)" },
+              { "title": "Key escrow service: more robust support for client address management." },
+              { "title": "<TBD>" }
             ]
           }
         ]
