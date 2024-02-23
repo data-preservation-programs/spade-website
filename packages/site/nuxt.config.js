@@ -42,6 +42,7 @@ export default defineNuxtConfig({
       siteUrl: env === 'development' ? `${baseUrls[env]}:${frontendPort}` : baseUrls[env],
       backendUrl: env === 'development' ? `${baseUrls[env]}:${backendPort}` : `${baseUrls[env]}/api`,
       serverFlag: env,
+      githubAccessToken: process.env.GITHUB__PERSONAL_ACCESS_TOKEN__DATA_PROGRAMS,
       seo: {
         siteName: ''
       }
