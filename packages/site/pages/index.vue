@@ -23,8 +23,10 @@ const { siteContent } = storeToRefs(generalStore)
 // ==================================================================== Watchers
 watch(data, async (val) => {
   const indexData = val.find(item => item._file === 'data/pages/index.json')
+  const config = useRuntimeConfig()
   await generalStore.getBaseData('general')
   await generalStore.getBaseData({ key: 'index', data: indexData })
+  await generalStore.getRoadmapItems({ token: config.public.githubAccessToken })
 }, { immediate: true })
 
 // ==================================================================== Computed
