@@ -117,7 +117,10 @@ onMounted(() => {
         nextIndex = currentIndex -= 1
       }
       if (nextIndex !== undefined) {
-        algoliaStore.setActiveResult(list[nextIndex].objectID)
+        const id = list[nextIndex].objectID
+        algoliaStore.setActiveResult(id)
+        const el = document.querySelector(`[href="${id}"]`)
+        el.scrollIntoView({ block: 'end' })
       }
     } else if (enter && activeResult.value) {
       algoliaStore.toggleModal(false)
